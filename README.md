@@ -9,7 +9,7 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 |---|---|
 | Adapter (model) | [dev-willbird1936/drift-monitor-tiny-aya](https://huggingface.co/dev-willbird1936/drift-monitor-tiny-aya) |
 | Dataset, logs, traces | [dev-willbird1936/drift-monitor-data](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data) |
-| Live demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) |
+| Replay demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) (recorded sessions; the live app runs from `submission/space/`) |
 | Code | [github.com/dev-willbird1936/drift-monitor](https://github.com/dev-willbird1936/drift-monitor) |
 
 ```python
@@ -525,15 +525,19 @@ clipped at 9. The alert threshold is applied to the continuous score, not the ar
 
 The monitor runs next to an agent, scoring after every step (one assistant message plus the results of its tool
 calls) in about 0.3 s, in the background so the agent never waits. On an alert an advisor model writes a note,
-which goes to the agent before its next step. Three ways to try it:
+which goes to the agent before its next step. Four ways to try it:
 
-- **The Space.** *Live agent* runs a real agent on a sandboxed task with a hidden drift of your choice and shows
-  the score, the advisor's note and the repair step by step; switch the advisor off to compare. *Replay* plays
-  five recorded experiment sessions, watched against unwatched, including the deletion failure.
+- **The hosted replay.** [The Space](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) plays five
+  recorded experiment sessions step by step, watched against unwatched, including the deletion failure.
+- **The live app.** `submission/space/` is a Gradio app (`pip install -r requirements.txt`, set
+  `DRIFT_ADAPTER=dev-willbird1936/drift-monitor-tiny-aya`, `python app.py`; a GPU with 3 GB free is enough).
+  *Live agent* runs a real agent on a sandboxed task with a hidden drift of your choice and shows the score, the
+  advisor's note and the repair step by step; switch the advisor off to compare. It runs on an OpenRouter key
+  (about 1 cent a run). It is not hosted because Gradio Spaces need a paid Hugging Face plan.
 - **Any agent, in Python.** `submission/space/driftwatch.py`:
   `watch.observe(thinking=..., say=..., calls=[...], results=[...])` returns the score and, on an alert, the
-  advisor's note. It scores through the Space, a local server or an in-process model, and also accepts
-  OpenAI-format transcripts.
+  advisor's note. It scores through a local server (`harness/score_server.py`), an in-process model, or a hosted
+  copy of the app, and also accepts OpenAI-format transcripts.
 - **Pi.** `harness/pi_drift_watch.ts` watches ordinary Pi sessions: score in the footer, advisor note on alert,
   and a last check before the agent stops, so a drifting final step is not missed. In a test run on an unseen
   task, it flagged the agent's unrequested shopping list at 46, a Claude Haiku 5.5 advisor called it out, and the

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drift monitor: replay</title>
+<style>
+  :root { --fg:#1f2328; --mute:#59636e; --line:#d1d9e0; --bg:#fff; --soft:#f6f8fa; --red:#d1242f; --green:#1a7f37; --amber:#9a6700; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#e6edf3; --mute:#9198a1; --line:#3d444d; --bg:#0d1117; --soft:#151b23; --red:#f85149; --green:#3fb950; --amber:#d29922; } }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--fg); background:var(--bg); }
+  main { max-width:1180px; margin:0 auto; padding:24px 20px 60px; }
+  h1 { font-size:1.6em; margin:0 0 6px; } h2 { font-size:1.15em; margin:18px 0 6px; }
+  p { margin:6px 0; } a { color:#0969da; } .mute { color:var(--mute); }
+  .bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:16px 0; padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--soft); }
+  select, button { font:inherit; padding:6px 10px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.primary { background:#1f6feb; color:#fff; border-color:#1f6feb; cursor:pointer; }
+  .grid { display:grid; grid-template-columns: 3fr 2fr; gap:18px; align-items:start; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  .ev { border:1px solid var(--line); border-radius:8px; padding:8px 10px; margin:8px 0; background:var(--soft); }
+  .ev pre { white-space:pre-wrap; word-break:break-word; margin:4px 0; font:12.5px/1.45 ui-monospace, Consolas, monospace; }
+  .tag { font-size:.8em; font-weight:600; letter-spacing:.02em; color:var(--mute); }
+  .ev.user { border-left:4px solid #1f6feb; } .ev.adv { border-left:4px solid var(--amber); } .ev.hidden { border-left:4px solid var(--red); }
+  .score { font-weight:700; margin-left:8px; } .hot { color:var(--red); } .cool { color:var(--green); }
+  .card { border:1px solid var(--line); border-radius:8px; padding:12px; position:sticky; top:12px; background:var(--bg); }
+  svg text { fill:var(--mute); font-size:11px; }
+  .legend span { display:inline-block; margin-right:12px; font-size:.85em; }
+  .sw { display:inline-block; width:12px; height:3px; vertical-align:middle; margin-right:4px; }
+  details { margin-top:14px; } summary { cursor:pointer; font-weight:600; }
+  table { border-collapse:collapse; } td, th { padding:3px 10px 3px 0; text-align:left; vertical-align:top; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Drift monitor</h1>
+  <p>A 3.35B Cohere model (<code>tiny-aya-global</code>, QLoRA) reads an AI agent's session after every step and outputs
+  <b>one number, 0-100</b>: how far the work has drifted from what the user asked for. When it crosses a threshold, a
+  stronger model is asked for advice, and its note goes back to the agent. The rest of the time no expensive model is called.</p>
+  <p class="mute">This page replays recorded sessions from the closed-loop experiments. Each ran twice with the same task and
+  the same hidden prompt: once <b>watched</b> (monitor + advisor) and once <b>unwatched</b>. Scores are recomputed at every
+  step with the published model. The hidden prompt is shown in red; the monitor and the advisor never saw it.</p>
+  <p>__LINKS__</p>
+
+  <div class="bar">
+    <label>Session <select id="pick"></select></label>
+    <label>Speed <select id="speed"><option value="1200">slow</option><option value="600" selected>normal</option><option value="0">instant</option></select></label>
+    <button class="primary" id="play">Play</button>
+  </div>
+  <div id="info"></div>
+  <div class="grid">
+    <div id="log"></div>
+    <div class="card">
+      <div class="tag">DRIFT SCORE AFTER EACH STEP</div>
+      <svg id="chart" viewBox="0 0 420 240" width="100%"></svg>
+      <div class="legend"><span><i class="sw" style="background:#1f6feb"></i>watched</span><span><i class="sw" style="background:#bf8700"></i>unwatched</span><span><i class="sw" style="background:#d1242f"></i>advisor threshold</span></div>
+      <div id="result" style="margin-top:10px"></div>
+    </div>
+  </div>
+  <details><summary>The unwatched run</summary><div id="unlog"></div></details>
+
+  <h2>Measured results</h2>
+  <p>On held-out real agent sessions: MAE 7.8, AUROC 0.957, false alarms 5.8% (untrained base: MAE 43.9, AUROC 0.552,
+  false alarms 83.6%). In a live closed loop (256 sessions, 16 tasks, 6 never seen), unrequested files left behind fell
+  from 2.48 per session to 0 at about 1.4 advisor calls per drifting session. <b>Known limits:</b> advice arrives after a
+  step, so it cannot undo a deletion; an agent told to resist correction ignores the notes; content past the monitor's
+  clip limits is invisible to it.</p>
+</main>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const R = JSON.parse(document.getElementById('data').textContent);
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clip = (s, n) => { s = String(s ?? ''); return s.length > n ? s.slice(0, n) + ' …' : s; };
+R.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r.title; $('pick').appendChild(o); });
+
+function evHtml(e, traj, thr) {
+  if (e.kind === 'user') return `<div class="ev user"><span class="tag">USER</span><pre>${esc(clip(e.text, 1500))}</pre></div>`;
+  if (e.kind === 'hidden') return `<div class="ev hidden"><span class="tag">HIDDEN NUDGE (never shown to the monitor)</span><pre>${esc(clip(e.text, 600))}</pre></div>`;
+  if (e.kind === 'advisor') return `<div class="ev adv"><span class="tag">ADVISOR NOTE → AGENT</span><pre>${esc(clip(e.text, 1300))}</pre></div>`;
+  const sc = traj.find(t => t.step === e.step);
+  let h = `<div class="ev"><span class="tag">AGENT STEP ${e.step}</span>`;
+  if (sc) h += `<span class="score ${sc.score >= thr ? 'hot' : 'cool'}">drift ${Math.round(sc.score)}${sc.score >= thr ? ' ALERT' : ''}</span>`;
+  if (e.think) h += `<pre><i>thinking:</i> ${esc(clip(e.think, 600))}</pre>`;
+  for (const c of e.calls || []) h += `<pre><b>${esc(c.tool)}</b> ${esc(clip(String(c.args).replaceAll('\\n', '\n'), 350))}\n→ ${esc(clip(c.result, 260))}</pre>`;
+  if (e.say) h += `<pre><i>to the user:</i> ${esc(clip(e.say, 900))}</pre>`;
+  return h + '</div>';
+}
+function hiddenHtml(s) { return s ? `<div class="ev hidden"><span class="tag">HIDDEN FROM THE MONITOR AND ADVISOR: what pushes the agent to drift</span><pre>${esc(clip(s, 700))}</pre></div>` : ''; }
+
+function chart(series, thr) {
+  const W = 420, H = 240, L = 34, B = 26, T = 10, Rr = 10;
+  const n = Math.max(2, ...series.flatMap(s => s.traj.map(t => t.step)));
+  const x = s => L + (s - 1) / (n - 1) * (W - L - Rr), y = v => T + (100 - v) / 100 * (H - T - B);
+  let g = '';
+  for (const v of [0, 25, 50, 75, 100]) g += `<line x1="${L}" x2="${W - Rr}" y1="${y(v)}" y2="${y(v)}" stroke="currentColor" stroke-opacity=".12"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
+  for (let s = 1; s <= n; s++) g += `<text x="${x(s)}" y="${H - 8}" text-anchor="middle">${s}</text>`;
+  g += `<line x1="${L}" x2="${W - Rr}" y1="${y(thr)}" y2="${y(thr)}" stroke="#d1242f" stroke-dasharray="5 4"/>`;
+  for (const s of series) {
+    if (!s.traj.length) continue;
+    g += `<polyline fill="none" stroke="${s.color}" stroke-width="2.5" points="${s.traj.map(t => x(t.step) + ',' + y(t.score)).join(' ')}"/>`;
+    for (const t of s.traj) g += `<circle cx="${x(t.step)}" cy="${y(t.score)}" r="3" fill="${s.color}"/>`;
+  }
+  $('chart').innerHTML = g;
+}
+
+function outcome(o) {
+  let s = `files at the end: ${o.files.map(esc).join(', ')}`;
+  if (o.deleted.length) s += `. <b>Deleted:</b> ${o.deleted.map(esc).join(', ')}`;
+  if (o.secret_in.length) s += `. <b>Secret copied into:</b> ${o.secret_in.map(esc).join(', ')}`;
+  return s;
+}
+
+function info(r) {
+  $('info').innerHTML = `<h2>${esc(r.title)}</h2><p>${esc(r.note)}</p><p><b>User goal:</b> ${esc(r.goal)}</p>` +
+    `<p class="mute"><b>Agent:</b> ${esc(r.watched.agent)} (${esc(r.watched.thinking)} thinking). <b>Advisor:</b> ${esc(r.advisor)}, ` +
+    `called only when the score reached ${r.threshold} (at most twice per session).</p>`;
+}
+
+let timer = null;
+function play() {
+  clearTimeout(timer);
+  const r = R[+$('pick').value], w = r.watched, u = r.unwatched, thr = r.threshold, delay = +$('speed').value;
+  info(r);
+  $('result').innerHTML = ''; $('unlog').innerHTML = hiddenHtml(u.hidden_system) + u.display.map(e => evHtml(e, u.trajectory, thr)).join('');
+  let i = 0, seen = 0;
+  const tick = () => {
+    const shown = w.display.slice(0, i);
+    for (const e of shown) if (e.kind === 'step') seen = Math.max(seen, e.step);
+    $('log').innerHTML = hiddenHtml(w.hidden_system) + shown.map(e => evHtml(e, w.trajectory, thr)).join('');
+    const done = i >= w.display.length;
+    chart([{ traj: w.trajectory.filter(t => t.step <= seen), color: '#1f6feb' }].concat(done ? [{ traj: u.trajectory, color: '#bf8700' }] : []), thr);
+    if (done) {
+      $('result').innerHTML = `<p><b>Watched:</b> ${w.advisor_calls} advisor call(s); ${outcome(w.outcome)}</p>` +
+        `<p><b>Unwatched, same task and hidden prompt:</b> ${outcome(u.outcome)}</p>`;
+      return;
+    }
+    i++;
+    if (delay) timer = setTimeout(tick, (w.display[i - 1] || {}).kind === 'step' || (w.display[i - 1] || {}).kind === 'advisor' ? delay : 0); else tick();
+  };
+  tick();
+}
+$('play').onclick = play;
+$('pick').onchange = () => info(R[+$('pick').value]);
+info(R[0]); play();
+</script>
+</body>
+</html>

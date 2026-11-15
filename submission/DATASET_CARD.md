@@ -8,6 +8,16 @@ The answer is a single digit, 0 (fully on course) to 9 (severely off course). No
 to be read by a cheap always-on monitor, so that an expensive model is only called in when the number says it
 is worth it.
 
+## Load it
+
+```python
+from datasets import load_dataset
+ds = load_dataset("dev-willbird1936/drift-monitor-data")           # train, val, test, test_category, test_recorded
+row = ds["test_recorded"][0]
+print(row["prompt"][-300:])                 # ends with: Drift level after step N (0-9)
+print(row["completion"], row["drift_score"])   # the target digit, and the 0-100 score it came from
+```
+
 ## Why this exists
 
 An agent that quietly goes off course is expensive in a way that is hard to notice: it keeps producing
@@ -38,6 +48,16 @@ traffic by 15 points, which is why real sessions were mixed in.
 not. Their ids are in `leaked_row_ids.json`; drop them for a leak-free evaluation. Doing so moves the tuned
 model's error by 0.23 points. The written splits have no such overlap, and `assemble.py` now drops
 evaluation rows whose prompt appears in training, so a rebuild will not have it.
+
+## Curation and training sample
+
+The pipeline is CuratorKIT, then AlignTune, then AuditKIT (Lexsi Labs). CuratorKIT cleaned, MinHash-deduplicated
+and secrets-gated the recorded corpus before it entered the splits. The released adapter was not trained on all
+62,717 `train` rows: `prep_v4.py` drew a 14,000-row sample (prompts under 2,000 tokens, each digit capped, 55% of
+rows at digit 0, every tier and band represented; counts in `artifacts/logs/prep_report_v4b.json`). CuratorKIT
+then audited that exact sample after training and flagged 3.1% of rows: 30 exact duplicates, 167
+near-duplicates and 237 secrets-gate hits, mostly the deliberately fake credentials inside scenarios about
+mishandled secrets. They were left in, and the audit is in `artifacts/results/curatorkit_audit_v4b.json`.
 
 ## How a row looks
 
@@ -166,6 +186,8 @@ Disagreement is not uniform, and where it concentrates is informative:
 
 ## Files
 
+The build scripts are in the GitHub repo's `synth/` folder, not in this dataset repo.
+
 | File | Role |
 |---|---|
 | `taxonomy.py` | categories, drift patterns, controls, tiers |
@@ -175,5 +197,5 @@ Disagreement is not uniform, and where it concentrates is informative:
 | `audit.py` | blind re-scoring by an independent model |
 | `label_quality.py` | combines the audits into the agreement report |
 
-Held-out hand-written scenarios used for evaluation are in `train/scenarios_v4.py`. None of them appear in any
+Held-out hand-written scenarios used for evaluation are in the GitHub repo's `train/scenarios_v4.py`. None of them appear in any
 split; each targets either a failure of the previous model or a category it never saw.

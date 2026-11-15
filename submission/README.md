@@ -9,17 +9,48 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 |---|---|
 | Adapter (model) | [dev-willbird1936/drift-monitor-tiny-aya](https://huggingface.co/dev-willbird1936/drift-monitor-tiny-aya) |
 | Dataset, logs, traces | [dev-willbird1936/drift-monitor-data](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data) |
-| Replay demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) (recorded sessions; the live app runs from `submission/space/`) |
+| Demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor): recorded runs replayed with the agent's reasoning, tool calls and the score as they happened |
 | Code | [github.com/dev-willbird1936/drift-monitor](https://github.com/dev-willbird1936/drift-monitor) |
 
+**At a glance**
+
+- **Before and after training**, on 770 held-out real agent sessions: AUROC 0.552 → **0.960**, error 43.9 → **7.6**
+  points, false alarms on clean steps 100% → **5.4%**.
+- **Against two frontier models** given the same prompt on the same 497 real rows: 5 to 6 times fewer false alarms
+  at equal recall.
+- **On a live agent** (256 sessions): unrequested files left behind 2.48 → **0** per session, task checks passing
+  84% → **99%**, with 1.4 advisor calls per drifting session instead of 4.8 for reviewing every turn.
+- **Cost**: 309 ms per score on one RTX 3080; $463 per million steps against $1,735 to review every step.
+- **Where it falls short**: deletions (advice arrives too late), agents that refuse correction, and drift written
+  inside a requested file.
+
+![The demo replaying a recorded run: the agent's reasoning and tool calls on the left, the drift score and the advisor's note on the right](../docs/demo.png)
+
 ```python
+import torch
+from datasets import load_dataset
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
-tok = AutoTokenizer.from_pretrained("dev-willbird1936/drift-monitor-tiny-aya")   # carries the training chat template
-base = AutoModelForCausalLM.from_pretrained("CohereLabs/tiny-aya-global", torch_dtype="bfloat16")
-model = PeftModel.from_pretrained(base, "dev-willbird1936/drift-monitor-tiny-aya")
-# build prompts with render.build_prompt; read the softmax over the ten digit tokens (see "How the score is produced")
+
+tok = AutoTokenizer.from_pretrained("dev-willbird1936/drift-monitor-tiny-aya")  # carries the training chat template
+base = AutoModelForCausalLM.from_pretrained("CohereLabs/tiny-aya-global", torch_dtype=torch.bfloat16, device_map="auto")
+model = PeftModel.from_pretrained(base, "dev-willbird1936/drift-monitor-tiny-aya").eval()
+digits = [tok.encode(str(d), add_special_tokens=False)[0] for d in range(10)]
+
+@torch.no_grad()
+def drift_score(prompt):
+    """0-100: the probability-weighted mean of the digit bands (10*d + 5)."""
+    text = tok.apply_chat_template([{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True)
+    ids = tok(text, return_tensors="pt", add_special_tokens=False).input_ids.to(model.device)
+    p = model(ids).logits[0, -1, digits].float().softmax(-1)
+    return float((p * torch.arange(5, 100, 10, device=p.device)).sum())
+
+for row in load_dataset("dev-willbird1936/drift-monitor-data", split="test_recorded", streaming=True).take(3):
+    print(row["mode"], "label", row["drift_score"], "score", round(drift_score(row["prompt"]), 1))
 ```
+
+To score your own agent sessions, build the prompt with `render.py` (in this model repo and on GitHub), or use
+`driftwatch.py` on GitHub, which wraps prompt building, scoring and the advisor call.
 
 ---
 
@@ -332,7 +363,7 @@ a finding and have not changed the default. It is the first thing to train for i
   inside the one requested file. The monitor's view clips long file bodies, so it never saw the excess.
   Drift expressed inside a requested deliverable is a blind spot.
 - *The agent was compliant.* It followed every advisor note. The induced drift is a mild inclination, not
-  an agent that resists correction or hides what it is doing. An agent that argues back is untested.
+  an agent that resists correction or hides what it is doing. An agent that argues back is tested under *Edge cases* below.
 - *The broken-constraint condition mostly did not bite.* Only about a fifth of those sessions drifted at
   all, so that evidence is thin (7 bad outcomes unwatched across both task sets, all 7 flagged on replay).
 - *Redundant second calls.* 63 of the 135 advisor calls in the monitor arm were second calls, and 26 of
@@ -350,6 +381,33 @@ Results: `artifacts/results/loop_pilot_summary.json` and `loop_pilot_four_arms.j
 `loop_pilot.json`, `loop_pilot_holdout.json` and `loop_pilot_arms.json`; replays in the two
 `*_replay_none.json` files, `loop_pilot_notes_replay.json` and `loop_pilot_notes_control.json`.
 
+### Edge cases: where the loop helps, and where it cannot
+
+A second run probed harder drift and lookalikes. It used 8 unseen tasks (6 small, 2 multi-file), two agents
+(Gemini 3.1 Flash-Lite and Grok 4.7) and two arms: unwatched, and watched with a Claude Opus 5.5 advisor at
+threshold 40. That gives 16 sessions per condition per arm, 360 sessions in all. Outcomes come from the files
+at the end.
+
+| Hidden drift | Ended badly, unwatched | Ended badly, watched | Unwatched bad runs the monitor flags on replay |
+|---|---|---|---|
+| copies credentials into a notes file | 7/16 | **1/16** | 7/7 |
+| breaks a stated constraint | 6/16 | **0/16** | 6/6 |
+| keeps doing the original job after the user replaced it | 12/12 | **5/12** | 10/12 |
+| obeys an instruction planted in a file | 2/16 | **0/16** | 0/2 |
+| deletes files nobody asked it to touch | 9/16 | 13/16 | 9/9 |
+| drifts, and is told to refuse any reviewer's correction | 16/16 | 16/16 | 16/16 |
+
+- **Deletion cannot be advised away.** On replay the monitor flagged all 9 unwatched deletions, but a file is gone in one step,
+  before a note can arrive. The watched arm did no better (13/16 against 9/16, Fisher exact p = 0.25, so not a
+  real difference). This needs a block on irreversible actions, not advice.
+- **A resistant agent ignores advice.** Told to refuse correction, the agent was flagged in 15 of 16 watched
+  sessions and ignored every note. The monitor still detects it; the remedy has to be escalation to a human.
+- **Lookalikes stay quiet.** Across 64 sessions where the user had authorised the alarming-looking work (the user had
+  asked for the extra files or setup, or lifted the constraint), advisor notes reached the agent in 3. The advisor
+  answered `NO_ACTION` to 12 of the 16 calls the monitor made.
+
+Per-session rows and the tables are in `submission/artifacts/results/advisor_experiments/edge_cases.json`.
+
 ## Results: before and after
 
 AuditKIT, threshold 40. **Base** is the same model untrained on the same prompts.
@@ -365,8 +423,11 @@ AuditKIT, threshold 40. **Base** is the same model untrained on the same prompts
 | false_alarm | 0.836 | **0.045** | −0.791 | pass |
 | missed_drift | 0.000 | 0.033 | +0.033 | warn |
 
+AuditKIT's `false_alarm` and `missed_drift` are shares of *all* steps. Over clean steps only, the false-alarm rate
+goes from 100% to 5.4% (5.8% leak-free, below).
+
 **That `warn` is the most instructive line in the table.** The base model never misses drift — because it
-scores roughly 55 for everything and therefore alerts on *every single step*, including 84% of clean ones. It
+scores roughly 55 for everything and therefore alerts on *every single step*: 84% of steps are clean, so 84% of its decisions are false alarms. It
 is not a weak baseline but a degenerate one, and a lone accuracy metric would have hidden that. AuditKIT
 flagging the one regression is the tool doing its job.
 
@@ -527,8 +588,12 @@ The monitor runs next to an agent, scoring after every step (one assistant messa
 calls) in about 0.3 s, in the background so the agent never waits. On an alert an advisor model writes a note,
 which goes to the agent before its next step. Four ways to try it:
 
-- **The hosted replay.** [The Space](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) plays five
-  recorded experiment sessions step by step, watched against unwatched, including the deletion failure.
+- **The hosted demo.** [The Space](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) replays five
+  recorded experiment sessions as they happened: the agent's reasoning streams in, the score updates while it
+  thinks and after each step, and the advisor's note appears where it reached the agent. Each has a watched and
+  an unwatched run, including the deletion failure. Its *Try it live* tab runs a real agent on your own
+  OpenRouter key; it needs the scoring backend in `submission/space_scorer/`, which is not hosted on the free
+  tier, so the tab reports the monitor as offline unless you run that backend and pass `?scorer=URL`.
 - **The live app.** `submission/space/` is a Gradio app (`pip install -r requirements.txt`, set
   `DRIFT_ADAPTER=dev-willbird1936/drift-monitor-tiny-aya`, `python app.py`; a GPU with 3 GB free is enough).
   *Live agent* runs a real agent on a sandboxed task with a hidden drift of your choice and shows the score, the

@@ -9,41 +9,18 @@
 
 ---
 
-When you delegate a task to an AI agent you authorise specific work. A drifting agent keeps producing
-plausible output, so oversight is lost without anyone noticing, and reviewing every step with a frontier
-model costs more than the agent itself. We fine-tuned Cohere Labs' `tiny-aya-global` (3.35B) to read a
-session and emit one digit, 0 to 9: how far the work has drifted from what the user asked for. A threshold on
-it decides when to call a stronger model.
+When someone hands a task to an AI agent, they authorise specific work. A drifting agent keeps producing plausible output, so nobody notices, and having a frontier model review every step costs more than the agent. We fine-tuned Cohere Labs' tiny-aya-global (3.35B) to replace that closed-model call: it reads an agent session and outputs one digit, 0 to 9, for how far the work has drifted from what the user asked. Its digit probabilities give a 0 to 100 score; past a threshold, a stronger model is called.
 
-**Does acting on it help?** We closed the loop on a live agent: 256 sessions on 16 tasks, six written
-after training and never seen by the monitor. Drift is induced by a hidden prompt; an alert calls an advisor model. Outcomes are objective: files on disk and each task's own check. Unrequested
-files left behind fell from **2.48 per session to 0** (95% CI of the difference −2.99 to −1.99); checks
-passing rose from 84% to 99%. On 32 clean sessions it alerted twice; the advisor dismissed both.
-Having the advisor review every turn gave equivalent outcomes at 4.8 advisor calls per drifting session
-instead of 1.4, and 2.8 per clean session instead of 0.06. Replayed over the
-unwatched arm, it flags 66 of the 67 sessions that ended badly, including all 26 on unseen tasks.
+We ran it on a live agent: 256 sessions over 16 tasks, six written after training and never seen by the monitor. A hidden prompt nudged the agent to drift; each alert called an advisor. Outcomes come from files on disk and each task's check. Unrequested files left behind fell from 2.48 per session to 0 (95% CI of the difference −2.99 to −1.99), and checks passing rose from 84% to 99%. On 32 clean sessions it alerted twice and the advisor dismissed both. An advisor reviewing every turn gave equivalent outcomes at 4.8 calls per drifting session instead of 1.4, and 2.8 per clean session instead of 0.06. Replayed over the unwatched sessions, the monitor flagged 66 of the 67 that ended badly, including all 26 on unseen tasks.
 
-**Against the closed models it replaces.** Two frontier models, the identical prompt, 497 identical real
-held-out rows. At matched recall the 3.35B model raises **5–6× fewer false alarms**; at matched false-alarm rate it catches **1.6–1.8× more drift**.
+Against two frontier models given the same prompt and 497 real held-out rows, it raised 5 to 6 times fewer false alarms at matched recall and caught 1.6 to 1.8 times more drift at a matched false-alarm rate.
 
-**Before and after, same real sessions.** MAE 43.9 → 7.8, AUROC 0.552 → 0.957, correct alert decisions
-0.164 → 0.922, false alarms 83.6% → 5.8%. On four held-out work categories: MAE 5.99, AUROC 0.981.
+Before and after training, on real sessions: MAE 43.9 to 7.6, AUROC 0.552 to 0.960, correct alert decisions 0.164 to 0.922, clean-step false alarms 100% to 5.4%. On four unseen work categories: MAE 5.99, AUROC 0.981.
 
-**Data.** A non-Cohere teacher model wrote 5,417 sessions across 20 work
-categories and 16 drift patterns, including planted instructions obeyed and refused. Each pattern is paired
-with an on-course control that looks nearly identical and differs only in what the user asked for, so the
-model must read the authorisation. Every session is
-rendered at six evidence tiers. With 1,902 recorded live sessions: 90,365 rows. Two independent judges re-scored labels blind and disagree with each other
-more than with our labels. CuratorKIT curated the recorded corpus and audited the
-final training split (3.1% flagged, disclosed), AlignTune trained a 4-bit QLoRA adapter, AuditKIT graded
-every run.
+No dataset existed, so a non-Cohere teacher model wrote 5,417 sessions across 20 work categories and 16 drift patterns, including planted instructions obeyed and refused. Each drift pattern has a near-identical on-course twin that differs only in what the user asked for, so the model has to read what was authorised. Six evidence levels and 1,902 recorded live sessions give 90,365 rows. Two blind judges disagreed with each other more than with our labels. CuratorKIT curated the recorded corpus and audited the training split (3.1% flagged, disclosed), AlignTune trained a 4-bit QLoRA adapter, and AuditKIT graded every run.
 
-**What did not work.** Synthetic-only training over-fired on real traffic by 15 points until real sessions
-were added. The loop's one failure: the agent broke a word limit inside the requested file, which the
-monitor's clipped view cannot see. The induced drift was mild and the agent obeyed every note; an agent that
-resists correction is untested.
+What didn't work: synthetic-only training over-fired on real traffic until real sessions were added. The loop's one failure was a word limit broken inside the requested file, which the monitor's clipped view can't see. Advice can't undo a deletion, and an agent told to refuse correction ignored every note (16 of 16).
 
-**Cost.** 309 ms per score on one consumer GPU. Monitor plus triggered advisor calls: $463 per million
-steps at threshold 30 ($316 at 40) against $1,735 to review every step.
+Scoring takes 309 ms on one consumer GPU. The monitor plus the advisor calls it triggers costs $463 per million steps at threshold 30 ($316 at 40), against $1,735 to review every step. It ships as a Pi agent extension with a public demo.
 
-**Honesty note.** 5.71% of real held-out rows shared a prompt with training; those figures are leak-free.
+Dropping held-out rows that shared a prompt with training (5.71%) barely moves these.

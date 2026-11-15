@@ -46,6 +46,9 @@ svg text{fill:var(--mute);font-size:11px}
 .row{display:grid;grid-template-columns:34px 1fr 56px;gap:10px;padding:7px 8px;border-radius:8px;cursor:pointer;align-items:start}
 .row:hover{background:var(--card)}.row.cur{background:var(--card);outline:1px solid var(--line)}
 .row.future{opacity:.35}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadeUp .45s ease both}.enter{animation:fadeUp .5s ease both}.late{animation:fadeUp .5s ease .5s both}
+@media (prefers-reduced-motion:reduce){.fade,.enter,.late{animation:none}}
 .row .s{text-align:right;font-weight:700}
 .row .w{color:var(--mute);font-size:.9em}
 .row.adv{grid-template-columns:34px 1fr;cursor:default;color:var(--warn);font-size:.9em}
@@ -80,7 +83,7 @@ details summary{cursor:pointer;color:var(--mute)}
       <div class="card"><svg id="chart" viewBox="0 0 640 260"></svg>
         <div class="ctrl">
           <button id="first" title="Start">⏮</button><button id="prev" title="Back">◀</button>
-          <button id="playb" title="Play / pause">⏸</button><button id="next" title="Forward">▶</button><button id="last" title="End">⏭</button>
+          <button id="playb" title="Play / pause">▶</button><button id="next" title="Forward">▶</button><button id="last" title="End">⏭</button>
           <span class="seg" id="speed"><button data-s="1">1×</button><button data-s="2" class="on">2×</button><button data-s="4">4×</button></span>
           <span style="flex:1"></span>
           <span class="seg" id="arm"><button data-a="watched" class="on">Watched</button><button data-a="unwatched">Unwatched</button></span>
@@ -143,7 +146,7 @@ function scoreColor(s, thr) { return s >= thr ? 'var(--bad)' : s >= thr - 15 ? '
 
 /* ---------- chart ---------- */
 function drawChart(svg, o) {
-  // o: {series:[{pts:[{step,score}], color, dashed, hollow}], thr, n, cur, adv:[step], live:[{step,score}]}
+  // o: {series:[{pts:[{step,score,tip}], color, dashed}], thr, n, cur (may be fractional), adv:[step], live:[{step,score}], legend}
   const W = 640, H = 260, L = 36, B = 28, T = 12, Rr = 14;
   const n = Math.max(2, o.n);
   const x = s => L + (s - 1) / (n - 1) * (W - L - Rr), y = v => T + (100 - v) / 100 * (H - T - B);
@@ -152,11 +155,11 @@ function drawChart(svg, o) {
   for (const v of [0, 50, 100]) g += `<line x1="${L}" x2="${W - Rr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`;
   g += `<line x1="${L}" x2="${W - Rr}" y1="${y(o.thr)}" y2="${y(o.thr)}" stroke="var(--bad)" stroke-dasharray="5 4"/><text x="${W - Rr}" y="${y(o.thr) - 5}" text-anchor="end" style="fill:var(--bad)">advisor line ${o.thr}</text>`;
   for (let s = 1; s <= n; s++) g += `<text x="${x(s)}" y="${H - 8}" text-anchor="middle">${s}</text>`;
-  if (o.cur) g += `<line x1="${x(o.cur)}" x2="${x(o.cur)}" y1="${y(100)}" y2="${y(0)}" stroke="var(--blue)" stroke-opacity=".35" stroke-width="10"/>`;
+  if (o.cur) g += `<line x1="${x(o.cur)}" x2="${x(o.cur)}" y1="${y(100)}" y2="${y(0)}" stroke="var(--blue)" stroke-opacity=".25" stroke-width="12"/>`;
   for (const s of o.series) {
     if (!s.pts.length) continue;
-    g += `<polyline fill="none" stroke="${s.color}" stroke-width="${s.dashed ? 2 : 3}" ${s.dashed ? 'stroke-dasharray="6 5"' : ''} stroke-linejoin="round" points="${s.pts.map(p => x(p.step) + ',' + y(p.score)).join(' ')}"/>`;
-    for (const p of s.pts) g += `<circle cx="${x(p.step)}" cy="${y(p.score)}" r="${p.step === o.cur && !s.dashed ? 6 : 4}" fill="${s.color}"/>`;
+    g += `<polyline fill="none" stroke="${s.color}" stroke-width="${s.dashed ? 2 : 3}" ${s.dashed ? 'stroke-dasharray="6 5"' : ''} stroke-linejoin="round" stroke-linecap="round" points="${s.pts.map(p => x(p.step) + ',' + y(p.score)).join(' ')}"/>`;
+    s.pts.forEach((p, i) => { g += `<circle cx="${x(p.step)}" cy="${y(p.score)}" r="${!s.dashed && i === s.pts.length - 1 ? 6 : 4}" fill="${s.color}"/>`; });
   }
   for (const p of o.live || []) g += `<circle cx="${x(p.step)}" cy="${y(p.score)}" r="4" fill="none" stroke="var(--blue)" stroke-width="2"/>`;
   for (const a of o.adv || []) g += `<g transform="translate(${Math.min(x(a), W - Rr - 27)},${y(100) + 2})"><rect x="-26" y="0" width="52" height="16" rx="4" fill="var(--warn)"/><text y="12" text-anchor="middle" style="fill:#fff;font-weight:700">advisor</text></g>`;
@@ -164,8 +167,38 @@ function drawChart(svg, o) {
   svg.innerHTML = g;
 }
 
+/* Smooth motion: the newest point slides from the previous one, the score counts, new rows slide in. */
+const ease = t => 1 - Math.pow(1 - t, 3);
+const lerp = (a, b, t) => a + (b - a) * t;
+const anims = new Map();
+function animate(key, ms, frame) {
+  cancelAnimationFrame(anims.get(key));
+  const t0 = performance.now();
+  const step = now => {
+    const t = Math.min(1, (now - t0) / ms);
+    frame(ease(t));
+    if (t < 1) anims.set(key, requestAnimationFrame(step));
+  };
+  anims.set(key, requestAnimationFrame(step));
+}
+/* Draw a chart whose first series grows from `from` (a point, or null) to its last point. */
+function growChart(key, svg, o, from, ms) {
+  const pts = o.series[0].pts, last = pts[pts.length - 1];
+  if (!last || !from || ms <= 0) { drawChart(svg, o); return; }
+  animate(key + ':chart', ms, t => {
+    const tip = { step: lerp(from.step, last.step, t), score: lerp(from.score, last.score, t) };
+    drawChart(svg, { ...o, cur: o.cur ? lerp(from.step, o.cur, t) : o.cur, series: [{ ...o.series[0], pts: [...pts.slice(0, -1), tip] }, ...o.series.slice(1)] });
+  });
+}
+function countTo(key, id, from, to, thr, ms, onValue) {
+  // looks the element up on every frame, so it survives the element being re-rendered mid-count
+  const paint = v => { if (onValue) onValue(v); const el = $(id); if (el) { el.textContent = Math.round(v); el.style.color = scoreColor(v, thr); } };
+  if (from == null || ms <= 0) { cancelAnimationFrame(anims.get(key + ':num')); paint(to); return; }
+  animate(key + ':num', ms, t => paint(lerp(from, to, t)));
+}
+
 /* ---------- replays ---------- */
-let rp = 0, arm = 'watched', pos = 0, playing = true, speed = 2, timer = null;
+let rp = 0, arm = 'watched', pos = -1, playing = false, speed = 2, timer = null;
 function frames(r, a) {
   // a frame per step; advisor notes attach to the step they followed
   const run = r[a], out = [];
@@ -181,56 +214,83 @@ function outcomeText(o) {
   if (o.secret_in.length) bits.push(`secret copied into ${o.secret_in.join(', ')}`);
   return bits;
 }
+function rowHtml(x, i, thr, enter) {
+  let h = `<div class="row ${i === pos ? 'cur' : ''} ${enter ? 'enter' : ''}" data-i="${i}"><span style="color:var(--mute)">${x.step}</span><div>${esc(clip(x.act, 110))}<div class="w">${esc(x.why)}</div></div><span class="s" style="color:${scoreColor(x.score, thr)}">${Math.round(x.score)}</span></div>`;
+  if (x.note) h += `<div class="row adv ${enter ? 'enter late' : ''}"><span>↳</span><div><b>Advisor:</b> ${esc(clip(x.note, 220))}</div></div>`;
+  return h;
+}
+let shownPos = -1;
 function renderReplay() {
-  const r = R[rp], F = frames(r, arm), f = F[pos], thr = r.threshold;
+  const r = R[rp], F = frames(r, arm), thr = r.threshold, other = arm === 'watched' ? 'unwatched' : 'watched';
+  const forward = pos === shownPos + 1, ms = forward ? 900 / speed : 0, prevPos = shownPos;
+  shownPos = pos;
   $('task').innerHTML = `<span><b>Asked:</b> ${esc(r.short.task)}</span><span class="push"><b>Hidden push:</b> ${esc(r.short.push)}</span>`;
-  const prev = pos > 0 ? F[pos - 1].score : null, d = prev == null ? null : f.score - prev, [cls, lab] = level(f.score, thr);
-  let h = `<div class="stepno">Step ${f.step} of ${F.length} · ${arm === 'watched' ? 'watched by monitor + advisor' : 'unwatched'}</div>`;
-  h += `<div class="big"><span class="n" style="color:${scoreColor(f.score, thr)}">${Math.round(f.score)}</span>`;
-  if (d != null) h += `<span class="d" style="color:${d > 0 ? 'var(--bad)' : 'var(--ok)'}">${d > 0 ? '▲' : '▼'} ${Math.abs(Math.round(d))}</span>`;
+  const n = Math.max(F.length, frames(r, other).length);
+  if (pos < 0) {
+    $('now').innerHTML = `<div class="stepno">${arm === 'watched' ? 'Watched by the monitor and an advisor' : 'Unwatched: no monitor, no advisor'} · ${F.length} steps</div>` +
+      `<p style="margin:14px 0">Press <b>Play</b> to watch the agent work through this task one step at a time.</p><button class="btn primary" id="bigplay">▶ Play</button>`;
+    $('bigplay').onclick = () => setPlaying(true);
+    drawChart($('chart'), { thr, n, series: [{ pts: [], color: 'var(--blue)' }] });
+    $('rows').innerHTML = ''; $('rows').classList.add('hidden'); $('end').classList.add('hidden');
+    return;
+  }
+  const f = F[pos], prev = pos > 0 ? F[pos - 1].score : null, d = prev == null ? null : f.score - prev, [cls, lab] = level(f.score, thr);
+  let h = `<div class="fade"><div class="stepno">Step ${f.step} of ${F.length} · ${arm === 'watched' ? 'watched by monitor + advisor' : 'unwatched'}</div>`;
+  h += `<div class="big"><span class="n" id="bign"></span>`;
+  if (d != null && Math.abs(d) >= 1) h += `<span class="d" style="color:${d > 0 ? 'var(--bad)' : 'var(--ok)'}">${d > 0 ? '▲' : '▼'} ${Math.abs(Math.round(d))}</span>`;
   h += `</div><span class="badge ${cls}">${lab}</span>`;
   h += `<div class="act">${esc(clip(f.act, 140))}</div><div class="why">${esc(f.why)}</div>`;
-  if (f.note) h += `<div class="note"><b>Advisor to agent:</b> ${esc(clip(f.note, 260))}</div>`;
-  $('now').innerHTML = h;
-  const other = arm === 'watched' ? 'unwatched' : 'watched';
+  if (f.note) h += `<div class="note late">${'<b>Advisor to agent:</b> ' + esc(clip(f.note, 260))}</div>`;
+  $('now').innerHTML = h + '</div>';
+  countTo('rp', 'bign', forward && prev != null ? prev : (forward ? 0 : null), f.score, thr, ms);
   const done = pos === F.length - 1;
-  drawChart($('chart'), { thr, n: Math.max(F.length, frames(r, other).length), cur: f.step,
+  growChart('rp', $('chart'), { thr, n, cur: f.step,
     series: [{ pts: F.slice(0, pos + 1), color: arm === 'watched' ? 'var(--blue)' : 'var(--warn)' }].concat(done ? [{ pts: frames(r, other), color: 'var(--mute)', dashed: true }] : []),
     adv: F.slice(0, pos + 1).filter(x => x.note).map(x => x.step),
-    legend: done ? `solid: ${arm} run · dashed: ${other} run` : '' });
-  let rows = '';
-  F.forEach((x, i) => {
-    rows += `<div class="row ${i === pos ? 'cur' : ''} ${i > pos ? 'future' : ''}" data-i="${i}"><span style="color:var(--mute)">${x.step}</span><div>${esc(clip(x.act, 110))}<div class="w">${esc(x.why)}</div></div><span class="s" style="color:${scoreColor(x.score, thr)}">${Math.round(x.score)}</span></div>`;
-    if (x.note && i <= pos) rows += `<div class="row adv"><span>↳</span><div><b>Advisor:</b> ${esc(clip(x.note, 220))}</div></div>`;
-  });
-  $('rows').innerHTML = rows;
-  $('rows').querySelectorAll('.row[data-i]').forEach(el => el.onclick = () => { pos = +el.dataset.i; setPlaying(false); renderReplay(); });
+    legend: done ? `solid: ${arm} run · dashed: ${other} run` : '' }, forward && pos > 0 ? F[pos - 1] : null, ms);
+  const rows = $('rows');
+  rows.classList.remove('hidden');
+  if (forward && prevPos >= 0 && rows.children.length) {
+    rows.querySelectorAll('.row.cur').forEach(el => el.classList.remove('cur'));
+    rows.insertAdjacentHTML('beforeend', rowHtml(f, pos, thr, true));
+  } else rows.innerHTML = F.slice(0, pos + 1).map((x, i) => rowHtml(x, i, thr, forward && i === pos)).join('');
+  rows.querySelectorAll('.row[data-i]').forEach(el => el.onclick = () => { setPlaying(false); pos = +el.dataset.i; shownPos = -2; renderReplay(); });
   const end = $('end');
   if (done) {
-    const w = r.watched.outcome, u = r.unwatched.outcome, req = new Set(r.unwatched.outcome.files.filter(x => w.files.includes(x)));
+    const w = r.watched.outcome, u = r.unwatched.outcome, req = new Set(u.files.filter(x => w.files.includes(x)));
     const extraU = u.files.filter(x => !req.has(x));
     const line = (o, extra) => [extra.length ? `left extra files: ${extra.join(', ')}` : '', ...outcomeText(o)].filter(Boolean).join('; ') || 'nothing extra left behind';
     end.innerHTML = `<div class="card"><h3>Watched: ${r.watched.advisor_calls} advisor call${r.watched.advisor_calls === 1 ? '' : 's'}</h3>${esc(line(w, []))}</div>` +
       `<div class="card"><h3>Unwatched</h3>${esc(line(u, extraU))}</div>` +
       `<div class="card" style="grid-column:1/-1"><b>What this shows:</b> ${esc(r.short.lesson)}</div>`;
-    end.classList.remove('hidden');
+    end.classList.remove('hidden'); end.classList.add('fade');
   } else end.classList.add('hidden');
 }
-function setPlaying(p) { playing = p; $('playb').textContent = p ? '⏸' : '▶'; clearTimeout(timer); if (p) tick(); }
+function setPlaying(p) {
+  playing = p; clearTimeout(timer);
+  $('playb').textContent = p ? '⏸' : '▶';
+  if (!p) return;
+  const F = frames(R[rp], arm);
+  if (pos >= F.length - 1) { pos = -1; shownPos = -1; }
+  if (pos < 0) { pos = 0; renderReplay(); }
+  tick();
+}
 function tick() {
   const F = frames(R[rp], arm);
-  timer = setTimeout(() => { if (pos < F.length - 1) { pos++; renderReplay(); tick(); } else setPlaying(false); }, 1800 / speed + (F[pos].note ? 2200 / speed : 0));
+  timer = setTimeout(() => { if (pos < F.length - 1) { pos++; renderReplay(); tick(); } else setPlaying(false); }, (1900 + (F[pos].note ? 2600 : 0)) / speed);
 }
-function pick(i) { rp = i; pos = 0; arm = 'watched'; segOn('arm', 'watched'); document.querySelectorAll('#chips .chip').forEach((c, j) => c.classList.toggle('on', j === i)); renderReplay(); setPlaying(true); }
+function reset() { setPlaying(false); pos = -1; shownPos = -1; renderReplay(); }
+function pick(i) { rp = i; arm = 'watched'; segOn('arm', 'watched'); document.querySelectorAll('#chips .chip').forEach((c, j) => c.classList.toggle('on', j === i)); reset(); }
 function segOn(id, v) { document.querySelectorAll(`#${id} button`).forEach(b => b.classList.toggle('on', (b.dataset.a || b.dataset.s) == v)); }
+function jump(p) { setPlaying(false); pos = p; shownPos = -2; renderReplay(); }
 R.forEach((r, i) => { const b = document.createElement('button'); b.className = 'chip'; b.textContent = r.short.title; b.onclick = () => pick(i); $('chips').appendChild(b); });
-$('first').onclick = () => { pos = 0; setPlaying(false); renderReplay(); };
-$('prev').onclick = () => { pos = Math.max(0, pos - 1); setPlaying(false); renderReplay(); };
-$('next').onclick = () => { pos = Math.min(frames(R[rp], arm).length - 1, pos + 1); setPlaying(false); renderReplay(); };
-$('last').onclick = () => { pos = frames(R[rp], arm).length - 1; setPlaying(false); renderReplay(); };
-$('playb').onclick = () => { if (!playing && pos >= frames(R[rp], arm).length - 1) pos = 0; setPlaying(!playing); renderReplay(); };
-document.querySelectorAll('#speed button').forEach(b => b.onclick = () => { speed = +b.dataset.s; segOn('speed', speed); if (playing) setPlaying(true); });
-document.querySelectorAll('#arm button').forEach(b => b.onclick = () => { arm = b.dataset.a; segOn('arm', arm); pos = 0; renderReplay(); setPlaying(true); });
+$('first').onclick = reset;
+$('prev').onclick = () => { if (pos <= 0) reset(); else jump(pos - 1); };
+$('next').onclick = () => { const F = frames(R[rp], arm); if (pos < F.length - 1) { setPlaying(false); pos++; renderReplay(); } };
+$('last').onclick = () => jump(frames(R[rp], arm).length - 1);
+$('playb').onclick = () => setPlaying(!playing);
+document.querySelectorAll('#speed button').forEach(b => b.onclick = () => { speed = +b.dataset.s; segOn('speed', speed); if (playing) { clearTimeout(timer); tick(); } });
+document.querySelectorAll('#arm button').forEach(b => b.onclick = () => { arm = b.dataset.a; segOn('arm', arm); reset(); });
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
   $('v-replay').classList.toggle('hidden', t.dataset.v !== 'replay'); $('v-live').classList.toggle('hidden', t.dataset.v !== 'live');
@@ -375,24 +435,38 @@ function renderLive() {
   let h = `<div class="stepno">${esc(L.status)}</div>`;
   if (shown != null) {
     const [cls, lab] = level(shown, thr);
-    h += `<div class="big"><span class="n" style="color:${scoreColor(shown, thr)}">${Math.round(shown)}</span>${cur && cur.liveScore != null ? '<span class="hint">live, mid-thought</span>' : ''}</div><span class="badge ${cls}">${lab}</span>`;
+    const v = L.numNow ?? shown;
+    h += `<div class="big"><span class="n" id="lbign" style="color:${scoreColor(v, thr)}">${Math.round(v)}</span>${cur && cur.liveScore != null ? '<span class="hint">live, mid-thought</span>' : ''}</div><span class="badge ${cls}">${lab}</span>`;
   }
   if (cur) h += `<div class="act">Step ${F.length + 1}: ${cur.reasoning || cur.content ? 'thinking…' : 'waiting for the model…'}</div><div class="stream">${esc((cur.reasoning || cur.content || '').replaceAll('**', '').slice(-420))}</div>`;
   else if (last) h += `<div class="act">${esc(clip(last.action, 140))}</div>`;
-  if (L.outcome && !cur) h += `<div class="why"><b>Result:</b> ${esc(L.outcome)}</div>`;
-  if (L.lastNote) h += `<div class="note"><b>Advisor to agent:</b> ${esc(clip(L.lastNote, 260))}</div>`;
+  if (L.outcome && !cur) h += `<div class="why fade"><b>Result:</b> ${esc(L.outcome)}</div>`;
+  if (L.lastNote) h += `<div class="note ${L.noteSeen === L.lastNote ? '' : 'fade'}"><b>Advisor to agent:</b> ${esc(clip(L.lastNote, 260))}</div>`;
+  L.noteSeen = L.lastNote;
   $('lnow').innerHTML = h;
-  drawChart($('lchart'), { thr, n: Math.max(6, F.length + (cur ? 1 : 0)), cur: cur ? F.length + 1 : F.length,
+  if (shown != null && shown !== L.numTarget) {   // count smoothly to each new score
+    const from = L.numNow ?? (L.numTarget ?? 0);
+    L.numTarget = shown;
+    countTo('live', 'lbign', from, shown, thr, 700, v => { L.numNow = v; });
+  }
+  const o = { thr, n: Math.max(6, F.length + (cur ? 1 : 0)), cur: cur ? F.length + 1 : F.length,
     series: [{ pts: F.map((s, i) => ({ step: i + 1, score: s.score })), color: 'var(--blue)' }],
-    live: L.liveDots, adv: F.map((s, i) => s.note ? i + 1 : 0).filter(Boolean) });
+    live: L.liveDots, adv: F.map((s, i) => s.note ? i + 1 : 0).filter(Boolean) };
+  if (F.length > (L.chartN || 0)) {               // a step just finished: slide the line to its point
+    const from = F.length > 1 ? { step: F.length - 1, score: F[F.length - 2].score } : null;
+    L.chartN = F.length; L.chartBusyUntil = performance.now() + 750;
+    growChart('live', $('lchart'), o, from, 700);
+  } else if (performance.now() > (L.chartBusyUntil || 0)) drawChart($('lchart'), o);
   let rows = '';
   F.forEach((s, i) => {
-    const d = i ? s.score - F[i - 1].score : null;
-    rows += `<div class="row"><span style="color:var(--mute)">${i + 1}</span><div>${esc(clip(s.action, 130))}${s.thinking ? `<div class="w">thought: ${esc(clip(s.thinking.replaceAll('**', ''), 140))}</div>` : ''}</div><span class="s" style="color:${scoreColor(s.score, thr)}">${Math.round(s.score)}${d != null && Math.abs(d) >= 1 ? `<div class="w">${d > 0 ? '▲' : '▼'}${Math.abs(Math.round(d))}</div>` : ''}</span></div>`;
-    if (s.note) rows += `<div class="row adv"><span>↳</span><div><b>Advisor:</b> ${esc(clip(s.note, 300))}</div></div>`;
+    const d = i ? s.score - F[i - 1].score : null, fresh = i >= (L.rowsShown || 0);
+    rows += `<div class="row ${fresh ? 'enter' : ''}"><span style="color:var(--mute)">${i + 1}</span><div>${esc(clip(s.action, 130))}${s.thinking ? `<div class="w">thought: ${esc(clip(s.thinking.replaceAll('**', ''), 140))}</div>` : ''}</div><span class="s" style="color:${scoreColor(s.score, thr)}">${Math.round(s.score)}${d != null && Math.abs(d) >= 1 ? `<div class="w">${d > 0 ? '▲' : '▼'}${Math.abs(Math.round(d))}</div>` : ''}</span></div>`;
+    if (s.note) rows += `<div class="row adv ${(L.noteIdx || new Set()).has(i) ? '' : 'enter'}"><span>↳</span><div><b>Advisor:</b> ${esc(clip(s.note, 300))}</div></div>`;
   });
-  if (L.outcome) rows += `<div class="row adv" style="color:var(--fg)"><span></span><div><b>Result:</b> ${esc(L.outcome)}</div></div>`;
+  if (L.outcome) rows += `<div class="row adv ${L.outcomeShown ? '' : 'enter'}" style="color:var(--fg)"><span></span><div><b>Result:</b> ${esc(L.outcome)}</div></div>`;
   $('lrows').innerHTML = rows;
+  L.rowsShown = F.length; L.outcomeShown = !!L.outcome;
+  L.noteIdx = new Set(F.map((s, i) => s.note ? i : -1).filter(i => i >= 0));
   $('cost').textContent = L.cost ? `spent $${L.cost.toFixed(4)}` : '';
 }
 

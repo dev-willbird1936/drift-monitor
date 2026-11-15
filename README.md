@@ -5,7 +5,7 @@ Track 1, Fine-tuning and Data Curation — problem statement 2, *replacing a clo
 Pipeline: **CuratorKIT → AlignTune → AuditKIT** (all three repos of the track).
 Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 
-| | |
+| Part | Link |
 |---|---|
 | Adapter (model) | [dev-willbird1936/drift-monitor-tiny-aya](https://huggingface.co/dev-willbird1936/drift-monitor-tiny-aya) |
 | Dataset, logs, traces | [dev-willbird1936/drift-monitor-data](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data) |

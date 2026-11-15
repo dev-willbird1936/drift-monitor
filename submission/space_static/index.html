@@ -100,7 +100,7 @@ details summary{cursor:pointer;color:var(--mute)}
         <div class="card">
           <div class="panel-h"><span>Drift monitor</span><span class="hint" id="rline"></span></div>
           <div class="status" id="rstatus"></div>
-          <div class="big"><span class="n" id="rnum">–</span><span class="d" id="rdelta"></span><span class="tag" id="rtag"></span></div>
+          <div class="big"><span class="n" id="rnum"></span><span class="d" id="rdelta"></span><span class="tag" id="rtag"></span></div>
           <span class="badge hidden" id="rbadge"></span>
           <div class="why" id="rwhy"></div>
         </div>
@@ -142,12 +142,12 @@ details summary{cursor:pointer;color:var(--mute)}
       </div>
     </div>
     <div class="grid2" style="margin-top:14px">
-      <div class="card"><div class="panel-h"><span>Agent</span><span class="hint" id="lmeta"></span></div><div class="tx" id="ltx"><div class="idle">Pick a task and press <b>Run the agent</b>. Its reasoning, tool calls and replies will stream in here.</div></div></div>
+      <div class="card"><div class="panel-h"><span>Agent</span><span class="hint" id="lmeta"></span></div><div class="tx" id="ltx"><div class="idle"><div>Pick a task and press <b>Run the agent</b>. Its reasoning, tool calls and replies will stream in here.</div></div></div></div>
       <div class="side">
         <div class="card">
           <div class="panel-h"><span>Drift monitor</span><span class="hint" id="lline"></span></div>
-          <div class="status" id="lstatus"></div>
-          <div class="big"><span class="n" id="lnum">–</span><span class="d" id="ldelta"></span><span class="tag" id="ltag"></span></div>
+          <div class="status" id="lstatus">Waiting for a run. The score appears here as the agent works.</div>
+          <div class="big"><span class="n" id="lnum"></span><span class="d" id="ldelta"></span><span class="tag" id="ltag"></span></div>
           <span class="badge hidden" id="lbadge"></span>
           <div class="why" id="lwhy"></div>
         </div>
@@ -227,7 +227,7 @@ class View {
     Object.assign(this, { thr, n, pts: [], dots: [], adv: [], cur: null, num: null, last: null, legend: '', extra: [] });
     this.el('tx').innerHTML = html || '';
     this.el('line').textContent = `advisor line: ${thr}`;
-    const num = this.el('num'); num.textContent = '–'; num.style.color = 'var(--mute)';
+    const num = this.el('num'); num.textContent = ''; num.style.color = 'var(--mute)';
     this.el('delta').textContent = ''; this.el('tag').textContent = ''; this.el('badge').classList.add('hidden'); this.el('why').innerHTML = '';
     this.status(''); this.draw();
   }
@@ -299,6 +299,7 @@ function idle() {
   $('rmeta').textContent = arm === 'watched' ? 'watched by the monitor and an advisor' : 'unwatched: no monitor, no advisor';
   rv.reset(r.threshold, n, `<div class="idle"><div><b>${esc(r.short.title)}</b><br>${esc(r.short.task)}</div><button class="btn primary big" id="bigplay">▶ Play</button><div class="hint">The agent's reasoning, tool calls and replies stream in as they happened, and the drift score updates alongside.</div></div>`);
   $('bigplay').onclick = play;
+  rv.status('Press Play: the score appears here as the agent works.');
   $('end').classList.add('hidden');
 }
 async function play() {
@@ -442,6 +443,7 @@ async function checkMonitor() {
   el.textContent = monOnline ? 'monitor online' : 'monitor offline';
   el.className = 'pill ' + (monOnline ? 'b-ok' : 'b-bad');
   el.title = monOnline ? SCORER : 'The scoring model is not reachable right now, so live runs are unavailable. The replays still work.';
+  if (!monOnline) $('cost').textContent = 'The scoring backend is not hosted right now, so live runs cannot start. The replays work.';
 }
 
 /* OpenRouter streaming chat. Calls onDelta({reasoning, content}) as text arrives. */
@@ -508,6 +510,8 @@ function actionOf(step) {
 }
 /* ---------- live run, shown in the same transcript view ---------- */
 const lv = new View('l');
+drawChart($('lchart'), { thr: +$('thr').value, n: 6, series: [], live: [], adv: [] });
+$('thr').onchange = () => { if (!lv.pts) drawChart($('lchart'), { thr: +$('thr').value, n: 6, series: [], live: [], adv: [] }); };
 async function runLive() {
   const key = $('key').value.trim();
   if (!key) { alert('Paste your OpenRouter key first.'); return; }

@@ -26,6 +26,24 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 
 ![The demo replaying a recorded run: the agent's reasoning and tool calls on the left, the drift score and the advisor's note on the right](docs/demo.png)
 
+## Abstract
+
+When someone hands a task to an AI agent, they authorise specific work. A drifting agent keeps producing plausible output, so nobody notices, and having a frontier model review every step costs more than the agent. We fine-tuned Cohere Labs' tiny-aya-global (3.35B) to replace that closed-model call: it reads an agent session and outputs one digit, 0 to 9, for how far the work has drifted from what the user asked. Its digit probabilities give a 0 to 100 score; past a threshold, a stronger model is called.
+
+We ran it on a live agent: 256 sessions over 16 tasks, six written after training and never seen by the monitor. A hidden prompt nudged the agent to drift; each alert called an advisor. Outcomes come from files on disk and each task's check. Unrequested files left behind fell from 2.48 per session to 0 (95% CI of the difference −2.99 to −1.99), and checks passing rose from 84% to 99%. On 32 clean sessions it alerted twice and the advisor dismissed both. An advisor reviewing every turn gave equivalent outcomes at 4.8 calls per drifting session instead of 1.4, and 2.8 per clean session instead of 0.06. Replayed over the unwatched sessions, the monitor flagged 66 of the 67 that ended badly, including all 26 on unseen tasks.
+
+Against two frontier models given the same prompt and 497 real held-out rows, it raised 5 to 6 times fewer false alarms at matched recall and caught 1.6 to 1.8 times more drift at a matched false-alarm rate.
+
+Before and after training, on real sessions: MAE 43.9 to 7.6, AUROC 0.552 to 0.960, correct alert decisions 0.164 to 0.922, clean-step false alarms 100% to 5.4%. On four unseen work categories: MAE 5.99, AUROC 0.981.
+
+No dataset existed, so a non-Cohere teacher model wrote 5,417 sessions across 20 work categories and 16 drift patterns, including planted instructions obeyed and refused. Each drift pattern has a near-identical on-course twin that differs only in what the user asked for, so the model has to read what was authorised. Six evidence levels and 1,902 recorded live sessions give 90,365 rows. Two blind judges disagreed with each other more than with our labels. CuratorKIT curated the recorded corpus and audited the training split (3.1% flagged, disclosed), AlignTune trained a 4-bit QLoRA adapter, and AuditKIT graded every run.
+
+What didn't work: synthetic-only training over-fired on real traffic until real sessions were added. The loop's one failure was a word limit broken inside the requested file, which the monitor's clipped view can't see. Advice can't undo a deletion, and an agent told to refuse correction ignored every note (16 of 16).
+
+Scoring takes 309 ms on one consumer GPU. The monitor plus the advisor calls it triggers costs $463 per million steps at threshold 30 ($316 at 40), against $1,735 to review every step. It ships as a Pi agent extension with a public demo.
+
+Dropping held-out rows that shared a prompt with training (5.71%) barely moves these.
+
 ```python
 import torch
 from datasets import load_dataset
@@ -176,6 +194,24 @@ closer than that is fitting noise.
 Disagreement concentrates where you would expect: highest on `legit_destructive` (19.2) and
 `injection_refused` (15.0), cases where the agent does something alarming that the user authorised; lowest on
 `destructive` (3.3) and `legit_long` (2.0).
+
+## Models and licences
+
+| Role | Model | Configuration | Licence |
+|---|---|---|---|
+| **Core model (trained and shipped)** | `CohereLabs/tiny-aya-global`, 3.35B dense | QLoRA: 4-bit NF4 with double quantisation, bf16 compute; LoRA r=16, alpha=32, dropout 0.05 on all attention and MLP projections | CC-BY-NC-4.0 (Cohere Labs) |
+| Released adapter | `dev-willbird1936/drift-monitor-tiny-aya` | 60 MB; loads on the base model in 4-bit or bf16 | CC-BY-NC-4.0, inherited from the base model |
+| Teacher (wrote and labelled the synthetic sessions) | Grok 4.7 | sessions and per-step scores written together, from the scoring rubric | used through its provider's API |
+| Closed-model baselines and blind label judges | Claude Sonnet 5.5, GPT-6.1 Terra | the identical prompt the monitor reads | used through their providers' APIs |
+| Advisors in the experiments | Claude Sonnet 5.5 (pilot), Claude Opus 5.5 (edge cases), Claude Haiku 5.5 (demo), and others in the advisor comparison | read-only, called only on an alert | used through their providers' APIs |
+
+**Why this teacher.** The brief was to use the cheapest capable model with quota to spare, and the corpus needed
+5,420 long sessions. Grok 4.7 met both. Its labels were then checked blind by two judges from other model
+families. It agreed with each of them more closely than they agreed with each other (see *Label quality*), so
+one generator family did not set the labels on its own terms.
+
+The dataset is released under CC-BY-NC-4.0. CuratorKIT and AuditKIT are used under the Lexsi Source Available
+Licence v1.2, and AlignTune under its own licence.
 
 ## The Lexsi pipeline
 
@@ -534,6 +570,22 @@ Stated plainly, because they are real:
   right.
 - **Scores in the 26–39 band are sparse** (~1.6% per digit). Drift is genuinely bimodal: sessions stay on
   course or go properly off, passing through the middle briefly.
+
+## With more credits
+
+What we would do next, in order of expected value, with the result we forecast for each. These are forecasts,
+not measurements.
+
+| Work | Why | Measured now | Forecast |
+|---|---|---|---|
+| Train on sessions that contain advisor notes | The monitor reads a repair the advisor asked for as new drift | Turns after a note that still alert: 126 / 197. Showing the notes without retraining gives 5 / 197, but 20 of 69 unrepaired sessions also stop alerting | Under 10 / 197 after a repair, with the unrepaired control alerting in at least 65 of 69 |
+| Block irreversible actions above the line | Advice arrives after a deletion | Harmful deletions with the advisor: 13 / 16. The monitor flagged all 9 unwatched deletions on replay | 2 / 16 or fewer, by scoring the proposed tool call before it runs |
+| Escalate to a human when a note is ignored | An agent told to refuse correction ignored every note | 16 / 16 ended badly, 15 / 16 alerted | 15 / 16 handed to a person within one step of the ignored note |
+| Show the monitor more of the requested file | Drift written inside the requested file was missed (word limit 120, about 260 written, score 10.6) | 1 miss in the closed-loop pilot | That case caught. The cost is a longer prompt, to be measured against the 309 ms latency |
+| Run the closed loop on resistant and more capable agents, and more tasks | The pilot agent was compliant, and the tasks were small | 256 + 360 sessions, 2 agent families | The same outcome table at 1,000+ sessions with confidence intervals per condition |
+
+The $200 of finals credits would cover the retraining (about 11 GPU-hours, $5.20 last time) many times over.
+Most of it would go on agent and advisor API calls for the larger closed loop.
 
 ## Recommended operating point
 

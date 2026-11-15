@@ -1,0 +1,315 @@
+{
+ "threshold": 40.0,
+ "auditkit_version": "1.1.11",
+ "metrics": {
+  "test": {
+   "base_untrained": {
+    "exact_digit": 0.076,
+    "within_one_digit": 0.2136,
+    "abs_error_points": 36.0396,
+    "alert_decision": 0.3504,
+    "missed_drift": 0.0,
+    "false_alarm": 0.6496
+   },
+   "run1_synthetic_only": {
+    "exact_digit": 0.7072,
+    "within_one_digit": 0.9248,
+    "abs_error_points": 5.0476,
+    "alert_decision": 0.9504,
+    "missed_drift": 0.028,
+    "false_alarm": 0.0216
+   },
+   "run2_final": {
+    "exact_digit": 0.6816,
+    "within_one_digit": 0.91,
+    "abs_error_points": 5.4221,
+    "alert_decision": 0.9428,
+    "missed_drift": 0.032,
+    "false_alarm": 0.0252
+   }
+  },
+  "test_category": {
+   "base_untrained": {
+    "exact_digit": 0.0792,
+    "within_one_digit": 0.2128,
+    "abs_error_points": 35.7688,
+    "alert_decision": 0.3684,
+    "missed_drift": 0.0004,
+    "false_alarm": 0.6312
+   },
+   "run1_synthetic_only": {
+    "exact_digit": 0.7072,
+    "within_one_digit": 0.9188,
+    "abs_error_points": 5.097,
+    "alert_decision": 0.9592,
+    "missed_drift": 0.022,
+    "false_alarm": 0.0188
+   },
+   "run2_final": {
+    "exact_digit": 0.6688,
+    "within_one_digit": 0.8976,
+    "abs_error_points": 5.9917,
+    "alert_decision": 0.9376,
+    "missed_drift": 0.0376,
+    "false_alarm": 0.0248
+   }
+  },
+  "test_recorded": {
+   "base_untrained": {
+    "exact_digit": 0.0373,
+    "within_one_digit": 0.1093,
+    "abs_error_points": 43.8759,
+    "alert_decision": 0.1637,
+    "missed_drift": 0.0,
+    "false_alarm": 0.8363
+   },
+   "run1_synthetic_only": {
+    "exact_digit": 0.301,
+    "within_one_digit": 0.5607,
+    "abs_error_points": 20.1298,
+    "alert_decision": 0.7137,
+    "missed_drift": 0.0347,
+    "false_alarm": 0.2517
+   },
+   "run2_final": {
+    "exact_digit": 0.6596,
+    "within_one_digit": 0.846,
+    "abs_error_points": 7.5735,
+    "alert_decision": 0.922,
+    "missed_drift": 0.0328,
+    "false_alarm": 0.0452
+   }
+  },
+  "val": {
+   "base_untrained": {
+    "exact_digit": 0.074,
+    "within_one_digit": 0.2012,
+    "abs_error_points": 36.36,
+    "alert_decision": 0.3576,
+    "missed_drift": 0.0,
+    "false_alarm": 0.6424
+   },
+   "run1_synthetic_only": {
+    "exact_digit": 0.704,
+    "within_one_digit": 0.9176,
+    "abs_error_points": 5.3576,
+    "alert_decision": 0.9524,
+    "missed_drift": 0.0232,
+    "false_alarm": 0.0244
+   },
+   "run2_final": {
+    "exact_digit": 0.6764,
+    "within_one_digit": 0.9108,
+    "abs_error_points": 5.6116,
+    "alert_decision": 0.9464,
+    "missed_drift": 0.03,
+    "false_alarm": 0.0236
+   }
+  }
+ },
+ "before_after": {
+  "test": {
+   "exact_digit": {
+    "base": 0.076,
+    "final": 0.6816,
+    "delta": 0.6056,
+    "grade": "pass"
+   },
+   "within_one_digit": {
+    "base": 0.2136,
+    "final": 0.91,
+    "delta": 0.6964,
+    "grade": "pass"
+   },
+   "alert_decision": {
+    "base": 0.3504,
+    "final": 0.9428,
+    "delta": 0.5924,
+    "grade": "pass"
+   },
+   "abs_error_points": {
+    "base": 36.0396,
+    "final": 5.4221,
+    "delta": -30.6175,
+    "grade": "pass"
+   },
+   "missed_drift": {
+    "base": 0.0,
+    "final": 0.032,
+    "delta": 0.032,
+    "grade": "warn"
+   },
+   "false_alarm": {
+    "base": 0.6496,
+    "final": 0.0252,
+    "delta": -0.6244,
+    "grade": "pass"
+   }
+  },
+  "test_category": {
+   "exact_digit": {
+    "base": 0.0792,
+    "final": 0.6688,
+    "delta": 0.5896,
+    "grade": "pass"
+   },
+   "within_one_digit": {
+    "base": 0.2128,
+    "final": 0.8976,
+    "delta": 0.6848,
+    "grade": "pass"
+   },
+   "alert_decision": {
+    "base": 0.3684,
+    "final": 0.9376,
+    "delta": 0.5692,
+    "grade": "pass"
+   },
+   "abs_error_points": {
+    "base": 35.7688,
+    "final": 5.9917,
+    "delta": -29.7771,
+    "grade": "pass"
+   },
+   "missed_drift": {
+    "base": 0.0004,
+    "final": 0.0376,
+    "delta": 0.0372,
+    "grade": "warn"
+   },
+   "false_alarm": {
+    "base": 0.6312,
+    "final": 0.0248,
+    "delta": -0.6064,
+    "grade": "pass"
+   }
+  },
+  "test_recorded": {
+   "exact_digit": {
+    "base": 0.0373,
+    "final": 0.6596,
+    "delta": 0.6223,
+    "grade": "pass"
+   },
+   "within_one_digit": {
+    "base": 0.1093,
+    "final": 0.846,
+    "delta": 0.7367,
+    "grade": "pass"
+   },
+   "alert_decision": {
+    "base": 0.1637,
+    "final": 0.922,
+    "delta": 0.7583,
+    "grade": "pass"
+   },
+   "abs_error_points": {
+    "base": 43.8759,
+    "final": 7.5735,
+    "delta": -36.3024,
+    "grade": "pass"
+   },
+   "missed_drift": {
+    "base": 0.0,
+    "final": 0.0328,
+    "delta": 0.0328,
+    "grade": "warn"
+   },
+   "false_alarm": {
+    "base": 0.8363,
+    "final": 0.0452,
+    "delta": -0.7911,
+    "grade": "pass"
+   }
+  },
+  "val": {
+   "exact_digit": {
+    "base": 0.074,
+    "final": 0.6764,
+    "delta": 0.6024,
+    "grade": "pass"
+   },
+   "within_one_digit": {
+    "base": 0.2012,
+    "final": 0.9108,
+    "delta": 0.7096,
+    "grade": "pass"
+   },
+   "alert_decision": {
+    "base": 0.3576,
+    "final": 0.9464,
+    "delta": 0.5888,
+    "grade": "pass"
+   },
+   "abs_error_points": {
+    "base": 36.36,
+    "final": 5.6116,
+    "delta": -30.7484,
+    "grade": "pass"
+   },
+   "missed_drift": {
+    "base": 0.0,
+    "final": 0.03,
+    "delta": 0.03,
+    "grade": "warn"
+   },
+   "false_alarm": {
+    "base": 0.6424,
+    "final": 0.0236,
+    "delta": -0.6188,
+    "grade": "pass"
+   }
+  }
+ },
+ "run_fingerprints": {
+  "test|base_untrained": {
+   "run_id": "5e05c171f026f5f6",
+   "fingerprint": "5e05c171f026f5f6"
+  },
+  "test|run1_synthetic_only": {
+   "run_id": "87e64bb84ecb466c",
+   "fingerprint": "87e64bb84ecb466c"
+  },
+  "test|run2_final": {
+   "run_id": "3a09b098456c0925",
+   "fingerprint": "3a09b098456c0925"
+  },
+  "test_category|base_untrained": {
+   "run_id": "ebc831fd54cb9c15",
+   "fingerprint": "ebc831fd54cb9c15"
+  },
+  "test_category|run1_synthetic_only": {
+   "run_id": "c30bd8a783e55f32",
+   "fingerprint": "c30bd8a783e55f32"
+  },
+  "test_category|run2_final": {
+   "run_id": "9d02fb9704fd46ce",
+   "fingerprint": "9d02fb9704fd46ce"
+  },
+  "test_recorded|base_untrained": {
+   "run_id": "cf0d017901b3ea8c",
+   "fingerprint": "cf0d017901b3ea8c"
+  },
+  "test_recorded|run1_synthetic_only": {
+   "run_id": "c726230c47b85e24",
+   "fingerprint": "c726230c47b85e24"
+  },
+  "test_recorded|run2_final": {
+   "run_id": "334bbefcd3a0271b",
+   "fingerprint": "334bbefcd3a0271b"
+  },
+  "val|base_untrained": {
+   "run_id": "bf23ab2cbf5cd4df",
+   "fingerprint": "bf23ab2cbf5cd4df"
+  },
+  "val|run1_synthetic_only": {
+   "run_id": "137a13347cd1a6ea",
+   "fingerprint": "137a13347cd1a6ea"
+  },
+  "val|run2_final": {
+   "run_id": "fb9ee67d579c97be",
+   "fingerprint": "fb9ee67d579c97be"
+  }
+ },
+ "note": "Scored offline from stored predictions via AuditKIT PrecomputedModel. No network, no publishing."
+}

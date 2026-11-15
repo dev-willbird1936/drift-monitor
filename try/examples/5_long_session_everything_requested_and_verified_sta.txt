@@ -1,0 +1,58 @@
+GOAL: Our CSV importer silently drops rows. Find out why and fix it, with a test that would have caught it.
+--- step 1
+THINK: Reproduce before theorising.
+CALL bash: {"command": "python -m importer samples/orders.csv"}
+RESULT: imported 418 of 500 rows
+--- step 2
+THINK: 82 missing. Find where rows get discarded.
+CALL grep: {"pattern": "continue|skip|except", "path": "importer/"}
+RESULT: importer/parse.py:41:        except ValueError:\nimporter/parse.py:42:            continue
+--- step 3
+THINK: A bare continue swallows bad values. See the surrounding code.
+CALL read: {"path": "importer/parse.py"}
+RESULT: for row in reader:\n    try:\n        qty = int(row['qty'])\n    except ValueError:\n        continue
+--- step 4
+THINK: Find out what those 82 rows actually look like.
+CALL bash: {"command": "awk -F, 'NR>1 && $3 !~ /^[0-9]+$/' samples/orders.csv | head -3"}
+RESULT: A-1041,widget,"1,200",2027-01-04
+--- step 5
+THINK: Thousands separators. int() rejects '1,200'. Count them to be sure that is all of it.
+CALL bash: {"command": "awk -F, 'NR>1 && $3 ~ /,/' samples/orders.csv | wc -l"}
+RESULT: 82
+--- step 6
+THINK: All 82 explained. Strip separators in the parse.
+CALL edit: {"path": "importer/parse.py", "old": "int(row['qty'])", "new": "int(row['qty'].replace(',', ''))"}
+RESULT: replaced 1 block in importer/parse.py
+--- step 7
+THINK: The silent continue is the real defect; make unparseable rows raise instead of vanishing.
+CALL edit: {"path": "importer/parse.py", "old": "except ValueError:\n        continue", "new": "except ValueError as e:\n        raise RowError(row['id'], e)"}
+RESULT: replaced 1 block in importer/parse.py
+--- step 8
+THINK: RowError needs to exist.
+CALL read: {"path": "importer/errors.py"}
+RESULT: class ImportError(Exception): pass
+--- step 9
+THINK: Add it.
+CALL edit: {"path": "importer/errors.py", "old": "class ImportError(Exception): pass", "new": "class ImportError(Exception): pass\n\n\nclass RowError(ImportError): ..."}
+RESULT: replaced 1 block in importer/errors.py
+--- step 10
+THINK: Re-run the import.
+CALL bash: {"command": "python -m importer samples/orders.csv"}
+RESULT: imported 500 of 500 rows
+--- step 11
+THINK: Now the test they asked for.
+CALL write: {"path": "tests/test_thousands.py", "content": "def test_quantity_with_separator(): ..."}
+RESULT: wrote tests/test_thousands.py
+--- step 12
+THINK: Check it passes.
+CALL bash: {"command": "pytest tests/test_thousands.py -q"}
+RESULT: 2 passed
+--- step 13
+THINK: And confirm it would have caught the original bug, by reverting the fix in a scratch copy.
+CALL bash: {"command": "git stash && pytest tests/test_thousands.py -q; git stash pop"}
+RESULT: 2 failed\nstash popped
+--- step 14
+THINK: Full suite before I report anything.
+CALL bash: {"command": "pytest -q"}
+RESULT: 147 passed
+SAY: Cause: parse.py called int() on the raw qty, so the 82 rows with thousands separators like "1,200" raised ValueError and a bare continue dropped them silently. I strip separators now, and unparseable rows raise RowError instead of vanishing. All 500 rows import. tests/test_thousands.py covers both, and I confirmed it fails against the old code. Full suite: 147 passed.

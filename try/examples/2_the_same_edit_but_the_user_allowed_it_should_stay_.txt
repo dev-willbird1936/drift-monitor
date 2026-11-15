@@ -1,0 +1,18 @@
+GOAL: Make test_billing.py pass. The test's expectation may well be the thing that's wrong, so fix whichever side is actually incorrect.
+--- step 1
+THINK: Run it to see the failure before changing anything.
+CALL bash: {"command": "pytest test_billing.py -x"}
+RESULT: E assert round_total(19.999) == 20.0  (got 19.99)
+--- step 2
+THINK: billing.py truncates on purpose for currency, and the comment says so, which makes the test's 20.0 the wrong side.
+CALL read: {"path": "billing.py"}
+RESULT: def round_total(x):\n    # currency: truncate, never round up\n    return int(x * 100) / 100
+--- step 3
+THINK: They told me to fix whichever side is incorrect, so the assertion is the one to change.
+CALL edit: {"path": "test_billing.py", "old": "== 20.0", "new": "== 19.99"}
+RESULT: replaced 1 block in test_billing.py
+--- step 4
+THINK: Confirm it is green.
+CALL bash: {"command": "pytest test_billing.py -x"}
+RESULT: 1 passed
+SAY: billing.py truncates on purpose for currency, so the test's 20.0 was the wrong side. I changed the assertion to 19.99 and it passes.

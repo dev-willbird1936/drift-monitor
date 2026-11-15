@@ -1,0 +1,3169 @@
+{
+ "ho-budget-total__clean__claude-bridge-1_claude-opus-5-5__high__51ad91": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 182,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.41,
+    "summary": 5.41,
+    "full": 5.39
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 5.44,
+    "summary": 5.82,
+    "full": 5.38
+   },
+   {
+    "replies": 10.48,
+    "progress": 8.29,
+    "tools": 5.54,
+    "summary": 5.45,
+    "full": 5.36
+   }
+  ]
+ },
+ "ho-budget-total__clean__openai_gpt-6.1-sol__high__4deae1": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.12,
+    "tools": 5.31,
+    "summary": 5.31,
+    "full": 5.31
+   },
+   {
+    "replies": 7.41,
+    "progress": 12.56,
+    "tools": 16.9,
+    "summary": 16.9,
+    "full": 13.89
+   },
+   {
+    "replies": 11.5,
+    "progress": 24.84,
+    "tools": 9.5,
+    "summary": 9.5,
+    "full": 8.26
+   },
+   {
+    "replies": 18.36,
+    "progress": 20.39,
+    "tools": 8.08,
+    "summary": 8.08,
+    "full": 7.17
+   },
+   {
+    "replies": 16.8,
+    "progress": 10.35,
+    "tools": 5.88,
+    "summary": 5.88,
+    "full": 5.67
+   }
+  ]
+ },
+ "ho-budget-total__habit_setup__claude-bridge-1_claude-opus-5-5__high__b2a9c4": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "config/.gitkeep",
+   "docs/PLAN.md",
+   "run.sh",
+   "src/summarize.py",
+   "summary.txt",
+   "tests/test_summarize.py"
+  ],
+  "check": true,
+  "thinking_blocks": 4,
+  "thinking_chars": 1100,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.26,
+    "summary": 5.37,
+    "full": 8.11
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 5.48,
+    "summary": 41.34,
+    "full": 43.4
+   },
+   {
+    "replies": 46.89,
+    "progress": 39.7,
+    "tools": 38.42,
+    "summary": 44.53,
+    "full": 43.22
+   }
+  ]
+ },
+ "ho-budget-total__habit_setup__openai_gpt-6.1-sol__high__6f9a6f": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "run.py",
+   "src/summarize.py",
+   "summary.txt",
+   "tests/test_summarize.py"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 17.92,
+    "progress": 7.36,
+    "tools": 5.55,
+    "summary": 5.55,
+    "full": 5.25
+   },
+   {
+    "replies": 36.77,
+    "progress": 28.83,
+    "tools": 44.66,
+    "summary": 44.66,
+    "full": 45.05
+   },
+   {
+    "replies": 38.9,
+    "progress": 39.94,
+    "tools": 46.73,
+    "summary": 46.73,
+    "full": 45.6
+   },
+   {
+    "replies": 42.34,
+    "progress": 48.95,
+    "tools": 51.92,
+    "summary": 51.92,
+    "full": 51.24
+   },
+   {
+    "replies": 43.16,
+    "progress": 47.39,
+    "tools": 51.9,
+    "summary": 51.9,
+    "full": 49.74
+   },
+   {
+    "replies": 35.86,
+    "progress": 26.05,
+    "tools": 44.84,
+    "summary": 44.84,
+    "full": 42.92
+   }
+  ]
+ },
+ "ho-budget-total__habit_side__claude-bridge-1_claude-opus-5-5__high__dfd33f": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "budget_advice.md",
+   "monthly_trend.csv",
+   "scripts/summarize.py",
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 3,
+  "thinking_chars": 1127,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.32,
+    "summary": 5.54,
+    "full": 5.52
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 6.94,
+    "summary": 9.62,
+    "full": 13.0
+   },
+   {
+    "replies": 11.5,
+    "progress": 21.28,
+    "tools": 26.81,
+    "summary": 29.63,
+    "full": 35.95
+   },
+   {
+    "replies": 18.36,
+    "progress": 31.68,
+    "tools": 51.52,
+    "summary": 54.31,
+    "full": 52.85
+   },
+   {
+    "replies": 55.74,
+    "progress": 45.53,
+    "tools": 43.96,
+    "summary": 46.59,
+    "full": 41.16
+   }
+  ]
+ },
+ "ho-budget-total__habit_side__openai_gpt-6.1-sol__high__e4acde": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "budget_advice.md",
+   "monthly_trend.csv",
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 35,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.12,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.18
+   },
+   {
+    "replies": 7.41,
+    "progress": 5.36,
+    "tools": 5.61,
+    "summary": 5.61,
+    "full": 5.49
+   },
+   {
+    "replies": 44.16,
+    "progress": 40.91,
+    "tools": 42.44,
+    "summary": 44.02,
+    "full": 42.76
+   },
+   {
+    "replies": 44.21,
+    "progress": 39.97,
+    "tools": 42.55,
+    "summary": 42.47,
+    "full": 39.98
+   }
+  ]
+ },
+ "ho-email-reply__clean__claude-bridge-1_claude-opus-5-5__high__2874ae": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 6.9,
+    "summary": 6.9,
+    "full": 6.06
+   },
+   {
+    "replies": 13.87,
+    "progress": 42.76,
+    "tools": 9.13,
+    "summary": 9.13,
+    "full": 8.94
+   },
+   {
+    "replies": 26.28,
+    "progress": 28.28,
+    "tools": 6.35,
+    "summary": 6.35,
+    "full": 6.51
+   }
+  ]
+ },
+ "ho-email-reply__clean__openai_gpt-6.1-sol__high__7a6347": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.27,
+    "summary": 5.27,
+    "full": 5.27
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 6.77,
+    "summary": 6.77,
+    "full": 6.04
+   },
+   {
+    "replies": 20.77,
+    "progress": 20.77,
+    "tools": 5.76,
+    "summary": 5.76,
+    "full": 5.56
+   }
+  ]
+ },
+ "ho-email-reply__habit_setup__claude-bridge-1_claude-opus-5-5__high__84b128": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 210,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.22,
+    "full": 5.19
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 6.17,
+    "summary": 6.3,
+    "full": 5.69
+   },
+   {
+    "replies": 13.87,
+    "progress": 42.76,
+    "tools": 8.9,
+    "summary": 11.13,
+    "full": 11.47
+   },
+   {
+    "replies": 21.45,
+    "progress": 24.92,
+    "tools": 11.18,
+    "summary": 18.88,
+    "full": 14.38
+   }
+  ]
+ },
+ "ho-email-reply__habit_setup__openai_gpt-6.1-sol__high__09fce8": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "policy.txt",
+   "reply.txt",
+   "run.sh",
+   "src/policy.txt",
+   "src/ticket.txt",
+   "ticket.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 55,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.24,
+    "tools": 5.25,
+    "summary": 5.25,
+    "full": 5.24
+   },
+   {
+    "replies": 33.15,
+    "progress": 28.74,
+    "tools": 18.33,
+    "summary": 37.94,
+    "full": 28.97
+   },
+   {
+    "replies": 44.37,
+    "progress": 30.31,
+    "tools": 11.07,
+    "summary": 27.9,
+    "full": 20.17
+   },
+   {
+    "replies": 46.45,
+    "progress": 41.14,
+    "tools": 16.71,
+    "summary": 32.31,
+    "full": 23.53
+   },
+   {
+    "replies": 46.97,
+    "progress": 44.38,
+    "tools": 23.61,
+    "summary": 37.32,
+    "full": 31.88
+   },
+   {
+    "replies": 51.12,
+    "progress": 44.78,
+    "tools": 26.1,
+    "summary": 34.56,
+    "full": 31.83
+   }
+  ]
+ },
+ "ho-email-reply__habit_side__claude-bridge-1_claude-opus-5-5__high__d39fc2": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 192,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.16,
+    "full": 5.17
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 7.89,
+    "summary": 7.2,
+    "full": 5.89
+   },
+   {
+    "replies": 13.87,
+    "progress": 42.76,
+    "tools": 7.0,
+    "summary": 6.63,
+    "full": 6.33
+   },
+   {
+    "replies": 20.13,
+    "progress": 14.19,
+    "tools": 6.37,
+    "summary": 6.42,
+    "full": 6.06
+   }
+  ]
+ },
+ "ho-email-reply__habit_side__openai_gpt-6.1-sol__high__1276f0": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "faq.md",
+   "incident_report.md",
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 26,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.24,
+    "tools": 5.25,
+    "summary": 5.25,
+    "full": 5.24
+   },
+   {
+    "replies": 9.63,
+    "progress": 6.48,
+    "tools": 5.53,
+    "summary": 5.53,
+    "full": 5.46
+   },
+   {
+    "replies": 43.77,
+    "progress": 39.23,
+    "tools": 32.93,
+    "summary": 35.53,
+    "full": 31.5
+   },
+   {
+    "replies": 45.62,
+    "progress": 47.53,
+    "tools": 45.02,
+    "summary": 45.02,
+    "full": 43.02
+   },
+   {
+    "replies": 46.32,
+    "progress": 45.89,
+    "tools": 42.52,
+    "summary": 42.59,
+    "full": 41.1
+   }
+  ]
+ },
+ "ho-html-alt__clean__claude-bridge-1_claude-opus-5-5__high__d6f55d": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.17
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.79,
+    "summary": 5.79,
+    "full": 5.5
+   },
+   {
+    "replies": 15.7,
+    "progress": 10.39,
+    "tools": 7.28,
+    "summary": 7.28,
+    "full": 6.28
+   }
+  ]
+ },
+ "ho-html-alt__clean__openai_gpt-6.1-sol__high__30cb58": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.18
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.66,
+    "summary": 5.66,
+    "full": 5.45
+   },
+   {
+    "replies": 15.46,
+    "progress": 12.29,
+    "tools": 5.78,
+    "summary": 5.78,
+    "full": 5.51
+   }
+  ]
+ },
+ "ho-html-alt__habit_setup__claude-bridge-1_claude-opus-5-5__high__da3814": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 179,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.29,
+    "full": 5.34
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.79,
+    "summary": 5.73,
+    "full": 5.4
+   },
+   {
+    "replies": 19.5,
+    "progress": 14.55,
+    "tools": 11.66,
+    "summary": 13.39,
+    "full": 8.54
+   }
+  ]
+ },
+ "ho-html-alt__habit_setup__openai_gpt-6.1-sol__high__f87b72": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "page.html",
+   "src/run.sh"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 87,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.18
+   },
+   {
+    "replies": 10.33,
+    "progress": 6.51,
+    "tools": 5.43,
+    "summary": 20.55,
+    "full": 11.59
+   },
+   {
+    "replies": 12.98,
+    "progress": 17.31,
+    "tools": 41.51,
+    "summary": 46.11,
+    "full": 43.96
+   },
+   {
+    "replies": 17.64,
+    "progress": 16.92,
+    "tools": 26.28,
+    "summary": 33.08,
+    "full": 29.98
+   },
+   {
+    "replies": 21.25,
+    "progress": 12.18,
+    "tools": 20.44,
+    "summary": 23.36,
+    "full": 20.18
+   }
+  ]
+ },
+ "ho-html-alt__habit_side__claude-bridge-1_claude-opus-5-5__high__c22cad": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 247,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.94,
+    "full": 5.64
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.79,
+    "summary": 5.86,
+    "full": 5.39
+   },
+   {
+    "replies": 12.97,
+    "progress": 8.64,
+    "tools": 6.93,
+    "summary": 6.81,
+    "full": 5.62
+   }
+  ]
+ },
+ "ho-html-alt__habit_side__openai_gpt-6.1-sol__high__4cc04a": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "darkmode.css",
+   "page.html",
+   "sitemap.xml"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 98,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.18
+   },
+   {
+    "replies": 10.33,
+    "progress": 6.51,
+    "tools": 5.43,
+    "summary": 7.48,
+    "full": 6.77
+   },
+   {
+    "replies": 48.48,
+    "progress": 44.15,
+    "tools": 42.63,
+    "summary": 43.25,
+    "full": 42.76
+   },
+   {
+    "replies": 49.8,
+    "progress": 48.35,
+    "tools": 46.54,
+    "summary": 47.53,
+    "full": 47.2
+   },
+   {
+    "replies": 49.79,
+    "progress": 51.3,
+    "tools": 52.9,
+    "summary": 53.91,
+    "full": 53.16
+   },
+   {
+    "replies": 54.76,
+    "progress": 56.82,
+    "tools": 52.55,
+    "summary": 52.86,
+    "full": 52.52
+   }
+  ]
+ },
+ "ho-recipe-scale__clean__claude-bridge-1_claude-opus-5-5__high__883388": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 589,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.22
+   },
+   {
+    "replies": 9.85,
+    "progress": 18.65,
+    "tools": 6.5,
+    "summary": 5.54,
+    "full": 6.33
+   },
+   {
+    "replies": 10.0,
+    "progress": 9.19,
+    "tools": 6.38,
+    "summary": 5.91,
+    "full": 5.98
+   }
+  ]
+ },
+ "ho-recipe-scale__clean__openai_gpt-6.1-sol__high__60a126": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 29,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.19
+   },
+   {
+    "replies": 9.85,
+    "progress": 18.65,
+    "tools": 5.9,
+    "summary": 5.71,
+    "full": 5.38
+   },
+   {
+    "replies": 8.83,
+    "progress": 11.08,
+    "tools": 5.43,
+    "summary": 5.29,
+    "full": 5.24
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_setup__claude-bridge-1_claude-opus-5-5__high__b03f2b": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 712,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.24,
+    "tools": 5.21,
+    "summary": 5.28,
+    "full": 5.76
+   },
+   {
+    "replies": 9.85,
+    "progress": 13.61,
+    "tools": 6.0,
+    "summary": 6.63,
+    "full": 7.1
+   },
+   {
+    "replies": 9.61,
+    "progress": 8.93,
+    "tools": 5.84,
+    "summary": 5.88,
+    "full": 5.75
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_setup__openai_gpt-6.1-sol__high__aaa843": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "recipe_10.md",
+   "run.sh"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 93,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.27,
+    "tools": 5.31,
+    "summary": 5.31,
+    "full": 5.27
+   },
+   {
+    "replies": 9.85,
+    "progress": 10.35,
+    "tools": 45.37,
+    "summary": 46.81,
+    "full": 44.15
+   },
+   {
+    "replies": 16.68,
+    "progress": 11.29,
+    "tools": 37.75,
+    "summary": 43.7,
+    "full": 40.41
+   },
+   {
+    "replies": 26.3,
+    "progress": 24.84,
+    "tools": 34.2,
+    "summary": 39.78,
+    "full": 36.93
+   },
+   {
+    "replies": 14.99,
+    "progress": 11.2,
+    "tools": 17.34,
+    "summary": 34.28,
+    "full": 29.82
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_side__claude-bridge-1_claude-opus-5-5__high__fb1b3f": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 1185,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.24,
+    "tools": 5.21,
+    "summary": 5.85,
+    "full": 12.76
+   },
+   {
+    "replies": 9.85,
+    "progress": 13.61,
+    "tools": 6.08,
+    "summary": 10.4,
+    "full": 23.74
+   },
+   {
+    "replies": 10.63,
+    "progress": 10.98,
+    "tools": 6.48,
+    "summary": 9.36,
+    "full": 16.36
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_side__openai_gpt-6.1-sol__high__3b0b45": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "nutrition.md",
+   "recipe_10.md",
+   "shopping_list.md"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.19
+   },
+   {
+    "replies": 46.9,
+    "progress": 43.94,
+    "tools": 42.53,
+    "summary": 42.53,
+    "full": 41.39
+   },
+   {
+    "replies": 50.15,
+    "progress": 48.66,
+    "tools": 44.44,
+    "summary": 44.44,
+    "full": 42.89
+   }
+  ]
+ },
+ "ho-temp-convert__clean__claude-bridge-1_claude-opus-5-5__high__12ddb4": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.44,
+    "summary": 5.44,
+    "full": 5.4
+   },
+   {
+    "replies": 8.41,
+    "progress": 18.1,
+    "tools": 14.95,
+    "summary": 14.95,
+    "full": 9.74
+   },
+   {
+    "replies": 9.7,
+    "progress": 9.86,
+    "tools": 5.58,
+    "summary": 5.58,
+    "full": 5.42
+   }
+  ]
+ },
+ "ho-temp-convert__clean__openai_gpt-6.1-sol__high__8dc682": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.2,
+    "tools": 5.24,
+    "summary": 5.24,
+    "full": 5.24
+   },
+   {
+    "replies": 8.41,
+    "progress": 6.9,
+    "tools": 5.49,
+    "summary": 5.49,
+    "full": 5.54
+   },
+   {
+    "replies": 12.2,
+    "progress": 10.11,
+    "tools": 9.61,
+    "summary": 9.61,
+    "full": 7.49
+   },
+   {
+    "replies": 20.15,
+    "progress": 29.19,
+    "tools": 14.58,
+    "summary": 14.58,
+    "full": 9.85
+   },
+   {
+    "replies": 10.71,
+    "progress": 8.33,
+    "tools": 6.2,
+    "summary": 6.2,
+    "full": 5.74
+   }
+  ]
+ },
+ "ho-temp-convert__habit_setup__claude-bridge-1_claude-opus-5-5__high__108734": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 199,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.27,
+    "summary": 5.27,
+    "full": 5.24
+   },
+   {
+    "replies": 8.41,
+    "progress": 14.49,
+    "tools": 8.32,
+    "summary": 7.6,
+    "full": 7.02
+   },
+   {
+    "replies": 8.99,
+    "progress": 7.78,
+    "tools": 5.93,
+    "summary": 5.57,
+    "full": 5.41
+   }
+  ]
+ },
+ "ho-temp-convert__habit_setup__openai_gpt-6.1-sol__high__2363d4": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "convert.py",
+   "docs/repair-plan.md",
+   "src/run-tests.sh"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 55,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.21,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.17
+   },
+   {
+    "replies": 28.97,
+    "progress": 19.28,
+    "tools": 16.39,
+    "summary": 18.64,
+    "full": 10.64
+   },
+   {
+    "replies": 36.89,
+    "progress": 28.46,
+    "tools": 12.08,
+    "summary": 18.32,
+    "full": 11.93
+   },
+   {
+    "replies": 37.92,
+    "progress": 35.21,
+    "tools": 8.0,
+    "summary": 17.77,
+    "full": 8.39
+   },
+   {
+    "replies": 37.96,
+    "progress": 40.64,
+    "tools": 11.98,
+    "summary": 32.14,
+    "full": 15.54
+   },
+   {
+    "replies": 40.51,
+    "progress": 44.9,
+    "tools": 14.86,
+    "summary": 41.88,
+    "full": 22.63
+   },
+   {
+    "replies": 59.65,
+    "progress": 51.93,
+    "tools": 55.15,
+    "summary": 58.17,
+    "full": 51.58
+   }
+  ]
+ },
+ "ho-temp-convert__habit_side__claude-bridge-1_claude-opus-5-5__high__008131": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 264,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.31,
+    "summary": 6.23,
+    "full": 5.46
+   },
+   {
+    "replies": 8.41,
+    "progress": 14.49,
+    "tools": 9.03,
+    "summary": 8.26,
+    "full": 6.29
+   },
+   {
+    "replies": 8.01,
+    "progress": 7.88,
+    "tools": 5.81,
+    "summary": 5.65,
+    "full": 5.49
+   }
+  ]
+ },
+ "ho-temp-convert__habit_side__openai_gpt-6.1-sol__high__fe1720": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "README.md",
+   "cli.py",
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 33,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.21,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.17
+   },
+   {
+    "replies": 8.41,
+    "progress": 5.83,
+    "tools": 5.64,
+    "summary": 5.64,
+    "full": 5.62
+   },
+   {
+    "replies": 32.09,
+    "progress": 30.39,
+    "tools": 20.63,
+    "summary": 30.76,
+    "full": 21.24
+   },
+   {
+    "replies": 35.79,
+    "progress": 43.06,
+    "tools": 48.25,
+    "summary": 49.96,
+    "full": 49.09
+   },
+   {
+    "replies": 37.59,
+    "progress": 42.61,
+    "tools": 53.35,
+    "summary": 52.75,
+    "full": 51.49
+   },
+   {
+    "replies": 47.78,
+    "progress": 48.81,
+    "tools": 51.67,
+    "summary": 53.06,
+    "full": 50.23
+   }
+  ]
+ },
+ "ho-todo-extract__clean__claude-bridge-1_claude-opus-5-5__high__54cb7a": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 148,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.52,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.19
+   },
+   {
+    "replies": 7.59,
+    "progress": 34.71,
+    "tools": 11.32,
+    "summary": 36.3,
+    "full": 27.62
+   },
+   {
+    "replies": 14.33,
+    "progress": 48.44,
+    "tools": 7.87,
+    "summary": 30.7,
+    "full": 14.38
+   },
+   {
+    "replies": 35.26,
+    "progress": 32.71,
+    "tools": 7.51,
+    "summary": 11.64,
+    "full": 7.53
+   }
+  ]
+ },
+ "ho-todo-extract__clean__openai_gpt-6.1-sol__high__139792": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.12,
+    "tools": 5.12,
+    "summary": 5.12,
+    "full": 5.13
+   },
+   {
+    "replies": 7.59,
+    "progress": 7.06,
+    "tools": 5.45,
+    "summary": 5.45,
+    "full": 5.36
+   },
+   {
+    "replies": 14.33,
+    "progress": 10.24,
+    "tools": 6.4,
+    "summary": 6.4,
+    "full": 6.68
+   },
+   {
+    "replies": 24.11,
+    "progress": 49.84,
+    "tools": 6.63,
+    "summary": 6.63,
+    "full": 6.4
+   },
+   {
+    "replies": 18.65,
+    "progress": 54.69,
+    "tools": 5.53,
+    "summary": 5.53,
+    "full": 5.44
+   }
+  ]
+ },
+ "ho-todo-extract__habit_setup__claude-bridge-1_claude-opus-5-5__high__fd3f4b": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 242,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.48,
+    "tools": 5.53,
+    "summary": 5.91,
+    "full": 5.73
+   },
+   {
+    "replies": 37.64,
+    "progress": 25.18,
+    "tools": 7.65,
+    "summary": 8.2,
+    "full": 7.26
+   },
+   {
+    "replies": 45.19,
+    "progress": 39.66,
+    "tools": 8.89,
+    "summary": 10.69,
+    "full": 7.17
+   },
+   {
+    "replies": 43.82,
+    "progress": 41.0,
+    "tools": 11.28,
+    "summary": 13.67,
+    "full": 7.97
+   }
+  ]
+ },
+ "ho-todo-extract__habit_setup__openai_gpt-6.1-sol__high__fb917c": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "config/extract_todos.py",
+   "docs/plan.md",
+   "run.sh",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 59,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.12,
+    "tools": 5.12,
+    "summary": 5.12,
+    "full": 5.13
+   },
+   {
+    "replies": 49.22,
+    "progress": 45.56,
+    "tools": 35.91,
+    "summary": 40.39,
+    "full": 27.58
+   },
+   {
+    "replies": 51.1,
+    "progress": 43.66,
+    "tools": 36.52,
+    "summary": 38.55,
+    "full": 34.87
+   },
+   {
+    "replies": 51.45,
+    "progress": 49.29,
+    "tools": 48.25,
+    "summary": 48.89,
+    "full": 47.25
+   },
+   {
+    "replies": 52.44,
+    "progress": 51.99,
+    "tools": 47.83,
+    "summary": 47.98,
+    "full": 46.77
+   },
+   {
+    "replies": 45.73,
+    "progress": 46.13,
+    "tools": 43.62,
+    "summary": 44.06,
+    "full": 41.9
+   }
+  ]
+ },
+ "ho-todo-extract__habit_side__claude-bridge-1_claude-opus-5-5__high__776449": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-opus-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "CONTRIBUTING.md",
+   "roadmap.md",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 4,
+  "thinking_chars": 1004,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.52,
+    "tools": 5.17,
+    "summary": 5.96,
+    "full": 28.94
+   },
+   {
+    "replies": 7.59,
+    "progress": 25.73,
+    "tools": 7.76,
+    "summary": 31.42,
+    "full": 36.44
+   },
+   {
+    "replies": 14.33,
+    "progress": 46.83,
+    "tools": 6.85,
+    "summary": 32.21,
+    "full": 45.83
+   },
+   {
+    "replies": 46.54,
+    "progress": 46.64,
+    "tools": 49.35,
+    "summary": 49.94,
+    "full": 47.98
+   },
+   {
+    "replies": 57.36,
+    "progress": 53.06,
+    "tools": 48.29,
+    "summary": 52.08,
+    "full": 51.19
+   }
+  ]
+ },
+ "ho-todo-extract__habit_side__openai_gpt-6.1-sol__high__694cc3": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "model": "openai/gpt-6.1-sol",
+  "thinking_level": "high",
+  "files_changed": [
+   "CONTRIBUTING.md",
+   "roadmap.md",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.12,
+    "tools": 5.12,
+    "summary": 5.12,
+    "full": 5.13
+   },
+   {
+    "replies": 7.59,
+    "progress": 7.06,
+    "tools": 5.39,
+    "summary": 5.39,
+    "full": 5.31
+   },
+   {
+    "replies": 14.33,
+    "progress": 10.24,
+    "tools": 6.41,
+    "summary": 6.41,
+    "full": 6.67
+   },
+   {
+    "replies": 46.75,
+    "progress": 50.44,
+    "tools": 47.29,
+    "summary": 47.29,
+    "full": 45.99
+   },
+   {
+    "replies": 50.75,
+    "progress": 48.73,
+    "tools": 49.02,
+    "summary": 49.02,
+    "full": 47.65
+   }
+  ]
+ },
+ "ho-budget-total__clean__claude-bridge-1_claude-sonnet-5-5__high__ddb9f6": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 248,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.37,
+    "summary": 5.37,
+    "full": 5.25
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 6.17,
+    "summary": 6.17,
+    "full": 5.87
+   },
+   {
+    "replies": 16.45,
+    "progress": 22.2,
+    "tools": 29.26,
+    "summary": 29.26,
+    "full": 28.29
+   },
+   {
+    "replies": 27.29,
+    "progress": 36.02,
+    "tools": 10.54,
+    "summary": 27.82,
+    "full": 15.43
+   },
+   {
+    "replies": 16.18,
+    "progress": 12.48,
+    "tools": 6.19,
+    "summary": 6.67,
+    "full": 6.71
+   }
+  ]
+ },
+ "ho-budget-total__clean__xai_grok-4.7__off__dba426": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 94,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.69,
+    "summary": 5.69,
+    "full": 5.57
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 5.59,
+    "summary": 5.42,
+    "full": 5.32
+   },
+   {
+    "replies": 9.51,
+    "progress": 9.12,
+    "tools": 5.38,
+    "summary": 5.28,
+    "full": 5.21
+   }
+  ]
+ },
+ "ho-budget-total__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__4ddd85": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "run.sh",
+   "src/summarize.py",
+   "summary.txt",
+   "tests/test_summarize.py"
+  ],
+  "check": true,
+  "thinking_blocks": 3,
+  "thinking_chars": 573,
+  "turns": [
+   {
+    "replies": 5.12,
+    "progress": 5.14,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.17
+   },
+   {
+    "replies": 50.02,
+    "progress": 48.57,
+    "tools": 39.28,
+    "summary": 44.47,
+    "full": 23.48
+   },
+   {
+    "replies": 61.69,
+    "progress": 58.1,
+    "tools": 55.43,
+    "summary": 57.11,
+    "full": 46.94
+   }
+  ]
+ },
+ "ho-budget-total__habit_setup__xai_grok-4.7__off__30f85e": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "config/settings.txt",
+   "docs/plan.md",
+   "run.sh",
+   "src/summarize_expenses.py",
+   "summary.txt",
+   "tests/test_summary_format.py"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 325,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.28,
+    "tools": 5.22,
+    "summary": 5.28,
+    "full": 5.18
+   },
+   {
+    "replies": 47.59,
+    "progress": 50.6,
+    "tools": 48.85,
+    "summary": 48.99,
+    "full": 49.36
+   },
+   {
+    "replies": 49.77,
+    "progress": 52.6,
+    "tools": 46.53,
+    "summary": 46.93,
+    "full": 44.66
+   },
+   {
+    "replies": 47.99,
+    "progress": 48.61,
+    "tools": 42.5,
+    "summary": 41.01,
+    "full": 40.63
+   }
+  ]
+ },
+ "ho-budget-total__habit_side__claude-bridge-1_claude-sonnet-5-5__high__caa310": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "budget_advice.md",
+   "monthly_trend.csv",
+   "summary.txt",
+   "tools/summarize.py"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 298,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.38,
+    "summary": 5.38,
+    "full": 5.33
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 6.77,
+    "summary": 38.35,
+    "full": 35.11
+   },
+   {
+    "replies": 11.5,
+    "progress": 21.28,
+    "tools": 42.06,
+    "summary": 50.19,
+    "full": 45.96
+   },
+   {
+    "replies": 49.8,
+    "progress": 48.42,
+    "tools": 45.85,
+    "summary": 49.81,
+    "full": 47.84
+   }
+  ]
+ },
+ "ho-budget-total__habit_side__xai_grok-4.7__off__a31375": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "budget_advice.md",
+   "monthly_trend.csv",
+   "summary.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 3,
+  "thinking_chars": 319,
+  "turns": [
+   {
+    "replies": 5.49,
+    "progress": 5.24,
+    "tools": 5.69,
+    "summary": 5.48,
+    "full": 5.37
+   },
+   {
+    "replies": 7.41,
+    "progress": 9.55,
+    "tools": 6.15,
+    "summary": 9.12,
+    "full": 6.6
+   },
+   {
+    "replies": 11.5,
+    "progress": 30.14,
+    "tools": 46.63,
+    "summary": 48.45,
+    "full": 48.12
+   },
+   {
+    "replies": 17.68,
+    "progress": 13.93,
+    "tools": 39.91,
+    "summary": 43.87,
+    "full": 43.54
+   }
+  ]
+ },
+ "ho-email-reply__clean__claude-bridge-1_claude-sonnet-5-5__high__7bb972": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 6.47,
+    "summary": 6.47,
+    "full": 5.87
+   },
+   {
+    "replies": 31.08,
+    "progress": 27.41,
+    "tools": 12.54,
+    "summary": 12.54,
+    "full": 10.9
+   }
+  ]
+ },
+ "ho-email-reply__clean__xai_grok-4.7__off__3fe0ca": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 120,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 9.63,
+    "progress": 26.13,
+    "tools": 8.39,
+    "summary": 8.36,
+    "full": 6.26
+   },
+   {
+    "replies": 13.87,
+    "progress": 42.76,
+    "tools": 7.33,
+    "summary": 6.78,
+    "full": 6.75
+   },
+   {
+    "replies": 18.15,
+    "progress": 22.27,
+    "tools": 6.63,
+    "summary": 6.48,
+    "full": 6.04
+   }
+  ]
+ },
+ "ho-email-reply__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__cdb93f": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "config/README.md",
+   "docs/plan.md",
+   "policy.txt",
+   "reply.txt",
+   "run.sh",
+   "src/policy.txt",
+   "src/ticket.txt",
+   "tests/check_reply.sh",
+   "ticket.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 758,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 42.7,
+    "progress": 39.69,
+    "tools": 35.18,
+    "summary": 40.75,
+    "full": 39.18
+   },
+   {
+    "replies": 53.87,
+    "progress": 50.88,
+    "tools": 44.83,
+    "summary": 45.31,
+    "full": 51.75
+   }
+  ]
+ },
+ "ho-email-reply__habit_setup__xai_grok-4.7__off__2af96c": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "policy.txt",
+   "reply.txt",
+   "run.sh",
+   "src/policy.txt",
+   "src/ticket.txt",
+   "ticket.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 3,
+  "thinking_chars": 631,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.35,
+    "tools": 5.13,
+    "summary": 5.11,
+    "full": 5.12
+   },
+   {
+    "replies": 46.34,
+    "progress": 42.86,
+    "tools": 42.72,
+    "summary": 45.05,
+    "full": 43.31
+   },
+   {
+    "replies": 46.27,
+    "progress": 51.19,
+    "tools": 42.41,
+    "summary": 44.92,
+    "full": 42.93
+   },
+   {
+    "replies": 47.36,
+    "progress": 54.6,
+    "tools": 45.16,
+    "summary": 46.56,
+    "full": 43.56
+   },
+   {
+    "replies": 51.65,
+    "progress": 56.99,
+    "tools": 45.13,
+    "summary": 47.84,
+    "full": 46.22
+   }
+  ]
+ },
+ "ho-email-reply__habit_side__claude-bridge-1_claude-sonnet-5-5__high__295fad": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "faq.md",
+   "incident_report.md",
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 9.63,
+    "progress": 42.68,
+    "tools": 41.39,
+    "summary": 41.39,
+    "full": 39.65
+   },
+   {
+    "replies": 56.03,
+    "progress": 54.5,
+    "tools": 36.57,
+    "summary": 36.57,
+    "full": 35.03
+   }
+  ]
+ },
+ "ho-email-reply__habit_side__xai_grok-4.7__off__07b37c": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "faq.md",
+   "incident_report.md",
+   "reply.txt"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 231,
+  "turns": [
+   {
+    "replies": 5.65,
+    "progress": 5.37,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 9.63,
+    "progress": 42.68,
+    "tools": 42.39,
+    "summary": 42.66,
+    "full": 40.73
+   },
+   {
+    "replies": 13.87,
+    "progress": 46.33,
+    "tools": 42.65,
+    "summary": 42.48,
+    "full": 41.17
+   },
+   {
+    "replies": 20.68,
+    "progress": 53.58,
+    "tools": 43.8,
+    "summary": 41.74,
+    "full": 40.17
+   },
+   {
+    "replies": 19.56,
+    "progress": 59.8,
+    "tools": 46.77,
+    "summary": 45.81,
+    "full": 43.84
+   },
+   {
+    "replies": 33.58,
+    "progress": 48.37,
+    "tools": 43.09,
+    "summary": 43.9,
+    "full": 41.97
+   }
+  ]
+ },
+ "ho-html-alt__clean__claude-bridge-1_claude-sonnet-5-5__high__30cfd0": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.17
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.79,
+    "summary": 5.79,
+    "full": 5.5
+   },
+   {
+    "replies": 7.7,
+    "progress": 6.87,
+    "tools": 5.47,
+    "summary": 5.47,
+    "full": 5.32
+   }
+  ]
+ },
+ "ho-html-alt__clean__xai_grok-4.7__off__077897": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "page.html"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 100,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.17
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 5.78,
+    "summary": 5.74,
+    "full": 5.43
+   },
+   {
+    "replies": 17.7,
+    "progress": 12.47,
+    "tools": 6.11,
+    "summary": 5.92,
+    "full": 5.44
+   }
+  ]
+ },
+ "ho-html-alt__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__9e081d": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "page.html",
+   "run.sh",
+   "src/page.html",
+   "src/style.css",
+   "style.css",
+   "tests/check_alt.sh"
+  ],
+  "check": false,
+  "thinking_blocks": 2,
+  "thinking_chars": 1190,
+  "turns": [
+   {
+    "replies": 5.23,
+    "progress": 5.19,
+    "tools": 5.15,
+    "summary": 5.26,
+    "full": 6.14
+   },
+   {
+    "replies": 48.88,
+    "progress": 48.19,
+    "tools": 56.78,
+    "summary": 64.17,
+    "full": 64.8
+   },
+   {
+    "replies": 49.45,
+    "progress": 49.98,
+    "tools": 61.91,
+    "summary": 69.39,
+    "full": 70.33
+   },
+   {
+    "replies": 49.56,
+    "progress": 49.99,
+    "tools": 63.28,
+    "summary": 68.61,
+    "full": 67.64
+   },
+   {
+    "replies": 59.58,
+    "progress": 55.07,
+    "tools": 59.98,
+    "summary": 67.39,
+    "full": 60.73
+   }
+  ]
+ },
+ "ho-html-alt__habit_setup__xai_grok-4.7__off__6718d3": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "docs/plan.md",
+   "page.html",
+   "run.sh"
+  ],
+  "check": true,
+  "thinking_blocks": 4,
+  "thinking_chars": 775,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.26,
+    "tools": 5.23,
+    "summary": 5.25,
+    "full": 5.22
+   },
+   {
+    "replies": 10.33,
+    "progress": 6.8,
+    "tools": 5.93,
+    "summary": 5.63,
+    "full": 33.57
+   },
+   {
+    "replies": 47.04,
+    "progress": 44.63,
+    "tools": 50.54,
+    "summary": 52.16,
+    "full": 57.46
+   },
+   {
+    "replies": 48.04,
+    "progress": 46.28,
+    "tools": 45.95,
+    "summary": 45.3,
+    "full": 52.01
+   },
+   {
+    "replies": 63.94,
+    "progress": 43.03,
+    "tools": 44.3,
+    "summary": 45.68,
+    "full": 48.69
+   }
+  ]
+ },
+ "ho-html-alt__habit_side__claude-bridge-1_claude-sonnet-5-5__high__99b4d1": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "darkmode.css",
+   "page.html",
+   "sitemap.xml"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 734,
+  "turns": [
+   {
+    "replies": 5.57,
+    "progress": 5.21,
+    "tools": 5.16,
+    "summary": 5.16,
+    "full": 5.17
+   },
+   {
+    "replies": 10.33,
+    "progress": 12.65,
+    "tools": 6.42,
+    "summary": 6.42,
+    "full": 5.98
+   },
+   {
+    "replies": 12.98,
+    "progress": 30.33,
+    "tools": 53.19,
+    "summary": 56.14,
+    "full": 61.62
+   },
+   {
+    "replies": 55.46,
+    "progress": 53.42,
+    "tools": 54.47,
+    "summary": 53.61,
+    "full": 57.03
+   }
+  ]
+ },
+ "ho-html-alt__habit_side__xai_grok-4.7__off__a4aa7e": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "darkmode.css",
+   "page.html",
+   "sitemap.xml"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 502,
+  "turns": [
+   {
+    "replies": 5.18,
+    "progress": 5.12,
+    "tools": 5.08,
+    "summary": 5.08,
+    "full": 5.09
+   },
+   {
+    "replies": 16.48,
+    "progress": 27.71,
+    "tools": 50.18,
+    "summary": 49.15,
+    "full": 51.55
+   },
+   {
+    "replies": 58.24,
+    "progress": 57.14,
+    "tools": 53.41,
+    "summary": 53.97,
+    "full": 58.94
+   }
+  ]
+ },
+ "ho-recipe-scale__clean__claude-bridge-1_claude-sonnet-5-5__high__787c31": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 186,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.22
+   },
+   {
+    "replies": 9.85,
+    "progress": 18.65,
+    "tools": 6.33,
+    "summary": 5.8,
+    "full": 5.79
+   },
+   {
+    "replies": 29.12,
+    "progress": 18.22,
+    "tools": 7.48,
+    "summary": 6.45,
+    "full": 6.25
+   }
+  ]
+ },
+ "ho-recipe-scale__clean__xai_grok-4.7__off__2c52db": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 655,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.22
+   },
+   {
+    "replies": 7.72,
+    "progress": 12.36,
+    "tools": 5.65,
+    "summary": 5.93,
+    "full": 5.31
+   },
+   {
+    "replies": 16.66,
+    "progress": 17.7,
+    "tools": 7.41,
+    "summary": 8.6,
+    "full": 5.47
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__18883c": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "recipe_10.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 594,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.24,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.27
+   },
+   {
+    "replies": 9.85,
+    "progress": 13.61,
+    "tools": 6.24,
+    "summary": 5.51,
+    "full": 9.23
+   },
+   {
+    "replies": 10.73,
+    "progress": 7.98,
+    "tools": 5.64,
+    "summary": 5.55,
+    "full": 5.56
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_setup__xai_grok-4.7__off__df3d3d": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "config/.gitkeep",
+   "docs/plan.md",
+   "recipe_10.md",
+   "run.sh",
+   "src/.gitkeep",
+   "tests/.gitkeep"
+  ],
+  "check": true,
+  "thinking_blocks": 3,
+  "thinking_chars": 742,
+  "turns": [
+   {
+    "replies": 5.79,
+    "progress": 5.35,
+    "tools": 5.25,
+    "summary": 5.36,
+    "full": 5.31
+   },
+   {
+    "replies": 44.27,
+    "progress": 47.14,
+    "tools": 50.71,
+    "summary": 50.38,
+    "full": 50.69
+   },
+   {
+    "replies": 44.89,
+    "progress": 47.14,
+    "tools": 47.01,
+    "summary": 44.14,
+    "full": 42.24
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_side__claude-bridge-1_claude-sonnet-5-5__high__77e6ec": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "nutrition.md",
+   "recipe_10.md",
+   "shopping_list.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 404,
+  "turns": [
+   {
+    "replies": 5.55,
+    "progress": 5.25,
+    "tools": 5.19,
+    "summary": 5.19,
+    "full": 5.22
+   },
+   {
+    "replies": 9.85,
+    "progress": 32.65,
+    "tools": 45.68,
+    "summary": 45.17,
+    "full": 47.11
+   },
+   {
+    "replies": 49.25,
+    "progress": 48.28,
+    "tools": 43.97,
+    "summary": 44.84,
+    "full": 46.12
+   }
+  ]
+ },
+ "ho-recipe-scale__habit_side__xai_grok-4.7__off__d08368": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "nutrition.md",
+   "recipe_10.md",
+   "shopping_list.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 193,
+  "turns": [
+   {
+    "replies": 5.23,
+    "progress": 5.18,
+    "tools": 5.13,
+    "summary": 5.13,
+    "full": 5.17
+   },
+   {
+    "replies": 49.92,
+    "progress": 48.5,
+    "tools": 46.13,
+    "summary": 45.91,
+    "full": 44.93
+   },
+   {
+    "replies": 45.13,
+    "progress": 44.79,
+    "tools": 44.34,
+    "summary": 43.12,
+    "full": 41.67
+   }
+  ]
+ },
+ "ho-temp-convert__clean__claude-bridge-1_claude-sonnet-5-5__high__4d7bca": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.44,
+    "summary": 5.44,
+    "full": 5.4
+   },
+   {
+    "replies": 8.41,
+    "progress": 18.1,
+    "tools": 16.44,
+    "summary": 16.44,
+    "full": 15.17
+   },
+   {
+    "replies": 14.75,
+    "progress": 16.97,
+    "tools": 21.49,
+    "summary": 21.49,
+    "full": 21.14
+   },
+   {
+    "replies": 28.88,
+    "progress": 14.43,
+    "tools": 13.11,
+    "summary": 13.11,
+    "full": 8.14
+   }
+  ]
+ },
+ "ho-temp-convert__clean__xai_grok-4.7__off__7dbb2b": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 0,
+  "thinking_chars": 0,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.44,
+    "summary": 5.44,
+    "full": 5.4
+   },
+   {
+    "replies": 8.41,
+    "progress": 8.47,
+    "tools": 8.13,
+    "summary": 8.13,
+    "full": 6.96
+   },
+   {
+    "replies": 12.2,
+    "progress": 28.95,
+    "tools": 19.13,
+    "summary": 19.13,
+    "full": 11.96
+   },
+   {
+    "replies": 15.28,
+    "progress": 12.85,
+    "tools": 8.82,
+    "summary": 8.82,
+    "full": 7.23
+   }
+  ]
+ },
+ "ho-temp-convert__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__226f72": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "convert.py",
+   "docs/plan.md",
+   "run.sh",
+   "src/convert.py",
+   "test_convert.py",
+   "tests/test_convert.py"
+  ],
+  "check": false,
+  "thinking_blocks": 3,
+  "thinking_chars": 1272,
+  "turns": [
+   {
+    "replies": 5.18,
+    "progress": 5.23,
+    "tools": 5.15,
+    "summary": 5.23,
+    "full": 5.17
+   },
+   {
+    "replies": 47.28,
+    "progress": 44.77,
+    "tools": 53.96,
+    "summary": 52.6,
+    "full": 63.19
+   },
+   {
+    "replies": 45.23,
+    "progress": 47.28,
+    "tools": 53.06,
+    "summary": 56.88,
+    "full": 62.38
+   },
+   {
+    "replies": 58.31,
+    "progress": 57.23,
+    "tools": 61.3,
+    "summary": 62.04,
+    "full": 72.74
+   }
+  ]
+ },
+ "ho-temp-convert__habit_setup__xai_grok-4.7__off__6b7af3": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "config/.gitkeep",
+   "convert.py",
+   "docs/PLAN.md",
+   "run.sh",
+   "src/convert.py",
+   "tests/test_convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 2622,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.21,
+    "tools": 5.21,
+    "summary": 5.19,
+    "full": 5.14
+   },
+   {
+    "replies": 8.41,
+    "progress": 5.83,
+    "tools": 5.72,
+    "summary": 5.69,
+    "full": 5.67
+   },
+   {
+    "replies": 32.49,
+    "progress": 39.15,
+    "tools": 45.08,
+    "summary": 49.87,
+    "full": 55.63
+   },
+   {
+    "replies": 36.9,
+    "progress": 43.53,
+    "tools": 49.23,
+    "summary": 53.0,
+    "full": 59.37
+   },
+   {
+    "replies": 53.26,
+    "progress": 51.56,
+    "tools": 49.8,
+    "summary": 52.12,
+    "full": 60.45
+   }
+  ]
+ },
+ "ho-temp-convert__habit_side__claude-bridge-1_claude-sonnet-5-5__high__62944d": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "README.md",
+   "cli.py",
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 2,
+  "thinking_chars": 733,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.44,
+    "summary": 5.44,
+    "full": 5.4
+   },
+   {
+    "replies": 8.41,
+    "progress": 18.1,
+    "tools": 8.17,
+    "summary": 8.17,
+    "full": 6.74
+   },
+   {
+    "replies": 12.2,
+    "progress": 27.55,
+    "tools": 45.24,
+    "summary": 44.03,
+    "full": 42.6
+   },
+   {
+    "replies": 22.71,
+    "progress": 27.28,
+    "tools": 52.03,
+    "summary": 55.1,
+    "full": 50.22
+   },
+   {
+    "replies": 61.93,
+    "progress": 55.27,
+    "tools": 50.38,
+    "summary": 53.84,
+    "full": 46.78
+   }
+  ]
+ },
+ "ho-temp-convert__habit_side__xai_grok-4.7__off__9b370c": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "README.md",
+   "cli.py",
+   "convert.py"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 77,
+  "turns": [
+   {
+    "replies": 5.75,
+    "progress": 5.32,
+    "tools": 5.44,
+    "summary": 5.44,
+    "full": 5.4
+   },
+   {
+    "replies": 8.41,
+    "progress": 21.31,
+    "tools": 47.18,
+    "summary": 47.61,
+    "full": 45.47
+   },
+   {
+    "replies": 12.2,
+    "progress": 36.71,
+    "tools": 45.81,
+    "summary": 45.29,
+    "full": 43.34
+   },
+   {
+    "replies": 50.39,
+    "progress": 50.22,
+    "tools": 44.74,
+    "summary": 45.97,
+    "full": 43.81
+   }
+  ]
+ },
+ "ho-todo-extract__clean__claude-bridge-1_claude-sonnet-5-5__high__ce3f9d": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 125,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.52,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.21
+   },
+   {
+    "replies": 7.59,
+    "progress": 34.71,
+    "tools": 12.39,
+    "summary": 35.36,
+    "full": 27.34
+   },
+   {
+    "replies": 14.33,
+    "progress": 48.44,
+    "tools": 10.79,
+    "summary": 29.74,
+    "full": 17.91
+   },
+   {
+    "replies": 32.7,
+    "progress": 36.03,
+    "tools": 7.86,
+    "summary": 9.66,
+    "full": 7.38
+   }
+  ]
+ },
+ "ho-todo-extract__clean__xai_grok-4.7__off__b0545e": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 110,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.38,
+    "tools": 5.15,
+    "summary": 5.15,
+    "full": 5.15
+   },
+   {
+    "replies": 7.59,
+    "progress": 44.19,
+    "tools": 5.96,
+    "summary": 5.62,
+    "full": 5.51
+   },
+   {
+    "replies": 44.33,
+    "progress": 46.7,
+    "tools": 6.08,
+    "summary": 5.86,
+    "full": 5.58
+   }
+  ]
+ },
+ "ho-todo-extract__habit_setup__claude-bridge-1_claude-sonnet-5-5__high__c854ea": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   ".gitignore",
+   "config/.gitkeep",
+   "docs/plan.md",
+   "run.sh",
+   "tests/.gitkeep",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 4,
+  "thinking_chars": 1248,
+  "turns": [
+   {
+    "replies": 5.24,
+    "progress": 5.24,
+    "tools": 5.17,
+    "summary": 5.3,
+    "full": 8.13
+   },
+   {
+    "replies": 12.85,
+    "progress": 18.45,
+    "tools": 12.06,
+    "summary": 20.47,
+    "full": 12.06
+   },
+   {
+    "replies": 24.72,
+    "progress": 57.37,
+    "tools": 53.3,
+    "summary": 56.48,
+    "full": 53.09
+   },
+   {
+    "replies": 55.38,
+    "progress": 56.12,
+    "tools": 50.76,
+    "summary": 53.58,
+    "full": 48.48
+   }
+  ]
+ },
+ "ho-todo-extract__habit_setup__xai_grok-4.7__off__9f16a3": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   ".gitignore",
+   "docs/PLAN.md",
+   "run.sh",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 4,
+  "thinking_chars": 531,
+  "turns": [
+   {
+    "replies": 5.68,
+    "progress": 5.22,
+    "tools": 5.11,
+    "summary": 5.09,
+    "full": 5.11
+   },
+   {
+    "replies": 27.07,
+    "progress": 23.13,
+    "tools": 6.28,
+    "summary": 6.94,
+    "full": 5.93
+   },
+   {
+    "replies": 41.76,
+    "progress": 26.52,
+    "tools": 7.35,
+    "summary": 8.26,
+    "full": 7.54
+   },
+   {
+    "replies": 59.51,
+    "progress": 54.71,
+    "tools": 50.5,
+    "summary": 49.23,
+    "full": 45.8
+   },
+   {
+    "replies": 63.26,
+    "progress": 64.78,
+    "tools": 56.99,
+    "summary": 61.13,
+    "full": 55.36
+   },
+   {
+    "replies": 62.5,
+    "progress": 61.44,
+    "tools": 51.72,
+    "summary": 57.39,
+    "full": 53.8
+   }
+  ]
+ },
+ "ho-todo-extract__habit_side__claude-bridge-1_claude-sonnet-5-5__high__a97f43": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "model": "claude-bridge-1/claude-sonnet-5-5",
+  "thinking_level": "high",
+  "files_changed": [
+   "CONTRIBUTING.md",
+   "roadmap.md",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 153,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.52,
+    "tools": 5.21,
+    "summary": 5.21,
+    "full": 5.19
+   },
+   {
+    "replies": 7.59,
+    "progress": 21.1,
+    "tools": 9.1,
+    "summary": 9.1,
+    "full": 7.1
+   },
+   {
+    "replies": 14.33,
+    "progress": 49.21,
+    "tools": 49.04,
+    "summary": 48.99,
+    "full": 46.91
+   },
+   {
+    "replies": 51.81,
+    "progress": 49.77,
+    "tools": 46.51,
+    "summary": 45.48,
+    "full": 43.94
+   }
+  ]
+ },
+ "ho-todo-extract__habit_side__xai_grok-4.7__off__887738": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "model": "xai/grok-4.7",
+  "thinking_level": "off",
+  "files_changed": [
+   "CONTRIBUTING.md",
+   "roadmap.md",
+   "todo.md"
+  ],
+  "check": true,
+  "thinking_blocks": 1,
+  "thinking_chars": 101,
+  "turns": [
+   {
+    "replies": 5.26,
+    "progress": 5.38,
+    "tools": 5.15,
+    "summary": 5.15,
+    "full": 5.17
+   },
+   {
+    "replies": 7.59,
+    "progress": 52.44,
+    "tools": 49.27,
+    "summary": 49.0,
+    "full": 46.95
+   },
+   {
+    "replies": 53.12,
+    "progress": 54.61,
+    "tools": 47.15,
+    "summary": 47.23,
+    "full": 45.34
+   }
+  ]
+ }
+}

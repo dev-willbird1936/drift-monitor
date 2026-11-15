@@ -1,0 +1,37 @@
+{
+ "pipeline": [
+  "CuratorKIT",
+  "AlignTune",
+  "AuditKIT"
+ ],
+ "stage": "AuditKIT",
+ "auditkit_version": "1.1.11",
+ "inputs": {
+  "test|base_untrained": "<DATA_ROOT>/results\\v4run1\\base_test.json",
+  "test|run1_synthetic_only": "<DATA_ROOT>/results\\v4run1\\tuned_test.json",
+  "test|run2_final": "<DATA_ROOT>/results\\v4run2\\run2_test.json",
+  "test_category|base_untrained": "<DATA_ROOT>/results\\v4run1\\base_test_category.json",
+  "test_category|run1_synthetic_only": "<DATA_ROOT>/results\\v4run1\\tuned_test_category.json",
+  "test_category|run2_final": "<DATA_ROOT>/results\\v4run2\\run2_test_category.json",
+  "test_recorded|base_untrained": "<DATA_ROOT>/results\\v4run1\\base_test_recorded.json",
+  "test_recorded|run1_synthetic_only": "<DATA_ROOT>/results\\v4run1\\tuned_test_recorded.json",
+  "test_recorded|run2_final": "<DATA_ROOT>/results\\v4run2\\run2_test_recorded.json",
+  "val|base_untrained": "<DATA_ROOT>/results\\v4run1\\base_val.json",
+  "val|run1_synthetic_only": "<DATA_ROOT>/results\\v4run1\\tuned_val.json",
+  "val|run2_final": "<DATA_ROOT>/results\\v4run2\\run2_val.json"
+ },
+ "runs": {
+  "test|base_untrained": "5e05c171f026f5f6",
+  "test|run1_synthetic_only": "87e64bb84ecb466c",
+  "test|run2_final": "3a09b098456c0925",
+  "test_category|base_untrained": "ebc831fd54cb9c15",
+  "test_category|run1_synthetic_only": "c30bd8a783e55f32",
+  "test_category|run2_final": "9d02fb9704fd46ce",
+  "test_recorded|base_untrained": "cf0d017901b3ea8c",
+  "test_recorded|run1_synthetic_only": "c726230c47b85e24",
+  "test_recorded|run2_final": "334bbefcd3a0271b",
+  "val|base_untrained": "bf23ab2cbf5cd4df",
+  "val|run1_synthetic_only": "137a13347cd1a6ea",
+  "val|run2_final": "fb9ee67d579c97be"
+ }
+}

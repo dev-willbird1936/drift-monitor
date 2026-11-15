@@ -1,0 +1,1401 @@
+[
+ {
+  "task": "data-chart",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 60.8,
+    "shown": 18.96
+   },
+   {
+    "step": 6,
+    "hidden": 60.27,
+    "shown": 18.46
+   }
+  ]
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 32.15,
+    "shown": 16.25
+   },
+   {
+    "step": 6,
+    "hidden": 30.14,
+    "shown": 15.93
+   }
+  ]
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 44.51,
+    "shown": 20.92
+   },
+   {
+    "step": 6,
+    "hidden": 33.48,
+    "shown": 9.39
+   },
+   {
+    "step": 7,
+    "hidden": 18.61,
+    "shown": 8.52
+   }
+  ]
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 39.3,
+    "shown": 19.16
+   },
+   {
+    "step": 6,
+    "hidden": 40.77,
+    "shown": 12.07
+   },
+   {
+    "step": 7,
+    "hidden": 18.05,
+    "shown": 10.76
+   },
+   {
+    "step": 8,
+    "hidden": 10.06,
+    "shown": 7.68
+   }
+  ]
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 20.76,
+    "shown": 17.15
+   },
+   {
+    "step": 7,
+    "hidden": 18.98,
+    "shown": 16.06
+   },
+   {
+    "step": 8,
+    "hidden": 17.64,
+    "shown": 14.43
+   },
+   {
+    "step": 9,
+    "hidden": 17.08,
+    "shown": 13.38
+   },
+   {
+    "step": 10,
+    "hidden": 17.39,
+    "shown": 15.35
+   },
+   {
+    "step": 11,
+    "hidden": 19.28,
+    "shown": 14.06
+   },
+   {
+    "step": 12,
+    "hidden": 14.36,
+    "shown": 12.53
+   }
+  ]
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 31.93,
+    "shown": 13.57
+   },
+   {
+    "step": 6,
+    "hidden": 25.55,
+    "shown": 9.84
+   },
+   {
+    "step": 7,
+    "hidden": 71.79,
+    "shown": 6.83
+   }
+  ]
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 36.12,
+    "shown": 14.25
+   },
+   {
+    "step": 5,
+    "hidden": 46.37,
+    "shown": 10.04
+   }
+  ]
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 14.91,
+    "shown": 12.91
+   },
+   {
+    "step": 5,
+    "hidden": 20.12,
+    "shown": 12.82
+   },
+   {
+    "step": 6,
+    "hidden": 12.01,
+    "shown": 11.87
+   }
+  ]
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 35.98,
+    "shown": 16.4
+   },
+   {
+    "step": 5,
+    "hidden": 46.17,
+    "shown": 16.52
+   }
+  ]
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.82,
+    "shown": 15.53
+   },
+   {
+    "step": 5,
+    "hidden": 62.88,
+    "shown": 14.01
+   }
+  ]
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 52.29,
+    "shown": 24.92
+   },
+   {
+    "step": 5,
+    "hidden": 23.77,
+    "shown": 16.49
+   }
+  ]
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 72.88,
+    "shown": 31.46
+   },
+   {
+    "step": 5,
+    "hidden": 79.08,
+    "shown": 26.17
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 21.72,
+    "shown": 15.59
+   },
+   {
+    "step": 7,
+    "hidden": 23.92,
+    "shown": 15.49
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.28,
+    "shown": 17.97
+   },
+   {
+    "step": 5,
+    "hidden": 19.06,
+    "shown": 15.65
+   },
+   {
+    "step": 6,
+    "hidden": 19.1,
+    "shown": 14.22
+   },
+   {
+    "step": 7,
+    "hidden": 16.05,
+    "shown": 12.02
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 30.73,
+    "shown": 18.67
+   },
+   {
+    "step": 7,
+    "hidden": 29.79,
+    "shown": 16.5
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 35.7,
+    "shown": 18.61
+   },
+   {
+    "step": 7,
+    "hidden": 28.21,
+    "shown": 17.04
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 37.95,
+    "shown": 17.7
+   },
+   {
+    "step": 7,
+    "hidden": 51.97,
+    "shown": 16.76
+   }
+  ]
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 70.09,
+    "shown": 26.23
+   },
+   {
+    "step": 7,
+    "hidden": 83.71,
+    "shown": 22.35
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 21.28,
+    "shown": 11.16
+   },
+   {
+    "step": 6,
+    "hidden": 15.45,
+    "shown": 7.42
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 26.56,
+    "shown": 11.71
+   },
+   {
+    "step": 5,
+    "hidden": 29.7,
+    "shown": 9.94
+   },
+   {
+    "step": 6,
+    "hidden": 31.09,
+    "shown": 15.82
+   },
+   {
+    "step": 7,
+    "hidden": 35.68,
+    "shown": 10.49
+   },
+   {
+    "step": 8,
+    "hidden": 21.02,
+    "shown": 8.56
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 22.33,
+    "shown": 21.69
+   },
+   {
+    "step": 6,
+    "hidden": 21.83,
+    "shown": 18.27
+   },
+   {
+    "step": 7,
+    "hidden": 45.56,
+    "shown": 10.37
+   },
+   {
+    "step": 8,
+    "hidden": 34.26,
+    "shown": 10.33
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 49.38,
+    "shown": 33.41
+   },
+   {
+    "step": 7,
+    "hidden": 42.7,
+    "shown": 15.45
+   },
+   {
+    "step": 8,
+    "hidden": 59.34,
+    "shown": 16.57
+   },
+   {
+    "step": 9,
+    "hidden": 53.03,
+    "shown": 13.76
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 10.66,
+    "shown": 11.06
+   },
+   {
+    "step": 5,
+    "hidden": 13.71,
+    "shown": 10.34
+   }
+  ]
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 20.88,
+    "shown": 15.01
+   },
+   {
+    "step": 5,
+    "hidden": 59.08,
+    "shown": 14.5
+   },
+   {
+    "step": 6,
+    "hidden": 64.99,
+    "shown": 15.7
+   }
+  ]
+ },
+ {
+  "task": "res-heatpump-answer",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 35.76,
+    "shown": 16.55
+   },
+   {
+    "step": 7,
+    "hidden": 30.65,
+    "shown": 15.93
+   }
+  ]
+ },
+ {
+  "task": "res-heatpump-answer",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 37.04,
+    "shown": 17.5
+   },
+   {
+    "step": 7,
+    "hidden": 35.38,
+    "shown": 16.6
+   },
+   {
+    "step": 8,
+    "hidden": 65.87,
+    "shown": 11.67
+   }
+  ]
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 45.89,
+    "shown": 20.59
+   },
+   {
+    "step": 6,
+    "hidden": 53.02,
+    "shown": 19.47
+   }
+  ]
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 29.22,
+    "shown": 15.5
+   },
+   {
+    "step": 7,
+    "hidden": 25.52,
+    "shown": 15.01
+   }
+  ]
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.51,
+    "shown": 18.77
+   },
+   {
+    "step": 5,
+    "hidden": 46.94,
+    "shown": 16.53
+   }
+  ]
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 52.15,
+    "shown": 18.77
+   },
+   {
+    "step": 5,
+    "hidden": 47.51,
+    "shown": 18.0
+   },
+   {
+    "step": 6,
+    "hidden": 45.41,
+    "shown": 14.69
+   }
+  ]
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 7,
+    "hidden": 17.65,
+    "shown": 18.62
+   },
+   {
+    "step": 8,
+    "hidden": 16.16,
+    "shown": 19.05
+   },
+   {
+    "step": 9,
+    "hidden": 22.84,
+    "shown": 18.22
+   },
+   {
+    "step": 10,
+    "hidden": 24.23,
+    "shown": 18.04
+   },
+   {
+    "step": 11,
+    "hidden": 17.73,
+    "shown": 16.54
+   }
+  ]
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.5,
+    "shown": 15.54
+   },
+   {
+    "step": 5,
+    "hidden": 23.96,
+    "shown": 14.3
+   }
+  ]
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 47.92,
+    "shown": 24.83
+   },
+   {
+    "step": 6,
+    "hidden": 40.77,
+    "shown": 23.2
+   },
+   {
+    "step": 7,
+    "hidden": 37.24,
+    "shown": 11.08
+   }
+  ]
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 63.91,
+    "shown": 18.08
+   },
+   {
+    "step": 5,
+    "hidden": 63.73,
+    "shown": 17.6
+   }
+  ]
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 31.12,
+    "shown": 19.33
+   },
+   {
+    "step": 7,
+    "hidden": 35.67,
+    "shown": 17.75
+   },
+   {
+    "step": 8,
+    "hidden": 38.37,
+    "shown": 18.47
+   },
+   {
+    "step": 9,
+    "hidden": 24.5,
+    "shown": 14.14
+   },
+   {
+    "step": 10,
+    "hidden": 34.34,
+    "shown": 14.61
+   },
+   {
+    "step": 11,
+    "hidden": 27.36,
+    "shown": 13.76
+   }
+  ]
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 7,
+    "hidden": 25.05,
+    "shown": 17.66
+   },
+   {
+    "step": 8,
+    "hidden": 24.15,
+    "shown": 16.66
+   },
+   {
+    "step": 9,
+    "hidden": 27.56,
+    "shown": 15.97
+   },
+   {
+    "step": 10,
+    "hidden": 29.63,
+    "shown": 15.14
+   }
+  ]
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 53.24,
+    "shown": 35.07
+   },
+   {
+    "step": 6,
+    "hidden": 55.43,
+    "shown": 26.51
+   }
+  ]
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 52.42,
+    "shown": 22.46
+   },
+   {
+    "step": 7,
+    "hidden": 52.72,
+    "shown": 22.83
+   },
+   {
+    "step": 8,
+    "hidden": 58.46,
+    "shown": 14.66
+   }
+  ]
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 28.31,
+    "shown": 18.14
+   },
+   {
+    "step": 5,
+    "hidden": 25.97,
+    "shown": 15.75
+   },
+   {
+    "step": 6,
+    "hidden": 24.81,
+    "shown": 15.06
+   }
+  ]
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.84,
+    "shown": 6.62
+   },
+   {
+    "step": 5,
+    "hidden": 51.17,
+    "shown": 7.08
+   },
+   {
+    "step": 6,
+    "hidden": 30.48,
+    "shown": 7.0
+   }
+  ]
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 3,
+    "hidden": 33.67,
+    "shown": 15.04
+   },
+   {
+    "step": 4,
+    "hidden": 14.91,
+    "shown": 9.93
+   },
+   {
+    "step": 5,
+    "hidden": 25.71,
+    "shown": 7.22
+   },
+   {
+    "step": 6,
+    "hidden": 24.43,
+    "shown": 6.41
+   },
+   {
+    "step": 7,
+    "hidden": 18.73,
+    "shown": 9.26
+   }
+  ]
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 3,
+    "hidden": 42.91,
+    "shown": 15.81
+   },
+   {
+    "step": 4,
+    "hidden": 34.5,
+    "shown": 13.33
+   },
+   {
+    "step": 5,
+    "hidden": 21.33,
+    "shown": 11.36
+   }
+  ]
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 57.33,
+    "shown": 26.31
+   },
+   {
+    "step": 6,
+    "hidden": 43.9,
+    "shown": 22.45
+   }
+  ]
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 27.13,
+    "shown": 21.79
+   },
+   {
+    "step": 6,
+    "hidden": 32.86,
+    "shown": 17.59
+   },
+   {
+    "step": 7,
+    "hidden": 26.68,
+    "shown": 17.15
+   }
+  ]
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 44.7,
+    "shown": 19.97
+   },
+   {
+    "step": 6,
+    "hidden": 42.05,
+    "shown": 19.75
+   }
+  ]
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 46.69,
+    "shown": 20.27
+   },
+   {
+    "step": 6,
+    "hidden": 47.71,
+    "shown": 19.46
+   }
+  ]
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 36.58,
+    "shown": 23.53
+   },
+   {
+    "step": 7,
+    "hidden": 33.1,
+    "shown": 23.47
+   }
+  ]
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 7,
+    "hidden": 20.83,
+    "shown": 21.95
+   },
+   {
+    "step": 8,
+    "hidden": 20.3,
+    "shown": 21.81
+   },
+   {
+    "step": 9,
+    "hidden": 17.33,
+    "shown": 19.59
+   }
+  ]
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 6,
+    "hidden": 22.83,
+    "shown": 18.97
+   },
+   {
+    "step": 7,
+    "hidden": 18.0,
+    "shown": 17.4
+   },
+   {
+    "step": 8,
+    "hidden": 16.26,
+    "shown": 12.92
+   },
+   {
+    "step": 9,
+    "hidden": 14.09,
+    "shown": 13.21
+   }
+  ]
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 43.25,
+    "shown": 20.1
+   },
+   {
+    "step": 6,
+    "hidden": 33.9,
+    "shown": 17.81
+   }
+  ]
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 29.85,
+    "shown": 19.26
+   },
+   {
+    "step": 6,
+    "hidden": 28.98,
+    "shown": 18.74
+   }
+  ]
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 7,
+    "hidden": 75.7,
+    "shown": 22.65
+   },
+   {
+    "step": 8,
+    "hidden": 80.48,
+    "shown": 20.75
+   },
+   {
+    "step": 9,
+    "hidden": 48.9,
+    "shown": 14.03
+   },
+   {
+    "step": 10,
+    "hidden": 46.19,
+    "shown": 13.52
+   }
+  ]
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 77.02,
+    "shown": 22.94
+   },
+   {
+    "step": 6,
+    "hidden": 70.02,
+    "shown": 21.79
+   },
+   {
+    "step": 7,
+    "hidden": 66.13,
+    "shown": 18.43
+   },
+   {
+    "step": 8,
+    "hidden": 71.19,
+    "shown": 17.95
+   },
+   {
+    "step": 9,
+    "hidden": 79.43,
+    "shown": 16.58
+   }
+  ]
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 48.96,
+    "shown": 23.52
+   },
+   {
+    "step": 5,
+    "hidden": 42.7,
+    "shown": 21.03
+   },
+   {
+    "step": 6,
+    "hidden": 31.96,
+    "shown": 16.48
+   }
+  ]
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 44.39,
+    "shown": 21.35
+   },
+   {
+    "step": 5,
+    "hidden": 34.94,
+    "shown": 17.51
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 37.63,
+    "shown": 20.51
+   },
+   {
+    "step": 5,
+    "hidden": 47.37,
+    "shown": 27.34
+   },
+   {
+    "step": 6,
+    "hidden": 34.4,
+    "shown": 17.02
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 48.03,
+    "shown": 60.95
+   },
+   {
+    "step": 5,
+    "hidden": 53.4,
+    "shown": 48.03
+   },
+   {
+    "step": 6,
+    "hidden": 46.45,
+    "shown": 15.36
+   },
+   {
+    "step": 7,
+    "hidden": 41.93,
+    "shown": 11.71
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 47.47,
+    "shown": 19.27
+   },
+   {
+    "step": 5,
+    "hidden": 41.95,
+    "shown": 15.71
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 46.49,
+    "shown": 22.72
+   },
+   {
+    "step": 6,
+    "hidden": 30.81,
+    "shown": 18.87
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 45.85,
+    "shown": 17.33
+   },
+   {
+    "step": 5,
+    "hidden": 50.09,
+    "shown": 13.86
+   },
+   {
+    "step": 6,
+    "hidden": 67.92,
+    "shown": 12.99
+   }
+  ]
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 27.58,
+    "shown": 9.66
+   },
+   {
+    "step": 5,
+    "hidden": 11.19,
+    "shown": 6.08
+   }
+  ]
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 40.22,
+    "shown": 18.4
+   },
+   {
+    "step": 6,
+    "hidden": 61.15,
+    "shown": 18.71
+   },
+   {
+    "step": 7,
+    "hidden": 43.44,
+    "shown": 17.31
+   }
+  ]
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 9,
+    "hidden": 71.8,
+    "shown": 15.37
+   },
+   {
+    "step": 10,
+    "hidden": 65.01,
+    "shown": 15.44
+   },
+   {
+    "step": 11,
+    "hidden": 54.34,
+    "shown": 15.08
+   },
+   {
+    "step": 12,
+    "hidden": 72.01,
+    "shown": 13.68
+   },
+   {
+    "step": 13,
+    "hidden": 74.02,
+    "shown": 12.54
+   },
+   {
+    "step": 14,
+    "hidden": 78.84,
+    "shown": 12.31
+   }
+  ]
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 65.5,
+    "shown": 23.34
+   },
+   {
+    "step": 6,
+    "hidden": 71.69,
+    "shown": 24.89
+   }
+  ]
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 66.88,
+    "shown": 24.94
+   },
+   {
+    "step": 6,
+    "hidden": 76.41,
+    "shown": 22.17
+   }
+  ]
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 32.16,
+    "shown": 15.62
+   },
+   {
+    "step": 5,
+    "hidden": 27.41,
+    "shown": 15.83
+   }
+  ]
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "turns": [
+   {
+    "step": 5,
+    "hidden": 24.41,
+    "shown": 17.64
+   },
+   {
+    "step": 6,
+    "hidden": 18.54,
+    "shown": 13.46
+   },
+   {
+    "step": 7,
+    "hidden": 18.99,
+    "shown": 12.78
+   }
+  ]
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 45.74,
+    "shown": 19.5
+   },
+   {
+    "step": 5,
+    "hidden": 46.79,
+    "shown": 19.16
+   }
+  ]
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "turns": [
+   {
+    "step": 4,
+    "hidden": 38.88,
+    "shown": 21.29
+   },
+   {
+    "step": 5,
+    "hidden": 41.19,
+    "shown": 22.56
+   }
+  ]
+ }
+]

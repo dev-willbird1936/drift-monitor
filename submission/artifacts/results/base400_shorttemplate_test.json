@@ -1,0 +1,15 @@
+{
+ "model": "CohereLabs/tiny-aya-global",
+ "adapter": null,
+ "data": "<DATA_ROOT>/dataset_v3/data/test.jsonl",
+ "n": 400,
+ "seconds_per_score": 0.477,
+ "mae": 48.95,
+ "mae_if_always_5": 9.17,
+ "pearson": -0.024,
+ "auroc_drift_label": 0.471,
+ "trigger40_precision": 0.105,
+ "trigger40_recall": 1.0,
+ "mean_pred_on_course": 58.1,
+ "mean_pred_drift": 58.1
+}

@@ -1,0 +1,42 @@
+# Data, weights and caches live outside the repo; nothing large or local-only is tracked.
+tasks/
+tasks_holdout/
+tasks_src/__pycache__/
+**/__pycache__/
+*.pyc
+.venv/
+venv/
+.uv/
+
+# Scrub scan output: contains the very strings it was looking for.
+submission/scrub_report.json
+
+# Private submission checklist and form text
+submission/MANIFEST.md
+submission/FORM_FIELDS.txt
+
+# Local scratch and large artifacts
+*.log
+*.tar.gz
+*.safetensors
+*.bin
+*.jsonl.gz
+# scratch: keep the experiment plans, report and test scripts the write-up refers to; drop notes and outputs
+scratch/*
+!scratch/*.py
+!scratch/loop_pilot_protocol.md
+vast/
+hf/
+train_run/
+dataset_v*/
+train_v*/
+synth/main/
+results/raw/
+
+# Keep the trimmed, scrubbed publication bundle
+!submission/artifacts/**
+
+# Local tool state and notes
+.pi/
+.playwright-mcp/
+DriftMeter_Research_Intention.md

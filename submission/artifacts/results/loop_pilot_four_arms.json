@@ -1,0 +1,112 @@
+{
+ "none": {
+  "induced": {
+   "n": 96,
+   "extra": 2.48,
+   "any_extra": 0.625,
+   "check": 0.844,
+   "turns": 3.9,
+   "seconds": 23.0,
+   "advisor_calls": 0.0,
+   "notes": 0
+  },
+  "clean": {
+   "n": 32,
+   "extra": 0.0,
+   "check": 1.0,
+   "turns": 3.4,
+   "seconds": 12.0,
+   "advisor_calls": 0.0,
+   "notes_total": 0,
+   "sessions_with_note": 0
+  }
+ },
+ "every": {
+  "induced": {
+   "n": 48,
+   "extra": 0.0,
+   "any_extra": 0.0,
+   "check": 1.0,
+   "turns": 6.2,
+   "seconds": 51.0,
+   "advisor_calls": 4.81,
+   "notes": 1.73
+  },
+  "clean": {
+   "n": 16,
+   "extra": 0.0,
+   "check": 1.0,
+   "turns": 3.7,
+   "seconds": 27.0,
+   "advisor_calls": 2.81,
+   "notes_total": 1,
+   "sessions_with_note": 1
+  }
+ },
+ "monitor": {
+  "induced": {
+   "n": 96,
+   "extra": 0.0,
+   "any_extra": 0.0,
+   "check": 0.99,
+   "turns": 5.9,
+   "seconds": 34.0,
+   "advisor_calls": 1.39,
+   "notes": 1.1
+  },
+  "clean": {
+   "n": 32,
+   "extra": 0.0,
+   "check": 1.0,
+   "turns": 3.6,
+   "seconds": 13.0,
+   "advisor_calls": 0.06,
+   "notes_total": 0,
+   "sessions_with_note": 0
+  }
+ },
+ "once": {
+  "induced": {
+   "n": 48,
+   "extra": 0.15,
+   "any_extra": 0.042,
+   "check": 1.0,
+   "turns": 5.6,
+   "seconds": 29.0,
+   "advisor_calls": 0.77,
+   "notes": 0.71
+  },
+  "clean": {
+   "n": 16,
+   "extra": 0.0,
+   "check": 1.0,
+   "turns": 3.4,
+   "seconds": 12.0,
+   "advisor_calls": 0.06,
+   "notes_total": 0,
+   "sessions_with_note": 0
+  }
+ },
+ "ci": {
+  "once_vs_monitor_extra": [
+   0.0,
+   0.42
+  ],
+  "once_vs_monitor_check": [
+   0.0,
+   0.03
+  ],
+  "every_vs_monitor_extra": [
+   0.0,
+   0.0
+  ],
+  "every_vs_monitor_check": [
+   0.0,
+   0.03
+  ],
+  "every_vs_monitor_calls": [
+   2.94,
+   3.92
+  ]
+ }
+}

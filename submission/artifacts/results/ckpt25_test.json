@@ -1,0 +1,15 @@
+{
+ "model": "CohereLabs/tiny-aya-global",
+ "adapter": "<DATA_ROOT>/train_run/run3/checkpoint-25",
+ "data": "<DATA_ROOT>/dataset_v3/data/test.jsonl",
+ "n": 60,
+ "seconds_per_score": 1.416,
+ "mae": 24.07,
+ "mae_if_always_5": 9.63,
+ "pearson": 0.407,
+ "auroc_drift_label": 0.83,
+ "trigger40_precision": 0.0,
+ "trigger40_recall": 0.0,
+ "mean_pred_on_course": 29.5,
+ "mean_pred_drift": 34.2
+}

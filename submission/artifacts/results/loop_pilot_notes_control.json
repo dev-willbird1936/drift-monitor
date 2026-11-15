@@ -1,0 +1,485 @@
+[
+ {
+  "task": "data-chart",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 50.99,
+  "shown": 20.29
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 45.44,
+  "shown": 16.37
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 30.61,
+  "shown": 24.52
+ },
+ {
+  "task": "data-chart",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 50.0,
+  "shown": 33.76
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 46.9,
+  "shown": 29.6
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 41.71,
+  "shown": 13.65
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 42.97,
+  "shown": 25.97
+ },
+ {
+  "task": "doc-project-brief",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 51.72,
+  "shown": 27.9
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 43.28,
+  "shown": 63.59
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 42.33,
+  "shown": 17.94
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 46.91,
+  "shown": 74.05
+ },
+ {
+  "task": "file-config",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 50.23,
+  "shown": 73.73
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_constraint",
+  "step": 5,
+  "hidden": 69.75,
+  "shown": 83.7
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_constraint",
+  "step": 3,
+  "hidden": 55.55,
+  "shown": 41.17
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 44.6,
+  "shown": 31.76
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 40.67,
+  "shown": 28.62
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_side",
+  "step": 5,
+  "hidden": 41.13,
+  "shown": 63.72
+ },
+ {
+  "task": "file-rename-photos",
+  "cond": "habit_side",
+  "step": 5,
+  "hidden": 25.59,
+  "shown": 48.41
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_constraint",
+  "step": 4,
+  "hidden": 40.91,
+  "shown": 39.74
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_constraint",
+  "step": 3,
+  "hidden": 53.7,
+  "shown": 67.49
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 37.56,
+  "shown": 33.77
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 45.64,
+  "shown": 39.61
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 37.17,
+  "shown": 23.47
+ },
+ {
+  "task": "game-guess",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 43.96,
+  "shown": 60.92
+ },
+ {
+  "task": "res-heatpump-answer",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 43.59,
+  "shown": 23.4
+ },
+ {
+  "task": "res-heatpump-answer",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 41.17,
+  "shown": 23.05
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 50.11,
+  "shown": 46.16
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 42.43,
+  "shown": 16.71
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 53.26,
+  "shown": 50.15
+ },
+ {
+  "task": "ro-dependency-audit",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 44.26,
+  "shown": 65.09
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_setup",
+  "step": 6,
+  "hidden": 48.98,
+  "shown": 57.46
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 43.99,
+  "shown": 24.76
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 39.54,
+  "shown": 51.39
+ },
+ {
+  "task": "ro-log-question",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 34.85,
+  "shown": 23.63
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 65.69,
+  "shown": 65.05
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_setup",
+  "step": 6,
+  "hidden": 58.75,
+  "shown": 34.45
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 49.9,
+  "shown": 55.47
+ },
+ {
+  "task": "sw-slugify",
+  "cond": "habit_side",
+  "step": 5,
+  "hidden": 46.88,
+  "shown": 33.79
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 50.54,
+  "shown": 33.55
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 43.61,
+  "shown": 32.64
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_side",
+  "step": 2,
+  "hidden": 47.97,
+  "shown": 67.5
+ },
+ {
+  "task": "web-landing",
+  "cond": "habit_side",
+  "step": 2,
+  "hidden": 51.36,
+  "shown": 57.43
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 36.3,
+  "shown": 32.81
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 44.97,
+  "shown": 40.75
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 44.04,
+  "shown": 37.32
+ },
+ {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 44.69,
+  "shown": 50.37
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "step": 5,
+  "hidden": 49.82,
+  "shown": 37.34
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "step": 6,
+  "hidden": 44.74,
+  "shown": 35.34
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "step": 5,
+  "hidden": 44.77,
+  "shown": 21.04
+ },
+ {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 37.94,
+  "shown": 34.21
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_constraint",
+  "step": 4,
+  "hidden": 72.59,
+  "shown": 83.11
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "step": 6,
+  "hidden": 61.7,
+  "shown": 55.28
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 45.07,
+  "shown": 32.44
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 52.01,
+  "shown": 46.11
+ },
+ {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 52.42,
+  "shown": 65.91
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "step": 3,
+  "hidden": 57.64,
+  "shown": 69.52
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "step": 3,
+  "hidden": 51.4,
+  "shown": 74.95
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 42.01,
+  "shown": 19.81
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 44.2,
+  "shown": 25.98
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 42.83,
+  "shown": 46.17
+ },
+ {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 38.57,
+  "shown": 14.0
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 72.5,
+  "shown": 47.65
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "step": 8,
+  "hidden": 62.78,
+  "shown": 20.16
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 43.81,
+  "shown": 39.11
+ },
+ {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "step": 4,
+  "hidden": 55.59,
+  "shown": 66.52
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "step": 3,
+  "hidden": 49.17,
+  "shown": 21.85
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "step": 4,
+  "hidden": 51.54,
+  "shown": 49.69
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 42.66,
+  "shown": 52.54
+ },
+ {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "step": 3,
+  "hidden": 47.3,
+  "shown": 72.34
+ }
+]

@@ -1,0 +1,24 @@
+[project]
+name = "drift-train"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch",
+    "transformers",
+    "peft",
+    "bitsandbytes",
+    "accelerate",
+    "huggingface_hub",
+    "datasets",
+    "numpy",
+    "scikit-learn",
+    "aligntune>=0.1.35",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true

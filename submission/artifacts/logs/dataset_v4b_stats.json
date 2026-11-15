@@ -1,0 +1,229 @@
+{
+ "sessions_synthetic": 5417,
+ "rows_total": 90365,
+ "recorded_train_share": 0.6,
+ "splits": {
+  "test_category": {
+   "rows": 8669,
+   "sessions": 674,
+   "drift_rows": 4534,
+   "digits": {
+    "0": 4655,
+    "1": 686,
+    "2": 122,
+    "3": 122,
+    "4": 293,
+    "5": 596,
+    "6": 881,
+    "7": 669,
+    "8": 331,
+    "9": 314
+   },
+   "tiers": {
+    "1": 517,
+    "2": 1049,
+    "3": 2140,
+    "4": 1066,
+    "5": 2480,
+    "6": 1417
+   }
+  },
+  "train": {
+   "rows": 62717,
+   "sessions": 5021,
+   "drift_rows": 27744,
+   "digits": {
+    "0": 35405,
+    "1": 5576,
+    "2": 1226,
+    "3": 1248,
+    "4": 2494,
+    "5": 3972,
+    "6": 5065,
+    "7": 4102,
+    "8": 1819,
+    "9": 1810
+   },
+   "tiers": {
+    "1": 4298,
+    "2": 8301,
+    "3": 12583,
+    "4": 8348,
+    "5": 18446,
+    "6": 10741
+   }
+  },
+  "val": {
+   "rows": 3685,
+   "sessions": 282,
+   "drift_rows": 2012,
+   "digits": {
+    "0": 1888,
+    "1": 329,
+    "2": 44,
+    "3": 38,
+    "4": 160,
+    "5": 268,
+    "6": 396,
+    "7": 316,
+    "8": 112,
+    "9": 134
+   },
+   "tiers": {
+    "1": 214,
+    "2": 424,
+    "3": 938,
+    "4": 468,
+    "5": 1073,
+    "6": 568
+   }
+  },
+  "test": {
+   "rows": 7391,
+   "sessions": 572,
+   "drift_rows": 3847,
+   "digits": {
+    "0": 3934,
+    "1": 650,
+    "2": 115,
+    "3": 109,
+    "4": 259,
+    "5": 493,
+    "6": 749,
+    "7": 568,
+    "8": 242,
+    "9": 272
+   },
+   "tiers": {
+    "1": 472,
+    "2": 903,
+    "3": 1830,
+    "4": 881,
+    "5": 2110,
+    "6": 1195
+   }
+  },
+  "test_recorded": {
+   "rows": 7903,
+   "sessions": 770,
+   "drift_rows": 1209,
+   "digits": {
+    "0": 5494,
+    "1": 624,
+    "2": 268,
+    "3": 308,
+    "4": 441,
+    "5": 300,
+    "6": 177,
+    "7": 103,
+    "8": 154,
+    "9": 34
+   },
+   "tiers": {
+    "1": 773,
+    "2": 1426,
+    "4": 1407,
+    "5": 2572,
+    "6": 1725
+   }
+  }
+ },
+ "train_by_mode": {
+  "legit_long": 2708,
+  "premature_done": 2565,
+  "clean": 2491,
+  "side_task": 2490,
+  "recover": 2457,
+  "loop": 2418,
+  "stuck": 2335,
+  "debug_progress": 2273,
+  "silent_shortfall": 2044,
+  "legit_partial": 2015,
+  "constraint_small": 1912,
+  "legit_recheck": 1876,
+  "unverified_claim": 1871,
+  "legit_setup": 1803,
+  "wrong_deliverable": 1759,
+  "quota_waste": 1744,
+  "legit_scope": 1739,
+  "scope_reduction": 1718,
+  "legit_lift": 1558,
+  "legit_change": 1494,
+  "stale": 1476,
+  "legit_stop": 1428,
+  "wrong_approach": 1225,
+  "legit_detour": 1191,
+  "injection_refused": 1186,
+  "legit_destructive": 1154,
+  "setup_excess": 1133,
+  "goal_switch": 1131,
+  "blocked_env": 1113,
+  "legit_loop": 1091,
+  "injection_obeyed": 1078,
+  "clarify": 1070,
+  "destructive": 952,
+  "constraint_large": 930,
+  "legit_verified": 657,
+  "habit_loop": 654,
+  "legit_complete": 632,
+  "habit_setup": 529,
+  "habit_side": 514,
+  "setup": 495,
+  "constraint": 476,
+  "habit_stale": 427,
+  "habit_constraint": 388,
+  "habit_done": 323,
+  "bait": 194
+ },
+ "train_by_category": {
+  "software": 5715,
+  "business-ops": 4768,
+  "writing": 4651,
+  "chat-advice": 3550,
+  "debug-prod": 3472,
+  "devops": 3390,
+  "docs-review": 3299,
+  "search-compare": 3195,
+  "scheduling": 2922,
+  "spreadsheet": 2800,
+  "comms-triage": 2731,
+  "automation": 2587,
+  "review-audit": 2494,
+  "data-eng": 2417,
+  "personal-admin": 2324,
+  "testing-qa": 2151,
+  "research": 1578,
+  "data": 1541,
+  "game": 1517,
+  "document": 1490,
+  "fileops": 1454,
+  "readonly": 1390,
+  "web": 1281
+ },
+ "train_by_band": {
+  "technical": 32477,
+  "consumer": 16642,
+  "knowledge": 13598
+ },
+ "train_by_agent_tier": {
+  "small": 21173,
+  "mid": 30938,
+  "frontier": 10606
+ },
+ "train_by_help": {
+  "no_help": 31530,
+  "clearly_help": 16009,
+  "marginal": 3334,
+  "None": 11844
+ },
+ "train_by_source": {
+  "synthetic": 50873,
+  "recorded": 11844
+ },
+ "prompt_chars_p99": 6284,
+ "synthetic_files_unreadable": [
+  "syn-32-00233.json",
+  "syn-32-00241.json",
+  "syn-43-00227.json"
+ ]
+}

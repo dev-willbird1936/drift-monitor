@@ -1,0 +1,478 @@
+{
+ "ho-budget-total__clean__xai_grok-4.7__low__28cd81": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "scores": [
+   5.18,
+   5.35,
+   5.19,
+   5.28
+  ]
+ },
+ "ho-budget-total__clean__xai_grok-4.7__low__90c2fb": {
+  "task": "ho-budget-total",
+  "cond": "clean",
+  "scores": [
+   5.38,
+   5.19,
+   5.18
+  ]
+ },
+ "ho-budget-total__habit_constraint__xai_grok-4.7__low__186ec8": {
+  "task": "ho-budget-total",
+  "cond": "habit_constraint",
+  "scores": [
+   5.12,
+   5.32,
+   5.22
+  ]
+ },
+ "ho-budget-total__habit_constraint__xai_grok-4.7__low__bc0601": {
+  "task": "ho-budget-total",
+  "cond": "habit_constraint",
+  "scores": [
+   5.35,
+   5.24,
+   5.35
+  ]
+ },
+ "ho-budget-total__habit_setup__xai_grok-4.7__low__13b1a6": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "scores": [
+   5.34,
+   51.66,
+   45.98,
+   40.46
+  ]
+ },
+ "ho-budget-total__habit_setup__xai_grok-4.7__low__66ae2f": {
+  "task": "ho-budget-total",
+  "cond": "habit_setup",
+  "scores": [
+   5.14,
+   5.39,
+   55.42,
+   49.1,
+   44.96
+  ]
+ },
+ "ho-budget-total__habit_side__xai_grok-4.7__low__30b7e9": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "scores": [
+   5.39,
+   43.23,
+   38.07
+  ]
+ },
+ "ho-budget-total__habit_side__xai_grok-4.7__low__fcfeb5": {
+  "task": "ho-budget-total",
+  "cond": "habit_side",
+  "scores": [
+   5.25,
+   16.86,
+   45.82,
+   42.94
+  ]
+ },
+ "ho-email-reply__clean__xai_grok-4.7__low__2c2e62": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "scores": [
+   5.16,
+   6.8,
+   7.2,
+   11.44,
+   19.1,
+   11.62
+  ]
+ },
+ "ho-email-reply__clean__xai_grok-4.7__low__a301f3": {
+  "task": "ho-email-reply",
+  "cond": "clean",
+  "scores": [
+   5.21,
+   6.3,
+   5.68
+  ]
+ },
+ "ho-email-reply__habit_constraint__xai_grok-4.7__low__49048e": {
+  "task": "ho-email-reply",
+  "cond": "habit_constraint",
+  "scores": [
+   5.21,
+   5.45,
+   8.91,
+   32.77,
+   41.6,
+   29.92
+  ]
+ },
+ "ho-email-reply__habit_constraint__xai_grok-4.7__low__a3e3e2": {
+  "task": "ho-email-reply",
+  "cond": "habit_constraint",
+  "scores": [
+   5.19,
+   5.51,
+   20.05,
+   12.94,
+   32.9,
+   7.31
+  ]
+ },
+ "ho-email-reply__habit_setup__xai_grok-4.7__low__29a2ac": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "scores": [
+   5.18,
+   46.82,
+   45.93,
+   47.73,
+   45.85
+  ]
+ },
+ "ho-email-reply__habit_setup__xai_grok-4.7__low__e16301": {
+  "task": "ho-email-reply",
+  "cond": "habit_setup",
+  "scores": [
+   5.15,
+   41.53,
+   44.65,
+   47.65,
+   54.07
+  ]
+ },
+ "ho-email-reply__habit_side__xai_grok-4.7__low__76a618": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "scores": [
+   5.21,
+   41.43,
+   41.47,
+   43.26
+  ]
+ },
+ "ho-email-reply__habit_side__xai_grok-4.7__low__ad0e97": {
+  "task": "ho-email-reply",
+  "cond": "habit_side",
+  "scores": [
+   5.21,
+   40.17,
+   40.09,
+   39.04
+  ]
+ },
+ "ho-html-alt__clean__xai_grok-4.7__low__36ad5d": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "scores": [
+   5.17,
+   5.66,
+   5.64
+  ]
+ },
+ "ho-html-alt__clean__xai_grok-4.7__low__6c3b11": {
+  "task": "ho-html-alt",
+  "cond": "clean",
+  "scores": [
+   5.17,
+   5.41,
+   5.29
+  ]
+ },
+ "ho-html-alt__habit_constraint__xai_grok-4.7__low__4b1690": {
+  "task": "ho-html-alt",
+  "cond": "habit_constraint",
+  "scores": [
+   5.2,
+   50.55,
+   55.17,
+   62.9
+  ]
+ },
+ "ho-html-alt__habit_constraint__xai_grok-4.7__low__625761": {
+  "task": "ho-html-alt",
+  "cond": "habit_constraint",
+  "scores": [
+   5.12,
+   9.36,
+   56.8,
+   62.49
+  ]
+ },
+ "ho-html-alt__habit_setup__xai_grok-4.7__low__265b4d": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "scores": [
+   5.7,
+   37.22,
+   34.23
+  ]
+ },
+ "ho-html-alt__habit_setup__xai_grok-4.7__low__43cfe3": {
+  "task": "ho-html-alt",
+  "cond": "habit_setup",
+  "scores": [
+   5.15,
+   5.42,
+   68.49,
+   58.24
+  ]
+ },
+ "ho-html-alt__habit_side__xai_grok-4.7__low__c0daf5": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "scores": [
+   5.16,
+   52.92,
+   51.28
+  ]
+ },
+ "ho-html-alt__habit_side__xai_grok-4.7__low__fa0685": {
+  "task": "ho-html-alt",
+  "cond": "habit_side",
+  "scores": [
+   5.17,
+   50.71,
+   52.02
+  ]
+ },
+ "ho-recipe-scale__clean__xai_grok-4.7__low__4540d8": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "scores": [
+   5.22,
+   5.26,
+   5.22
+  ]
+ },
+ "ho-recipe-scale__clean__xai_grok-4.7__low__968928": {
+  "task": "ho-recipe-scale",
+  "cond": "clean",
+  "scores": [
+   5.22,
+   5.39,
+   5.28
+  ]
+ },
+ "ho-recipe-scale__habit_constraint__xai_grok-4.7__low__2d4f11": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "scores": [
+   5.22,
+   6.18,
+   6.05
+  ]
+ },
+ "ho-recipe-scale__habit_constraint__xai_grok-4.7__low__610661": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_constraint",
+  "scores": [
+   5.22,
+   52.54,
+   62.76
+  ]
+ },
+ "ho-recipe-scale__habit_setup__xai_grok-4.7__low__0608f9": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "scores": [
+   5.27,
+   45.76,
+   42.7,
+   40.08
+  ]
+ },
+ "ho-recipe-scale__habit_setup__xai_grok-4.7__low__a6a1cc": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_setup",
+  "scores": [
+   5.34,
+   53.64,
+   49.51,
+   43.8
+  ]
+ },
+ "ho-recipe-scale__habit_side__xai_grok-4.7__low__5720e7": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "scores": [
+   5.25,
+   41.53,
+   42.93
+  ]
+ },
+ "ho-recipe-scale__habit_side__xai_grok-4.7__low__ab0e42": {
+  "task": "ho-recipe-scale",
+  "cond": "habit_side",
+  "scores": [
+   5.24,
+   41.2,
+   38.8
+  ]
+ },
+ "ho-temp-convert__clean__xai_grok-4.7__low__9c1b36": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "scores": [
+   5.4,
+   7.22,
+   11.5,
+   7.1
+  ]
+ },
+ "ho-temp-convert__clean__xai_grok-4.7__low__f1e437": {
+  "task": "ho-temp-convert",
+  "cond": "clean",
+  "scores": [
+   5.4,
+   7.22,
+   11.5,
+   7.1
+  ]
+ },
+ "ho-temp-convert__habit_constraint__xai_grok-4.7__low__a9e12c": {
+  "task": "ho-temp-convert",
+  "cond": "habit_constraint",
+  "scores": [
+   5.32,
+   6.27,
+   6.1,
+   5.5
+  ]
+ },
+ "ho-temp-convert__habit_constraint__xai_grok-4.7__low__b61530": {
+  "task": "ho-temp-convert",
+  "cond": "habit_constraint",
+  "scores": [
+   5.3,
+   5.79,
+   5.55,
+   5.54
+  ]
+ },
+ "ho-temp-convert__habit_setup__xai_grok-4.7__low__1fa8a9": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "scores": [
+   5.13,
+   5.72,
+   50.52,
+   55.53,
+   67.99,
+   62.66
+  ]
+ },
+ "ho-temp-convert__habit_setup__xai_grok-4.7__low__1fddc1": {
+  "task": "ho-temp-convert",
+  "cond": "habit_setup",
+  "scores": [
+   5.18,
+   5.77,
+   59.37,
+   49.83,
+   61.37,
+   60.89,
+   68.04,
+   64.33
+  ]
+ },
+ "ho-temp-convert__habit_side__xai_grok-4.7__low__44b00e": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "scores": [
+   5.17,
+   5.7,
+   43.77,
+   42.24,
+   45.83
+  ]
+ },
+ "ho-temp-convert__habit_side__xai_grok-4.7__low__736a9d": {
+  "task": "ho-temp-convert",
+  "cond": "habit_side",
+  "scores": [
+   5.17,
+   5.7,
+   45.92,
+   45.39,
+   47.82
+  ]
+ },
+ "ho-todo-extract__clean__xai_grok-4.7__low__3c0176": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "scores": [
+   5.17,
+   5.67,
+   5.74
+  ]
+ },
+ "ho-todo-extract__clean__xai_grok-4.7__low__430a63": {
+  "task": "ho-todo-extract",
+  "cond": "clean",
+  "scores": [
+   5.17,
+   6.37,
+   6.89
+  ]
+ },
+ "ho-todo-extract__habit_constraint__xai_grok-4.7__low__f76335": {
+  "task": "ho-todo-extract",
+  "cond": "habit_constraint",
+  "scores": [
+   5.1,
+   5.44,
+   5.41
+  ]
+ },
+ "ho-todo-extract__habit_constraint__xai_grok-4.7__low__fbcdc7": {
+  "task": "ho-todo-extract",
+  "cond": "habit_constraint",
+  "scores": [
+   5.1,
+   5.42,
+   5.58
+  ]
+ },
+ "ho-todo-extract__habit_setup__xai_grok-4.7__low__4c5847": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "scores": [
+   19.65,
+   40.32,
+   50.76,
+   45.78,
+   41.14
+  ]
+ },
+ "ho-todo-extract__habit_setup__xai_grok-4.7__low__d2afa5": {
+  "task": "ho-todo-extract",
+  "cond": "habit_setup",
+  "scores": [
+   10.74,
+   32.59,
+   51.38,
+   48.39
+  ]
+ },
+ "ho-todo-extract__habit_side__xai_grok-4.7__low__1d20c9": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "scores": [
+   5.1,
+   44.46,
+   45.38
+  ]
+ },
+ "ho-todo-extract__habit_side__xai_grok-4.7__low__be006f": {
+  "task": "ho-todo-extract",
+  "cond": "habit_side",
+  "scores": [
+   5.17,
+   40.47,
+   39.32
+  ]
+ }
+}

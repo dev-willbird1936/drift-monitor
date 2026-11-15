@@ -1,0 +1,152 @@
+{
+ "seen": {
+  "n_sessions": 160,
+  "tasks": 10,
+  "induced_n_per_arm": 60,
+  "extra_none": 2.5,
+  "extra_monitor": 0.0,
+  "extra_diff_ci": [
+   -3.167,
+   -1.867
+  ],
+  "any_extra_none": 0.617,
+  "any_extra_monitor": 0.0,
+  "check_none": 0.8,
+  "check_monitor": 0.983,
+  "check_diff_ci": [
+   0.083,
+   0.3
+  ],
+  "turns": [
+   3.8,
+   5.8
+  ],
+  "seconds": [
+   24.0,
+   35.0
+  ],
+  "advisor_calls_per_induced": 1.33,
+  "advisor_calls_total": 80,
+  "no_action_total": 16,
+  "induced_sessions_alerted": "42/60",
+  "clean_n_per_arm": 20,
+  "clean_live_sessions_alerted": 0,
+  "clean_live_advisor_calls": 0,
+  "clean_live_no_action": 0,
+  "clean_live_notes_sent": 0,
+  "clean_check": [
+   1.0,
+   1.0
+  ],
+  "replay_thr30": {
+   "bad_caught": "40/41",
+   "good_flagged": "5/39",
+   "clean_flagged": "1/20"
+  },
+  "replay_thr40": {
+   "bad_caught": "36/41",
+   "good_flagged": "3/39",
+   "clean_flagged": "0/20"
+  }
+ },
+ "unseen": {
+  "n_sessions": 96,
+  "tasks": 6,
+  "induced_n_per_arm": 36,
+  "extra_none": 2.44,
+  "extra_monitor": 0.0,
+  "extra_diff_ci": [
+   -3.25,
+   -1.667
+  ],
+  "any_extra_none": 0.639,
+  "any_extra_monitor": 0.0,
+  "check_none": 0.917,
+  "check_monitor": 1.0,
+  "check_diff_ci": [
+   0.0,
+   0.194
+  ],
+  "turns": [
+   4.1,
+   6.0
+  ],
+  "seconds": [
+   22.0,
+   32.0
+  ],
+  "advisor_calls_per_induced": 1.47,
+  "advisor_calls_total": 55,
+  "no_action_total": 13,
+  "induced_sessions_alerted": "28/36",
+  "clean_n_per_arm": 12,
+  "clean_live_sessions_alerted": 2,
+  "clean_live_advisor_calls": 2,
+  "clean_live_no_action": 2,
+  "clean_live_notes_sent": 0,
+  "clean_check": [
+   1.0,
+   1.0
+  ],
+  "replay_thr30": {
+   "bad_caught": "26/26",
+   "good_flagged": "3/22",
+   "clean_flagged": "0/12"
+  },
+  "replay_thr40": {
+   "bad_caught": "26/26",
+   "good_flagged": "1/22",
+   "clean_flagged": "0/12"
+  }
+ },
+ "pooled": {
+  "n_sessions": 256,
+  "tasks": 16,
+  "induced_n_per_arm": 96,
+  "extra_none": 2.48,
+  "extra_monitor": 0.0,
+  "extra_diff_ci": [
+   -2.99,
+   -1.99
+  ],
+  "any_extra_none": 0.625,
+  "any_extra_monitor": 0.0,
+  "check_none": 0.844,
+  "check_monitor": 0.99,
+  "check_diff_ci": [
+   0.073,
+   0.219
+  ],
+  "turns": [
+   3.9,
+   5.9
+  ],
+  "seconds": [
+   23.0,
+   34.0
+  ],
+  "advisor_calls_per_induced": 1.39,
+  "advisor_calls_total": 135,
+  "no_action_total": 29,
+  "induced_sessions_alerted": "70/96",
+  "clean_n_per_arm": 32,
+  "clean_live_sessions_alerted": 2,
+  "clean_live_advisor_calls": 2,
+  "clean_live_no_action": 2,
+  "clean_live_notes_sent": 0,
+  "clean_check": [
+   1.0,
+   1.0
+  ],
+  "replay_thr30": {
+   "bad_caught": "66/67",
+   "good_flagged": "8/61",
+   "clean_flagged": "1/32"
+  },
+  "replay_thr40": {
+   "bad_caught": "62/67",
+   "good_flagged": "4/61",
+   "clean_flagged": "0/32"
+  }
+ }
+}

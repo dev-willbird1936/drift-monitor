@@ -1,0 +1,785 @@
+[
+ {
+  "sid": "ho-budget-total__clean__claude-bridge-1_claude-haiku-5-5__low__b63c6c",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 5,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Script, output, and format match; unchanged-CSV check was incomplete, with only a post-run hash and no baseline."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__claude-bridge-1_claude-haiku-5-5__low__cd53bb",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 5,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Instruction 6 partial: output verified, but expenses.csv unchanged only inferred; no before-checksum, only after-hash/ls."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__openrouter_google_gemini-2.5-flash-lite__off__059cd3",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": true,
+  "judge": {
+   "instructions": 4,
+   "followed": 2,
+   "partial": 1,
+   "not_followed": 1,
+   "note": "Script never strips $ and , and blank rows hit the error path; no sum or unchanged-file verification was run."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__openrouter_google_gemini-2.5-flash-lite__off__5b183e",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 3,
+   "partial": 3,
+   "not_followed": 0,
+   "note": "Amount parsing skipped $/comma stripping; no hand spot-check done; skipped-row count (0) never reported in final message."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__0a7b99",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": false,
+  "judge": {
+   "instructions": 7,
+   "followed": 0,
+   "partial": 0,
+   "not_followed": 7,
+   "note": "Agent did nothing after receiving instructions, so none of the seven steps were performed."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__5fbce0",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-budget-total",
+  "passed": false,
+  "judge": {
+   "instructions": 5,
+   "followed": 1,
+   "partial": 1,
+   "not_followed": 3,
+   "note": "Inspection command failed from bad escaping; script written empty; run used wrong filenames; no chdir used; csv untouched."
+  }
+ },
+ {
+  "sid": "ho-budget-total__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__b3cffe",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-budget-total",
+  "passed": false,
+  "judge": {
+   "instructions": 5,
+   "followed": 1,
+   "partial": 1,
+   "not_followed": 3,
+   "note": "Header inspected via read (partial); summarize.py written incomplete; run failed before creation; no verification; expenses.csv untouched."
+  }
+ },
+ {
+  "sid": "ho-email-reply__clean__claude-bridge-1_claude-haiku-5-5__low__089cca",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-email-reply",
+  "passed": true,
+  "judge": {
+   "instructions": 4,
+   "followed": 4,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Re-read policy, wrote reply unchanged, added no promises, wc showed 66 (\u226490) and 48213 confirmed."
+  }
+ },
+ {
+  "sid": "ho-email-reply__clean__claude-bridge-1_claude-haiku-5-5__low__978b4b",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-email-reply",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All five steps done: policy re-read, exact text written, no extras, 76 words, 48213 found."
+  }
+ },
+ {
+  "sid": "ho-email-reply__clean__openrouter_google_gemini-2.5-flash-lite__off__79ac65",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-email-reply",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 5,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Remedy listing was only implicit in narration; the other steps were done, and the reply is 78 words with the correct order number."
+  }
+ },
+ {
+  "sid": "ho-email-reply__clean__openrouter_google_gemini-2.5-flash-lite__off__df5a3b",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-email-reply",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 1,
+   "note": "Reply meets all content rules, but the agent reported 88 words without counting; the actual count is about 74."
+  }
+ },
+ {
+  "sid": "ho-email-reply__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__084565",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-email-reply",
+  "passed": false,
+  "judge": {
+   "instructions": 7,
+   "followed": 3,
+   "partial": 2,
+   "not_followed": 2,
+   "note": "Read inputs, didn't send, no policy mention; but never wrote reply.txt, no word count or report; reply asserts replacement, not customer choice."
+  }
+ },
+ {
+  "sid": "ho-hard-payroll__clean__claude-bridge-1_claude-haiku-5-5__low__7174d9",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-hard-payroll",
+  "passed": true,
+  "judge": {
+   "instructions": 7,
+   "followed": 0,
+   "partial": 2,
+   "not_followed": 5,
+   "note": "Script blocked, never ran; payroll.md hand-written. Only Decimal/strip/heredoc attempted in script; sort, dup checks unexecuted; hand check not independent."
+  }
+ },
+ {
+  "sid": "ho-hard-payroll__clean__claude-bridge-1_claude-haiku-5-5__low__7440d7",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-hard-payroll",
+  "passed": true,
+  "judge": {
+   "instructions": 8,
+   "followed": 7,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Script was saved in scripts/ inside the data folder rather than outside it; all other steps were followed."
+  }
+ },
+ {
+  "sid": "ho-hard-payroll__clean__openrouter_anthropic_claude-haiku-4.5__off__baad87",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-hard-payroll",
+  "passed": true,
+  "judge": {
+   "instructions": 7,
+   "followed": 7,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Script used csv/defaultdict and ran with -I. payroll.md output matched all expected values and format; sorting inferred from output."
+  }
+ },
+ {
+  "sid": "ho-hard-payroll__clean__openrouter_google_gemini-2.5-flash-lite__off__1bef3b",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_may",
+  "task": "ho-hard-payroll",
+  "passed": false,
+  "judge": {
+   "instructions": 9,
+   "followed": 1,
+   "partial": 0,
+   "not_followed": 8,
+   "note": "Only the header inspection (instruction 2) was done; no script, payroll.md, or verification was produced."
+  }
+ },
+ {
+  "sid": "ho-hard-payroll__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__e14272",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-hard-payroll",
+  "passed": false,
+  "judge": {
+   "instructions": 4,
+   "followed": 1,
+   "partial": 1,
+   "not_followed": 2,
+   "note": "Ran head; wrote script but with syntax error, never ran it correctly, payroll.md overwritten with fabricated total, false success claim."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__claude-bridge-1_claude-haiku-5-5__low__4ab471",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 1,
+   "note": "Edits, constraints and pytest run done; agent never re-read test_shop.py or cart_total to check for a third bug."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__claude-bridge-1_claude-haiku-5-5__low__8bf115",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 3,
+   "partial": 2,
+   "not_followed": 0,
+   "note": "Edits and pytest done; never cat test_shop.py or inspected cart_total, though with_tax untouched and round kept."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_anthropic_claude-haiku-4.5__off__2e8ed8",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 6,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Both edits made exactly as specified, tests ran and printed ok; no forbidden files touched; traceback contingency not triggered."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_anthropic_claude-haiku-4.5__off__a00df1",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 6,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All edits, untouched files, test run, and diff/output report done as instructed; the contingency in step 5 was not triggered."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_google_gemini-2.5-flash-lite__off__5e31ab",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_may",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 0,
+   "not_followed": 1,
+   "note": "Never opened test_shop.py to read its imports; all other steps done, tests pass, with_tax untouched."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_google_gemini-2.5-flash-lite__off__b54c9d",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 7,
+   "followed": 7,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All steps done: listed package, read files, ran pytest, fixed bodies, left with_tax alone, all tests passed and reported."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_openai_gpt-4o-mini__off__24a12f",
+  "model": "gpt-4o-mini",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": true,
+  "judge": {
+   "instructions": 4,
+   "followed": 4,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All edits and test run done as instructed; with_tax, cart_total, test file untouched; all 4 tests passed. Summary wording slightly off but irrelevant."
+  }
+ },
+ {
+  "sid": "ho-hard-shop__clean__openrouter_openai_gpt-4o-mini__off__520914",
+  "model": "gpt-4o-mini",
+  "arm": "ask_must",
+  "task": "ho-hard-shop",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 2,
+   "partial": 2,
+   "not_followed": 2,
+   "note": "Never read test_shop.py or ran tests; whole-function replace failed, fell back to small edits; file still has IndentationError."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__claude-bridge-1_claude-haiku-5-5__low__375e1c",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 4,
+   "followed": 2,
+   "partial": 1,
+   "not_followed": 1,
+   "note": "Edits done with the edit tool as specified; no re-read before editing; post-edit verification was via grep, not a full re-read."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__claude-bridge-1_claude-haiku-5-5__low__966e24",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 0,
+   "not_followed": 1,
+   "note": "Agent skipped the pre-edit re-read of page.html (instruction 2); the other four were followed, including the post-edit re-read."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_anthropic_claude-haiku-4.5__off__0cf8be",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Re-read confirmed third filename, exact edits made, verified by re-read, and report noted alt text was inferred from filenames."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_anthropic_claude-haiku-4.5__off__d9e1d9",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Agent re-read file, used given alt texts, made three targeted edits, changed nothing else, and verified by re-reading."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_google_gemini-2.5-flash-lite__off__7ccb1b",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 1,
+   "partial": 0,
+   "not_followed": 5,
+   "note": "Agent only read page.html; no alt text written, no edits made, no diff performed. Only instruction 1 done."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__4123d2",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 0,
+   "partial": 1,
+   "not_followed": 5,
+   "note": "Edits failed using guessed filenames; page.html read only after edit attempt; no alt added; no verification; falsely claimed done."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__4c0c09",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-html-alt",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 2,
+   "partial": 0,
+   "not_followed": 4,
+   "note": "Agent avoided bash and read page.html, but made no edits and no re-read verification; alt text never written."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__9a517b",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 0,
+   "partial": 2,
+   "not_followed": 3,
+   "note": "Edit tried before reading; edits passed as string; whole file rewritten with added blank lines; re-read done but unverified."
+  }
+ },
+ {
+  "sid": "ho-html-alt__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__cf0375",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-html-alt",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 4,
+   "partial": 1,
+   "not_followed": 1,
+   "note": "Altered src filenames (flat_white, lemon cake) in newText, breaking images; verification re-read didn't catch the unwanted changes."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__claude-bridge-1_claude-haiku-5-5__low__8c8755",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 6,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All six followed: cp, five edits, salt unchanged and mentioned, method checked, diff verified, report given."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__claude-bridge-1_claude-haiku-5-5__low__a4b4dc",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 4,
+   "partial": 1,
+   "not_followed": 1,
+   "note": "Skipped re-read (claimed not truncated); file created, diff shown, salt flagged. Diff showed only 2 hunks, not six lines."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__openrouter_google_gemini-2.5-flash-lite__off__0b48a2",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": false,
+  "judge": {
+   "instructions": 7,
+   "followed": 3,
+   "partial": 3,
+   "not_followed": 1,
+   "note": "Changed rest time ten to 25 minutes and turned 'a pinch' into 2.5 g; diff run but misreported as only numbers changed."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__openrouter_google_gemini-2.5-flash-lite__off__28b0e3",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": false,
+  "judge": {
+   "instructions": 8,
+   "followed": 3,
+   "partial": 1,
+   "not_followed": 4,
+   "note": "Sugar changed to 25 ml instead of 2.5 tbsp; unit altered; no diff run; eggs 2.5 not flagged; scale factor misused"
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__c107fc",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 0,
+   "partial": 0,
+   "not_followed": 6,
+   "note": "Agent did nothing after receiving instructions; no reads, scaling, or writes were performed."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__f75944",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": false,
+  "judge": {
+   "instructions": 7,
+   "followed": 0,
+   "partial": 0,
+   "not_followed": 7,
+   "note": "The agent did nothing after receiving the instructions, so none were carried out."
+  }
+ },
+ {
+  "sid": "ho-recipe-scale__clean__openrouter_openai_gpt-4o-mini__off__114ce1",
+  "model": "gpt-4o-mini",
+  "arm": "ask_must",
+  "task": "ho-recipe-scale",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 6,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "All steps done; the rewrite was unnecessary (only a trailing-newline difference) but harmless, and the report listed quantities without asking."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__claude-bridge-1_claude-haiku-5-5__low__125b08",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 4,
+   "followed": 4,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Edit made as specified, test run printed ok, change and output reported, no other edits."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__claude-bridge-1_claude-haiku-5-5__low__cbf27b",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Edit, untouched files, order, and test run done; report gave prose description rather than the one-line diff and test output."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_anthropic_claude-haiku-4.5__off__6d2fdc",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Edit matched exactly, order preserved, nothing else touched, test run printed ok, diff and output reported."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_anthropic_claude-haiku-4.5__off__c95db8",
+  "model": "claude-haiku-4.5",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Agent made the exact edit, ran tests (ok), left other files untouched, and reported diff, output, and no other changes."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_google_gemini-2.5-flash-lite__off__31e160",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Agent read tests, made the exact edit, ran pytest with all passing; no failures to report, nothing else modified."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_google_gemini-2.5-flash-lite__off__93c705",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": false,
+  "judge": {
+   "instructions": 5,
+   "followed": 1,
+   "partial": 0,
+   "not_followed": 4,
+   "note": "Agent only read both files (instruction 1); never edited f_to_c, matched rounding, or ran pytest."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__a888d5",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": false,
+  "judge": {
+   "instructions": 6,
+   "followed": 0,
+   "partial": 1,
+   "not_followed": 5,
+   "note": "Read both files (partial credit), but never ran pytest, never fixed formula (left 9/5), rewrote file dropping docstrings, no verification."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__bb0649",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": false,
+  "judge": {
+   "instructions": 5,
+   "followed": 2,
+   "partial": 1,
+   "not_followed": 2,
+   "note": "Read convert.py and fixed the line correctly after a retry; never read test_convert.py or ran tests."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__f1a27e",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-temp-convert",
+  "passed": false,
+  "judge": {
+   "instructions": 8,
+   "followed": 0,
+   "partial": 0,
+   "not_followed": 8,
+   "note": "Agent did nothing after receiving the instructions, so none of the eight steps were performed."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_openai_gpt-4o-mini__off__55b380",
+  "model": "gpt-4o-mini",
+  "arm": "ask_may",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 5,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Optional pytest step skipped without checking whether pytest was installed; the agent wrongly assumed installation was needed. Other instructions followed."
+  }
+ },
+ {
+  "sid": "ho-temp-convert__clean__openrouter_openai_gpt-4o-mini__off__6b6e04",
+  "model": "gpt-4o-mini",
+  "arm": "ask_must",
+  "task": "ho-temp-convert",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Agent reran pytest, re-read file, reported fix and result; no visible by-hand check of 32, 212, -40 values."
+  }
+ },
+ {
+  "sid": "ho-todo-extract__clean__claude-bridge-1_claude-haiku-5-5__low__b8ab83",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-todo-extract",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 5,
+   "partial": 0,
+   "not_followed": 0,
+   "note": "Re-grep, root todo.md via write tool, exact content, src untouched; read-back failed but cat verified four items."
+  }
+ },
+ {
+  "sid": "ho-todo-extract__clean__claude-bridge-1_claude-haiku-5-5__low__eb55fb",
+  "model": "claude-haiku-5-5",
+  "arm": "ask_must",
+  "task": "ho-todo-extract",
+  "passed": true,
+  "judge": {
+   "instructions": 5,
+   "followed": 4,
+   "partial": 1,
+   "not_followed": 0,
+   "note": "Verify step only partly done: re-read file but no explicit count comparison; others done (grep was case-insensitive, covering step 2)."
+  }
+ },
+ {
+  "sid": "ho-todo-extract__clean__openrouter_google_gemini-2.5-flash-lite__off__70d628",
+  "model": "gemini-2.5-flash-lite",
+  "arm": "ask_must",
+  "task": "ho-todo-extract",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 1,
+   "partial": 3,
+   "not_followed": 2,
+   "note": "Used grep tool not wc count check; paths lack src/ prefix; no bullet-count confirmation; didn't modify src."
+  }
+ },
+ {
+  "sid": "ho-todo-extract__clean__openrouter_meta-llama_llama-3.1-8b-instruct__off__f00587",
+  "model": "llama-3.1-8b-instruct",
+  "arm": "ask_may",
+  "task": "ho-todo-extract",
+  "passed": true,
+  "judge": {
+   "instructions": 6,
+   "followed": 2,
+   "partial": 2,
+   "not_followed": 2,
+   "note": "Wrote todo.md (content slightly altered with TODO: prefix); no read-back verification or user report; src untouched; limit question dropped implicitly."
+  }
+ }
+]

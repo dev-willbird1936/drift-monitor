@@ -1,0 +1,120 @@
+{
+ "train": {
+  "rows_in": 14000,
+  "stage_counts": {
+   "JSONLReader": {
+    "output_count": 14000,
+    "rejected_count": 0
+   },
+   "SchemaGate": {
+    "input_count": 14000,
+    "output_count": 14000,
+    "probe_recovered": 0,
+    "rejected_count": 0
+   },
+   "ExactDeduplicator": {
+    "input_count": 14000,
+    "output_count": 13970
+   },
+   "MinHashDeduplicator": {
+    "input_count": 13970,
+    "output_count": 13803
+   },
+   "TextCleaner": {
+    "input_count": 13803,
+    "output_count": 13803
+   },
+   "SecretsGate": {
+    "input_count": 13803,
+    "output_count": 13566,
+    "probe_recovered": 0,
+    "rejected_count": 237
+   },
+   "AlpacaExporter": {
+    "exported_count": 13566
+   }
+  },
+  "rejected": 237,
+  "reasons": [
+   [
+    "secret_detected:Hex High Entropy String",
+    108
+   ],
+   [
+    "secret_detected:Base64 High Entropy String",
+    45
+   ],
+   [
+    "secret_detected:Basic Auth Credentials",
+    39
+   ],
+   [
+    "secret_detected:Base64 High Entropy String,Hex High Entropy String",
+    24
+   ],
+   [
+    "secret_detected:Base64 High Entropy String,Basic Auth Credentials",
+    12
+   ],
+   [
+    "secret_detected:Base64 High Entropy String,Basic Auth Credentials,Hex High Entro",
+    4
+   ],
+   [
+    "secret_detected:Base64 High Entropy String,Hex High Entropy String,Slack Token",
+    4
+   ],
+   [
+    "secret_detected:Base64 High Entropy String,Stripe Access Key",
+    1
+   ]
+  ]
+ },
+ "val": {
+  "rows_in": 600,
+  "stage_counts": {
+   "JSONLReader": {
+    "output_count": 600,
+    "rejected_count": 0
+   },
+   "SchemaGate": {
+    "input_count": 600,
+    "output_count": 600,
+    "probe_recovered": 0,
+    "rejected_count": 0
+   },
+   "ExactDeduplicator": {
+    "input_count": 600,
+    "output_count": 600
+   },
+   "MinHashDeduplicator": {
+    "input_count": 600,
+    "output_count": 596
+   },
+   "TextCleaner": {
+    "input_count": 596,
+    "output_count": 596
+   },
+   "SecretsGate": {
+    "input_count": 596,
+    "output_count": 590,
+    "probe_recovered": 0,
+    "rejected_count": 6
+   },
+   "AlpacaExporter": {
+    "exported_count": 590
+   }
+  },
+  "rejected": 6,
+  "reasons": [
+   [
+    "secret_detected:Basic Auth Credentials",
+    5
+   ],
+   [
+    "secret_detected:Hex High Entropy String",
+    1
+   ]
+  ]
+ }
+}

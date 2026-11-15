@@ -1,0 +1,134 @@
+{
+ "workload": {
+  "steps_per_month": 1000000.0,
+  "prompt_tokens": 694.0,
+  "output_tokens": 1
+ },
+ "measured": {
+  "ms_per_score_batched": 131.9,
+  "ms_per_score_single": 308.8,
+  "scores_per_sec": 7.58,
+  "prompt_tokens_per_sec": 5262,
+  "vram_gb": 2.66,
+  "gpu": "RTX 3080 12GB for latency, A100 40GB for training"
+ },
+ "self_hosted": {
+  "gpu_hourly": 0.473,
+  "gpu_hours_per_month": 36.64,
+  "serving_monthly_usd": 17.33,
+  "one_off_training_usd": 5.2,
+  "cost_per_1000_steps_usd": 0.01733
+ },
+ "closed_model_sensitivity": [
+  {
+   "price_per_mtok_input": 0.1,
+   "closed_monthly": 69.4,
+   "ratio_vs_self_hosted": 4.0,
+   "saving_fraction": 0.7503
+  },
+  {
+   "price_per_mtok_input": 0.25,
+   "closed_monthly": 173.5,
+   "ratio_vs_self_hosted": 10.0,
+   "saving_fraction": 0.9001
+  },
+  {
+   "price_per_mtok_input": 0.5,
+   "closed_monthly": 347.0,
+   "ratio_vs_self_hosted": 20.0,
+   "saving_fraction": 0.9501
+  },
+  {
+   "price_per_mtok_input": 1.0,
+   "closed_monthly": 694.0,
+   "ratio_vs_self_hosted": 40.0,
+   "saving_fraction": 0.975
+  },
+  {
+   "price_per_mtok_input": 2.5,
+   "closed_monthly": 1735.0,
+   "ratio_vs_self_hosted": 100.1,
+   "saving_fraction": 0.99
+  },
+  {
+   "price_per_mtok_input": 5.0,
+   "closed_monthly": 3470.0,
+   "ratio_vs_self_hosted": 200.2,
+   "saving_fraction": 0.995
+  },
+  {
+   "price_per_mtok_input": 10.0,
+   "closed_monthly": 6940.0,
+   "ratio_vs_self_hosted": 400.5,
+   "saving_fraction": 0.9975
+  },
+  {
+   "price_per_mtok_input": 15.0,
+   "closed_monthly": 10410.0,
+   "ratio_vs_self_hosted": 600.7,
+   "saving_fraction": 0.9983
+  }
+ ],
+ "total_system_cost": [
+  {
+   "price_per_mtok": 0.25,
+   "review_every_step": 173.5,
+   "total_at_threshold_40": 47.17,
+   "total_at_threshold_30": 61.92,
+   "saving_vs_every_step": 0.7281
+  },
+  {
+   "price_per_mtok": 2.5,
+   "review_every_step": 1735.0,
+   "total_at_threshold_40": 315.75,
+   "total_at_threshold_30": 463.23,
+   "saving_vs_every_step": 0.818
+  },
+  {
+   "price_per_mtok": 10.0,
+   "review_every_step": 6940.0,
+   "total_at_threshold_40": 1211.01,
+   "total_at_threshold_30": 1800.91,
+   "saving_vs_every_step": 0.8255
+  }
+ ],
+ "breakeven_input_price_per_mtok": 0.02497,
+ "advisor_gating": [
+  {
+   "policy": "always on",
+   "alert_rate": 1.0,
+   "calls": 1000000,
+   "cost_at_2_50": 1735.0,
+   "cost_at_10": 6940.0
+  },
+  {
+   "policy": "threshold 40",
+   "alert_rate": 0.172,
+   "calls": 172000,
+   "cost_at_2_50": 298.42,
+   "cost_at_10": 1193.68
+  },
+  {
+   "policy": "threshold 30",
+   "alert_rate": 0.257,
+   "calls": 257000,
+   "cost_at_2_50": 445.89,
+   "cost_at_10": 1783.58
+  },
+  {
+   "policy": "never",
+   "alert_rate": 0.0,
+   "calls": 0,
+   "cost_at_2_50": 0.0,
+   "cost_at_10": 0.0
+  }
+ ],
+ "caveats": [
+  "Closed-model prices are a sensitivity range, not a quote; check current rate cards.",
+  "Input tokens only are charged to the closed model, which favours it.",
+  "Self-hosted serving assumes the GPU is busy; a partly idle GPU costs the same per hour.",
+  "The monitor rations advisor calls rather than removing them; total system cost includes both.",
+  "Interactive single-step latency is 309 ms; 132 ms per score is the batch-8 figure.",
+  "Throughput measured on a consumer RTX 3080; a datacentre GPU is faster per dollar."
+ ]
+}

@@ -155,6 +155,7 @@ details summary{cursor:pointer;color:var(--mute)}
         <div class="card"><svg id="lchart" viewBox="0 0 640 230"></svg></div>
       </div>
     </div>
+    <p class="foot"><b>A note on this demo:</b> a short sandbox task is not where the monitor pays off. Its value is in real agent work, with long sessions and many steps, where having a strong model review every step costs too much: the monitor watches every step cheaply and calls the advisor only when the work starts to drift, so you get most of the oversight for a fraction of the usage and cost.</p>
     <p class="foot">While the agent is thinking, the monitor scores the reasoning streamed so far up to twice a step (hollow dots); when a step finishes it scores the whole step (solid dots). The scoring model runs on a separate backend; the agent and the advisor run on the demo's shared OpenRouter key (held by that backend, never sent to this page) or on your own key if you paste one. Once the advisor has written a note, the monitor reads it as a later instruction, so the repair it asks for is not counted as new drift.</p>
   </section>
   <p class="foot">__LINKS__</p>

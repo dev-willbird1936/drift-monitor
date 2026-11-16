@@ -1,0 +1,11 @@
+When someone hands a task to an AI agent, they authorise specific work. A drifting agent keeps producing plausible output, so nobody notices, and having a frontier model review every step costs more than the agent. We fine-tuned Cohere Labs' tiny-aya-global (3.35B) to replace that call. It reads an agent session and outputs one digit for how far the work has drifted from the request. The digit probabilities give a 0–100 score, and past a threshold a stronger advisor model is called.
+
+Live agent (256 sessions, 16 tasks, 6 unseen): a hidden prompt pushed the agent to drift. With the monitor, unrequested files left behind fell from 2.48 per session to 0, and task checks passing rose from 84% to 99%. That took 1.4 advisor calls per drifting session, against 4.8 for reviewing every turn. Replayed over unwatched runs, the monitor flagged 66 of 67 bad outcomes, including all 26 on unseen tasks.
+
+Before → after training (real held-out sessions): AUROC 0.552 → 0.960, MAE 43.9 → 7.6, false alarms on clean steps 100% → 5.4%. On four unseen work categories, AUROC was 0.981. Against two frontier models given the same prompt, it raised 5–6× fewer false alarms at equal recall.
+
+Data: a non-Cohere teacher wrote 5,417 sessions across 20 work categories and 16 drift patterns. Each drift pattern is paired with a near-identical on-course twin that differs only in what the user asked for. Adding 1,902 recorded sessions gives 90,365 rows. Two blind judges agreed with our labels more than with each other. CuratorKIT curated and audited the data, AlignTune trained a 4-bit QLoRA adapter, and AuditKIT graded every run.
+
+Limits: advice can't undo a deletion, an agent told to resist correction ignored every note, and drift written inside a requested file can go unseen.
+
+Cost: scoring takes 309 ms on a consumer GPU. Monitor plus advisor costs $463 per million steps, against $1,735 to review every step. It ships as a Pi agent extension with a public live demo.

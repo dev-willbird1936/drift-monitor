@@ -468,17 +468,38 @@ async function gradioCall(api, data, signal) {
   return JSON.parse(m[2])[0];
 }
 let monOnline = null;
+const SCORER_PAGE = SCORER.includes('dev-willbird1936-drift-monitor-scorer') ? 'https://huggingface.co/spaces/dev-willbird1936/drift-monitor-scorer' : SCORER;
+let waking = null;
+async function pingMonitor() {
+  try { const r = await fetch(`${SCORER}/gradio_api/info`, { cache: 'no-store' }); return r.ok; } catch { return false; }
+}
+/* The scoring Space sleeps after two idle days. A request wakes it; keep retrying for up to 5 minutes while it starts. */
+function wakeMonitor() {
+  if (waking) return waking;
+  waking = (async () => {
+    for (let i = 0; i < 30; i++) {
+      if (await pingMonitor()) return true;
+      const el = $('mon');
+      el.textContent = 'waking the monitor'; el.className = 'pill b-warn';
+      $('cost').innerHTML = `The scoring Space was asleep and is starting up, which takes a minute or two. This page retries by itself; opening <a href="${SCORER_PAGE}" target="_blank" rel="noopener">the scoring Space</a> also wakes it. The replays work meanwhile.`;
+      await new Promise(r => setTimeout(r, 10000));
+    }
+    return false;
+  })().finally(() => { waking = null; });
+  return waking;
+}
 async function checkMonitor() {
   const el = $('mon');
-  try { const r = await fetch(`${SCORER}/gradio_api/info`, { cache: 'no-store' }); monOnline = r.ok; } catch { monOnline = false; }
+  monOnline = await wakeMonitor();
   el.textContent = monOnline ? 'monitor online' : 'monitor offline';
   el.className = 'pill ' + (monOnline ? 'b-ok' : 'b-bad');
   el.title = monOnline ? SCORER : 'The scoring model is not reachable right now, so live runs are unavailable. The replays still work.';
-  if (!monOnline) $('cost').textContent = 'The scoring backend is not reachable right now, so live runs cannot start. The replays work.';
+  $('cost').textContent = monOnline ? '' : 'The scoring backend is not reachable right now, so live runs cannot start. The replays work.';
   if (monOnline) { try { sharedKey = !!(await gradioCall('status', [])).shared_key; } catch { sharedKey = false; } }
   $('keyhint').textContent = sharedKey ? 'optional: leave blank to use the demo\'s shared key' : 'needed: the demo\'s shared key is not available right now';
 }
 let sharedKey = false;
+wakeMonitor();  // start the scoring Space early, while the visitor is still on the replays
 
 /* One agent turn through the scoring Space, which holds the demo's shared OpenRouter key. Streams like streamChat. */
 async function sharedChat(model, messages, tools, onDelta, signal) {

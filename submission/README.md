@@ -750,3 +750,9 @@ the demo and this write-up) was done during the hackathon, between 1 and 15 Nove
 
 Solo entry: dev-willbird1936 ([Hugging Face](https://huggingface.co/dev-willbird1936),
 [GitHub](https://github.com/dev-willbird1936)).
+
+## Repository note
+
+This repository was recreated on 16 November 2026. A commit to a test script had briefly included private local
+identifiers, and recreating the repository was the only way to remove that commit from GitHub completely. The code,
+results and write-up are unchanged.

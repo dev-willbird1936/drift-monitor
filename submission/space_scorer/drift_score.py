@@ -62,7 +62,8 @@ class Monitor:
             kw["torch_dtype"] = torch.bfloat16  # CPU: half the memory of float32 (fits a 16 GB free Space)
         model = AutoModelForCausalLM.from_pretrained(base, **kw)
         if adapter:
-            model = PeftModel.from_pretrained(model, adapter)
+            # ZeroGPU reports CUDA as available outside GPU calls, so keep the adapter on the CPU until the move
+            model = PeftModel.from_pretrained(model, adapter, **({"torch_device": "cpu"} if self.lazy_cuda else {}))
         self.model = model.eval()
         self.digits = [self.tok.encode(str(d), add_special_tokens=False)[0] for d in range(10)]
         self.centres = np.arange(10) * 10 + 5

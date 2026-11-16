@@ -9,7 +9,8 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 |---|---|
 | Adapter (model) | [dev-willbird1936/drift-monitor-tiny-aya](https://huggingface.co/dev-willbird1936/drift-monitor-tiny-aya) |
 | Dataset, logs, traces | [dev-willbird1936/drift-monitor-data](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data) |
-| Demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor): recorded runs replayed with the agent's reasoning, tool calls and the score as they happened |
+| Demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor): recorded runs replayed as they happened, and a *Try it live* tab that runs a real agent with no key needed |
+| Scoring backend | [Space: drift-monitor-scorer](https://huggingface.co/spaces/dev-willbird1936/drift-monitor-scorer): the monitor on ZeroGPU, with a spend-capped shared OpenRouter key for the live demo |
 | Code | [github.com/dev-willbird1936/drift-monitor](https://github.com/dev-willbird1936/drift-monitor) |
 
 **At a glance**
@@ -643,9 +644,12 @@ which goes to the agent before its next step. Four ways to try it:
 - **The hosted demo.** [The Space](https://huggingface.co/spaces/dev-willbird1936/drift-monitor) replays five
   recorded experiment sessions as they happened: the agent's reasoning streams in, the score updates while it
   thinks and after each step, and the advisor's note appears where it reached the agent. Each has a watched and
-  an unwatched run, including the deletion failure. Its *Try it live* tab runs a real agent on your own
-  OpenRouter key; it needs the scoring backend in `submission/space_scorer/`, which is not hosted on the free
-  tier, so the tab reports the monitor as offline unless you run that backend and pass `?scorer=URL`.
+  an unwatched run, including the deletion failure. Its *Try it live* tab runs a real agent (GPT-6 Luna or Claude
+  Haiku 5.5 at xhigh thinking) with an advisor (Claude Opus 5.5 or GPT-6.1 Sol at high) on three presets calibrated
+  to low, medium and high drift. No key is needed: the [scorer Space](https://huggingface.co/spaces/dev-willbird1936/drift-monitor-scorer)
+  (`submission/space_scorer/`) runs the monitor on ZeroGPU and makes the agent and advisor calls with a shared
+  OpenRouter key that never reaches the browser. Only the demo's models are allowed, output is capped, and spend
+  is capped per visitor and in total. Paste your own key to bypass the shared budget.
 - **The live app.** `submission/space/` is a Gradio app (`pip install -r requirements.txt`, set
   `DRIFT_ADAPTER=dev-willbird1936/drift-monitor-tiny-aya`, `python app.py`; a GPU with 3 GB free is enough).
   *Live agent* runs a real agent on a sandboxed task with a hidden drift of your choice and shows the score, the

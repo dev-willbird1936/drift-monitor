@@ -93,7 +93,30 @@ def _gradio(api, data):
     return json.loads(m.group(2))[0]
 
 
+def chat_proxy(model, messages):
+    """The demo page's shared-key path: the scorer Space's agent_chat endpoint, streamed."""
+    eid = json.loads(post(f"{SCORER}/gradio_api/call/agent_chat", {"data": [json.dumps({"model": model, "messages": messages, "tools": TOOLS})]}))["event_id"]
+    last = None
+    with urllib.request.urlopen(f"{SCORER}/gradio_api/call/agent_chat/{eid}", timeout=900) as r:
+        ev = ""
+        for raw in r:
+            line = raw.decode("utf-8", "replace").strip()
+            if line.startswith("event:"):
+                ev = line[6:].strip()
+            elif line.startswith("data:") and ev in ("generating", "complete"):
+                d = json.loads(line[5:])
+                if d:
+                    last = d[0]
+            elif line.startswith("data:") and ev == "error":
+                raise RuntimeError("proxy: " + line[5:200])
+    m = {"content": last["content"], "reasoning": last["reasoning"], "tool_calls": last["tool_calls"] or None,
+         "reasoning_details": last["reasoning_details"]}
+    return {"choices": [{"message": m}], "usage": {"cost": last["cost"]}}
+
+
 def chat(model, effort, messages):
+    if os.environ.get("VIA_PROXY"):
+        return chat_proxy(model, messages)
     body = {"model": model, "messages": messages, "tools": TOOLS, "max_tokens": 16000, "usage": {"include": True},
             "reasoning": {"effort": effort}}
     for attempt in range(4):

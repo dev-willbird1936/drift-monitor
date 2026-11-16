@@ -135,8 +135,8 @@ details summary{cursor:pointer;color:var(--mute)}
           <input type="text" id="custom" class="hidden" placeholder="Your hidden instruction to the agent" style="margin-top:6px">
           <label>Agent model</label><select id="model"></select>
           <label><input type="checkbox" id="adv" checked style="width:auto"> Call an advisor, <select id="advm" style="width:auto;display:inline"></select> at high thinking, when the score reaches <select id="thr" style="width:auto;display:inline"><option>30</option><option selected>40</option><option>50</option></select></label>
-          <label>Your OpenRouter key <span class="hint">stays in this page and goes only to openrouter.ai; a run costs a few cents</span></label>
-          <input type="password" id="key" placeholder="sk-or-..." autocomplete="off">
+          <label>Your OpenRouter key <span class="hint" id="keyhint">optional: leave blank to use the demo's shared key</span></label>
+          <input type="password" id="key" placeholder="leave blank to use the shared key, or sk-or-..." autocomplete="off">
           <div class="ctrl"><button class="btn primary" id="run">Run the agent</button><button class="btn hidden" id="stop">Stop</button>
             <span id="mon" class="pill"></span><span id="cost" class="hint"></span></div>
         </div>
@@ -155,7 +155,7 @@ details summary{cursor:pointer;color:var(--mute)}
         <div class="card"><svg id="lchart" viewBox="0 0 640 230"></svg></div>
       </div>
     </div>
-    <p class="foot">While the agent is thinking, the monitor scores the reasoning streamed so far every few seconds (hollow dots); when a step finishes it scores the whole step (solid dots). The scoring model runs on a separate backend; the agent and the advisor run on your key. Once the advisor has written a note, the monitor reads it as a later instruction, so the repair it asks for is not counted as new drift.</p>
+    <p class="foot">While the agent is thinking, the monitor scores the reasoning streamed so far up to twice a step (hollow dots); when a step finishes it scores the whole step (solid dots). The scoring model runs on a separate backend; the agent and the advisor run on the demo's shared OpenRouter key (held by that backend, never sent to this page) or on your own key if you paste one. Once the advisor has written a note, the monitor reads it as a later instruction, so the repair it asks for is not counted as new drift.</p>
   </section>
   <p class="foot">__LINKS__</p>
 </main>
@@ -464,7 +464,7 @@ async function gradioCall(api, data, signal) {
   const s = await fetch(`${SCORER}/gradio_api/call/${api}/${event_id}`, { signal });
   const text = await s.text();
   const m = text.match(/event: (complete|error)\s*\ndata: (.*)/);
-  if (!m || m[1] === 'error') throw new Error('monitor backend error: ' + (m ? m[2] : text.slice(0, 200)));
+  if (!m || m[1] === 'error') { let e = m ? m[2] : text.slice(0, 200); try { e = JSON.parse(e).error || e; } catch {} throw new Error(e); }
   return JSON.parse(m[2])[0];
 }
 let monOnline = null;
@@ -474,7 +474,41 @@ async function checkMonitor() {
   el.textContent = monOnline ? 'monitor online' : 'monitor offline';
   el.className = 'pill ' + (monOnline ? 'b-ok' : 'b-bad');
   el.title = monOnline ? SCORER : 'The scoring model is not reachable right now, so live runs are unavailable. The replays still work.';
-  if (!monOnline) $('cost').textContent = 'The scoring backend is not hosted right now, so live runs cannot start. The replays work.';
+  if (!monOnline) $('cost').textContent = 'The scoring backend is not reachable right now, so live runs cannot start. The replays work.';
+  if (monOnline) { try { sharedKey = !!(await gradioCall('status', [])).shared_key; } catch { sharedKey = false; } }
+  $('keyhint').textContent = sharedKey ? 'optional: leave blank to use the demo\'s shared key' : 'needed: the demo\'s shared key is not available right now';
+}
+let sharedKey = false;
+
+/* One agent turn through the scoring Space, which holds the demo's shared OpenRouter key. Streams like streamChat. */
+async function sharedChat(model, messages, tools, onDelta, signal) {
+  const r = await fetch(`${SCORER}/gradio_api/call/agent_chat`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: [JSON.stringify({ model, messages, tools })] }), signal });
+  if (!r.ok) throw new Error(`demo backend returned ${r.status}`);
+  const { event_id } = await r.json();
+  const s = await fetch(`${SCORER}/gradio_api/call/agent_chat/${event_id}`, { signal });
+  const rd = s.body.getReader(), dec = new TextDecoder();
+  let buf = '', ev = '', last = null;
+  for (;;) {
+    const { value, done } = await rd.read(); if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let i;
+    while ((i = buf.indexOf('\n')) >= 0) {
+      const line = buf.slice(0, i).trim(); buf = buf.slice(i + 1);
+      if (line.startsWith('event:')) { ev = line.slice(6).trim(); continue; }
+      if (!line.startsWith('data:')) continue;
+      const payload = line.slice(5).trim();
+      if (ev === 'error') { let m = payload; try { const j = JSON.parse(payload); m = (j && j.error) || 'the demo backend could not run the agent'; } catch {} throw new Error(m); }
+      if (ev !== 'generating' && ev !== 'complete') continue;
+      let j; try { j = JSON.parse(payload)[0]; } catch { continue; }
+      if (!j) continue;
+      last = j;
+      if (!j.done) onDelta({ reasoning: j.reasoning, content: j.content });
+    }
+  }
+  if (!last || !last.done) throw new Error('the agent call ended early');
+  if (last.reasoning) onDelta({ reasoning: last.reasoning });
+  if (last.content) onDelta({ content: last.content });
+  return { content: last.content || '', reasoning: last.reasoning || '', tool_calls: last.tool_calls || [], reasoning_details: last.reasoning_details || [], cost: last.cost || 0 };
 }
 
 /* OpenRouter streaming chat. Calls onDelta({reasoning, content}) as text arrives. */
@@ -545,9 +579,10 @@ drawChart($('lchart'), { thr: +$('thr').value, n: 6, series: [], live: [], adv: 
 $('thr').onchange = () => { if (!lv.pts) drawChart($('lchart'), { thr: +$('thr').value, n: 6, series: [], live: [], adv: [] }); };
 async function runLive() {
   const key = $('key').value.trim();
-  if (!key) { alert('Paste your OpenRouter key first.'); return; }
   if (monOnline === null) await checkMonitor();
   if (!monOnline) { alert('The monitor backend is offline right now, so live runs are unavailable. The replays still work.'); return; }
+  if (!key && !sharedKey) { await checkMonitor(); if (!sharedKey) { alert('The demo\'s shared key is not available right now. Paste your own OpenRouter key.'); return; } }
+  const chat = (m, msgs, tools, onD, sig) => key ? streamChat(key, m, msgs, tools, onD, sig) : sharedChat(m, msgs, tools, onD, sig);
   const goal = $('goal').value.trim(); if (!goal) { alert('Describe a task first.'); return; }
   const push = $('push').value, model = $('model').value, thr = +$('thr').value, useAdv = $('adv').checked;
   let files = parseFiles($('files').value), hidden = '';
@@ -573,19 +608,19 @@ async function runLive() {
   try {
     for (let turn = 1; turn <= 12; turn++) {
       const st = lv.step(turn); lv.status(`Step ${turn}: waiting for the model`); lv.why('');
-      let thinkEl = null, sayEl = null, scoring = false, lastLive = 0, stepDone = false;
+      let thinkEl = null, sayEl = null, scoring = false, lastLive = 0, stepDone = false, nLive = 0;
       const onDelta = d => {
         if (d.reasoning) { if (!thinkEl) { thinkEl = lv.part(st, 'think caret'); lv.status(`Step ${turn}: the agent is thinking`); } thinkEl.textContent = d.reasoning; lv.scroll(); }
         if (d.content) { if (!sayEl) { sayEl = lv.part(st, 'say caret'); lv.status(`Step ${turn}: the agent replies`); } sayEl.textContent = d.content; lv.scroll(); }
         const text = (thinkEl && thinkEl.textContent) || (sayEl && sayEl.textContent) || '', now = Date.now();
-        if (!scoring && text.length > 80 && now - lastLive > 2500) {
-          scoring = true; lastLive = now;
+        if (!scoring && nLive < 2 && text.length > 80 && now - lastLive > 3000) {
+          scoring = true; lastLive = now; nLive++;
           const partial = { thinking: thinkEl ? thinkEl.textContent : '', say: thinkEl ? '' : text, calls: [], results: [] };
           gradioCall('score', [JSON.stringify({ goal, constraints: [], updates, steps: [...obsSteps, partial], tier: 6, live: true })], ctl.signal)
             .then(r => { if (stepDone) return; lv.score(r.score, { mid: true, step: turn }); lv.status(`Step ${turn}: scored the reasoning so far`); }).catch(() => {}).finally(() => { scoring = false; });
         }
       };
-      const msg = await streamChat(key, model, messages, TOOLS, onDelta, ctl.signal);
+      const msg = await chat(model, messages, TOOLS, onDelta, ctl.signal);
       stepDone = true;
       if (thinkEl) thinkEl.classList.remove('caret'); if (sayEl) sayEl.classList.remove('caret');
       cost += msg.cost || 0; showCost();
@@ -604,15 +639,21 @@ async function runLive() {
       }
       obsSteps.push(step);
       lv.status(`Step ${turn} done: the monitor scores the whole step`);
+      const slow = setTimeout(() => lv.status(`Step ${turn} done: waiting for a free GPU to score it (the monitor runs on shared Hugging Face GPUs)`), 8000);
       const sc = await gradioCall('score', [JSON.stringify({ goal, constraints: [], updates, steps: obsSteps, tier: 5 })], ctl.signal);
+      clearTimeout(slow);
       lv.score(sc.score, { step: turn, stepEl: st });
       lv.why(`<span class="lbl">Just scored</span>${esc(actionOf(step))}`);
       lv.status(sc.score >= thr ? `Score ${Math.round(sc.score)}: over the advisor line` : `Score ${Math.round(sc.score)}: on course`, sc.score >= thr);
       let note = null;
       if (useAdv && sc.score >= thr && nAdv < 2 && turn - lastAdv >= 2) {
         nAdv++; lastAdv = turn; lv.status('The advisor is called and reads the session', true); lv.advisor(turn);
-        const p = await gradioCall('advisor_prompt', [JSON.stringify({ goal, constraints: [], updates, steps: obsSteps, tier: 5 }), sc.score], ctl.signal);
-        const a = await chatOnce(key, $('advm').value, [{ role: 'system', content: p.system }, { role: 'user', content: p.prompt }], ctl.signal);
+        const sess = JSON.stringify({ goal, constraints: [], updates, steps: obsSteps, tier: 5 });
+        let a;
+        if (key) {
+          const p = await gradioCall('advisor_prompt', [sess, sc.score], ctl.signal);
+          a = await chatOnce(key, $('advm').value, [{ role: 'system', content: p.system }, { role: 'user', content: p.prompt }], ctl.signal);
+        } else a = await gradioCall('advise', [sess, sc.score, $('advm').value], ctl.signal);
         cost += a.cost; showCost();
         if (a.text && !a.text.slice(0, 40).includes('NO_ACTION')) { note = a.text.slice(0, 1200); lv.msg('adv', 'Advisor → agent', note); lv.why(`<span class="lbl">The advisor's reading</span>${esc(clip(note, 260))}`); lv.status('The advisor sent a note to the agent', true); }
         else { lv.msg('adv', 'Advisor', 'No action needed: the agent is on course.'); lv.status('The advisor judged the agent on course'); }

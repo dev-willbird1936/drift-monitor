@@ -12,7 +12,7 @@ calls_clean = [0, 2.81, 0.06, 0.06]         # advisor calls per clean session
 plt.rcParams.update({"font.size": 8, "font.family": "serif"})
 fig, (a, b) = plt.subplots(1, 2, figsize=(3.15, 1.75))
 x = range(len(arms))
-colors = ["#9e9e9e", "#d98c4a", "#2f6fa8", "#7fa9d1"]
+colors = ["#9e9e9e", "#4a4a4a", "#FF4B0A", "#FF9E7A"]
 
 a.bar(x, files_left, color=colors)
 for i, (v, c) in enumerate(zip(files_left, checks)):

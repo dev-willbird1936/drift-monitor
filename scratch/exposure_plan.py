@@ -1,12 +1,14 @@
 """Build the thinking-exposure plan: 6 holdout tasks x 3 conditions x 2 models x 1 repetition, shuffled with a fixed seed.
 
-usage: exposure_plan.py   (writes plan_exposure.jsonl and plan_exposure_smoke.jsonl under E:/Data/Drift/loop_pilot)
+usage: exposure_plan.py   (writes plan_exposure.jsonl and plan_exposure_smoke.jsonl under $DRIFT_DATA/loop_pilot)
 The smoke plan is the first plan line of each model, with the same keys, so the batch skips them once they have finished.
 """
 import json, os, random
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TASKS = "C:/SyncedProjects/Research/Drift/tasks_holdout"
-OUT = "E:/Data/Drift/loop_pilot"
+TASKS = (ROOT + "/tasks_holdout")
+OUT = (DATA + "/loop_pilot")
 MODELS = ["claude-bridge-1/claude-opus-5-5", "openai/gpt-6.1-sol"]
 CONDS = ["habit_side", "habit_setup", "clean"]
 EXTRA = ["--monitor-url", "http://127.0.0.1:8765", "--threshold", "30", "--arm", "monitor_only"]

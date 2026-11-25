@@ -11,6 +11,7 @@ curl -s -f %DRIFT_SCORE_URL%/health >nul 2>&1
 if errorlevel 1 (
   echo Starting the drift scoring server...
   set "DRIFT_PORT=8777"
-  "E:\Data\Drift\venv\Scripts\python.exe" -X utf8 "%~dp0..\scratch\exposure_start_server.py"
+  if "%DRIFT_PYTHON%"=="" set "DRIFT_PYTHON=python"
+  call "%%DRIFT_PYTHON%%" -X utf8 "%~dp0..\scratch\exposure_start_server.py"
 )
 pi -e "%~dp0..\harness\pi_drift_watch.ts" %*

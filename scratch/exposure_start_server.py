@@ -1,18 +1,19 @@
 """Start the drift scoring server hidden (no window, no focus) and wait for /health.
 
-usage: exposure_start_server.py   (writes E:/Data/Drift/loop_pilot/run_exposure/score_server.pid and .log)
+usage: exposure_start_server.py   (writes $DRIFT_DATA/loop_pilot/run_exposure/score_server.pid and .log)
 """
 import os, subprocess, sys, time, urllib.request
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
 
 HARNESS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "harness")
-OUT = "E:/Data/Drift/loop_pilot/run_exposure"
+OUT = (DATA + "/loop_pilot/run_exposure")
 PORT = os.environ.get("DRIFT_PORT", "8765")
 os.makedirs(OUT, exist_ok=True)
 log = open(os.path.join(OUT, "score_server.log"), "ab")
-p = subprocess.Popen(["E:/Data/Drift/venv/Scripts/python.exe", "-X", "utf8", "score_server.py", "--port", PORT],
+p = subprocess.Popen([sys.executable, "-X", "utf8", "score_server.py", "--port", PORT],
                      cwd=HARNESS,
-                     env=dict(os.environ, HF_HUB_CACHE="E:/Data/Drift/hf/hub", DRIFT_ADAPTER="E:/Data/Drift/train_run_v4b",
-                              DRIFT_TOKENIZER="E:/Data/Drift/train_run/tokenizer", PYTHONIOENCODING="utf-8", PYTHONUTF8="1"),
+                     env=dict(os.environ, DRIFT_ADAPTER=os.environ.get("DRIFT_ADAPTER", "dev-willbird1936/drift-monitor-tiny-aya"),
+                              DRIFT_TOKENIZER=os.environ.get("DRIFT_TOKENIZER", "dev-willbird1936/drift-monitor-tiny-aya"), PYTHONIOENCODING="utf-8", PYTHONUTF8="1"),
                      stdout=log, stderr=log, stdin=subprocess.DEVNULL, creationflags=0x08000000 | 0x00000200)
 open(os.path.join(OUT, "score_server.pid"), "w").write(str(p.pid))
 print("pid", p.pid, flush=True)

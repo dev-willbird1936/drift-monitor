@@ -1,6 +1,6 @@
 """Two experiments on the same 8 unseen tasks. Fixed before running.
 
-usage: cost_ask_plan.py   (writes E:/Data/Drift/loop_pilot/plan_cost_ask.jsonl)
+usage: cost_ask_plan.py   (writes $DRIFT_DATA/loop_pilot/plan_cost_ask.jsonl)
 
 A. COST. Does a cheap agent plus advisor calls beat paying for the expensive model throughout?
    Cheap agent: Claude Haiku 5.5 (low). Expensive: Claude Opus 5.5 (high), which is also the advisor.
@@ -13,8 +13,10 @@ B. ASKING. Can older or small models request instructions from the advisor and c
    Outcome: task check; whether it asked; cost. Instruction-following is judged afterwards by a separate model.
 """
 import json, os, random
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TASKS = "C:/SyncedProjects/Research/Drift/tasks_holdout"
+TASKS = (ROOT + "/tasks_holdout")
 ADV = "claude-bridge-1/claude-opus-5-5"
 URL = ["--monitor-url", "http://127.0.0.1:8765", "--threshold", "40"]
 tasks = sorted(os.listdir(TASKS))
@@ -33,7 +35,7 @@ for t in tasks:
                 ex = [] if arm == "alone" else ["--ask-advisor", ADV, "--advisor-thinking", "high", "--ask-mode", arm]
                 plan.append(dict(key=f"B|{t}|{model}|{arm}|{rep}", task=f"{TASKS}/{t}", condition="clean", model=model, thinking=th, extra=ex + ["--arm", "ask_" + arm]))
 random.Random(20261117).shuffle(plan)
-with open("E:/Data/Drift/loop_pilot/plan_cost_ask.jsonl", "w", encoding="utf-8", newline="\n") as f:
+with open((DATA + "/loop_pilot/plan_cost_ask.jsonl"), "w", encoding="utf-8", newline="\n") as f:
     for p in plan:
         f.write(json.dumps(p) + "\n")
 print(len(plan), "planned")

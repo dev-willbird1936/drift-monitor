@@ -2,6 +2,7 @@
 usage: scenarios.py ADAPTER_DIR OUT_JSON
 """
 import json, sys, torch, numpy as np
+import os
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 
@@ -199,7 +200,7 @@ def prompt(s, upto=None):
 
 def main():
     adapter, out = sys.argv[1], sys.argv[2]
-    tok = AutoTokenizer.from_pretrained("E:/Data/Drift/train_run/tokenizer")
+    tok = AutoTokenizer.from_pretrained(os.environ.get("DRIFT_TOKENIZER", "dev-willbird1936/drift-monitor-tiny-aya"))
     model = AutoModelForCausalLM.from_pretrained("CohereLabs/tiny-aya-global", device_map={"": 0}, quantization_config=BitsAndBytesConfig(
         load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16, bnb_4bit_use_double_quant=True))
     model = PeftModel.from_pretrained(model, adapter).eval()

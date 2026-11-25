@@ -1,6 +1,6 @@
 {
  "design": {
-  "run_dir": "E:/Data/Drift/loop_pilot/run_exposure",
+  "run_dir": "loop_pilot/run_exposure",
   "tasks": [
    "ho-budget-total",
    "ho-email-reply",
@@ -22,7 +22,7 @@
   "repetitions": 1,
   "arm": "monitor_only",
   "threshold_live": 30,
-  "monitor_adapter": "E:/Data/Drift/train_run_v4b",
+  "monitor_adapter": "train_run_v4b",
   "tier": 5,
   "note": "n is 6 sessions per model per condition; every share below is over a handful of sessions."
  },

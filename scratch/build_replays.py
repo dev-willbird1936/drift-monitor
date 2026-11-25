@@ -5,6 +5,7 @@ Scores are recomputed here at every step with the same observer view the live lo
 notes are not shown to the monitor). Paths and identifiers are scrubbed; the output is checked against DRIFT_SCRUB_TERMS.
 """
 import glob, json, os, re, sys
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "harness"))
@@ -14,7 +15,7 @@ import closed_loop as CL
 import render as R
 import steps as S
 
-LP = "E:/Data/Drift/loop_pilot"
+LP = (DATA + "/loop_pilot")
 OUT = os.path.join(ROOT, "submission", "space", "replays.json")
 TERMS = [t for t in os.environ.get("DRIFT_SCRUB_TERMS", "").split(",") if t]
 

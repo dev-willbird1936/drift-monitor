@@ -24,9 +24,8 @@ import glob, os, sys, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "submission", "space"))
-os.environ.setdefault("HF_HUB_CACHE", "E:/Data/Drift/hf/hub")
-os.environ.setdefault("DRIFT_ADAPTER", "E:/Data/Drift/train_run_v4b")
-os.environ.setdefault("DRIFT_TOKENIZER", "E:/Data/Drift/train_run/tokenizer")
+os.environ.setdefault("DRIFT_ADAPTER", "dev-willbird1936/drift-monitor-tiny-aya")
+os.environ.setdefault("DRIFT_TOKENIZER", "dev-willbird1936/drift-monitor-tiny-aya")
 import drift_score as D
 
 args = [a for a in sys.argv[1:] if not a.startswith("--")]

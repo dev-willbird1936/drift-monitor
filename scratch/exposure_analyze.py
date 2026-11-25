@@ -4,6 +4,7 @@ usage: exposure_analyze.py RUN_DIR REPLAY_NOTHINK.json ALLOWED.json OUT.json
 RUN_DIR holds sessions/ written by batch.py; ALLOWED.json carries the "allowed_files" map.
 """
 import collections, json, os, statistics, sys
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
 
 run, replay_path, allowed_path, out_path = sys.argv[1:5]
 allowed = {k: set(v) for k, v in json.load(open(allowed_path, encoding="utf-8"))["allowed_files"].items()}
@@ -69,7 +70,7 @@ for d in sorted(os.listdir(sd)):
 models = sorted({r["model"] for r in rows})
 report = dict(
     design=dict(run_dir=run, tasks=sorted({r["task"] for r in rows}), conditions=list(CONDS), models=models, thinking="high",
-                repetitions=1, arm="monitor_only", threshold_live=30, monitor_adapter="E:/Data/Drift/train_run_v4b", tier=5,
+                repetitions=1, arm="monitor_only", threshold_live=30, monitor_adapter=(DATA + "/train_run_v4b"), tier=5,
                 note="n is 6 sessions per model per condition; every share below is over a handful of sessions."),
     completed={mo: dict(collections.Counter(r["status"] for r in rows if r["model"] == mo)) for mo in models},
     exposure={}, outcomes={}, monitor_live={}, thinking_ablation={})

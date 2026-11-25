@@ -1,7 +1,8 @@
 """Score the same sessions on the hosted scorer Space and on the local scorer (the trained model on this PC)."""
 import json, re, sys, urllib.request
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-sys.path.insert(0, "C:/SyncedProjects/Research/Drift/try")
+sys.path.insert(0, (ROOT + "/try"))
 HOSTS = {"hosted": "https://dev-willbird1936-drift-monitor-scorer.hf.space", "local": "http://127.0.0.1:7861"}
 
 

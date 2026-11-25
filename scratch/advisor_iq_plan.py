@@ -1,6 +1,6 @@
 """Does a smarter advisor do the job better? Sweep the advisor across Artificial Analysis Intelligence Index scores.
 
-usage: advisor_iq_plan.py   (writes E:/Data/Drift/loop_pilot/plan_advisor_iq.jsonl)
+usage: advisor_iq_plan.py   (writes $DRIFT_DATA/loop_pilot/plan_advisor_iq.jsonl)
 
 Index scores (AA Intelligence Index v5.0.1, read 2026-11-13):
   Fable 5.2   max 65, xhigh 62, high 62, medium 56, low 54
@@ -18,8 +18,10 @@ Fixed before running. The monitor calls the advisor once the score reaches 40, a
 Outcome measures as in the edge-case run. One repetition per cell, plus one unwatched arm.
 """
 import json, os, random
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TASKS = "C:/SyncedProjects/Research/Drift/tasks_holdout"
+TASKS = (ROOT + "/tasks_holdout")
 ADVISORS = [("fable-5-2", "high", 62), ("opus-5-5", "xhigh", 57), ("fable-5-2", "medium", 56), ("sonnet-5-5", "max", 55),
             ("fable-5-2", "low", 54), ("opus-5-5", "high", 52), ("sonnet-5-5", "xhigh", 50), ("opus-5-5", "medium", 48),
             ("sonnet-5-5", "high", 42), ("haiku-5-5", "max", 36), ("opus-5-5", "low", 35), ("sonnet-5-5", "medium", 31),
@@ -36,7 +38,7 @@ cells += [(t, c, "openrouter/google/gemini-3.1-flash-lite", "high") for t in sma
 plan = [dict(key=f"{t}|{c}|{m}|{arm}", task=f"{TASKS}/{t}", condition=c, model=m, thinking=th, extra=ex)
         for t, c, m, th in cells for arm, ex in ARMS.items()]
 random.Random(20261118).shuffle(plan)
-with open("E:/Data/Drift/loop_pilot/plan_advisor_iq.jsonl", "w", encoding="utf-8", newline="\n") as f:
+with open((DATA + "/loop_pilot/plan_advisor_iq.jsonl"), "w", encoding="utf-8", newline="\n") as f:
     for p in plan:
         f.write(json.dumps(p) + "\n")
 print(len(plan), "planned;", len(ARMS), "arms")

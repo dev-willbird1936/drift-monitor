@@ -37,6 +37,9 @@ results/raw/
 !submission/artifacts/**
 
 # Local tool state and notes
+video/source/
+~$*
+.pi-smart-router/
 .pi/
 .playwright-mcp/
 DriftMeter_Research_Intention.md

@@ -8,6 +8,7 @@ usage: preset_trials.py SCORER_URL OUT.jsonl CANDIDATE[,CANDIDATE...] REPS
 Reads the OpenRouter key from OPENROUTER_API_KEY. Candidates are defined in preset_candidates.py.
 """
 import concurrent.futures as cf
+DATA = os.environ.get("DRIFT_DATA", "data")  # run outputs; set DRIFT_DATA to move them
 import json
 import os
 import re
@@ -46,7 +47,7 @@ import subprocess
 import threading
 
 RESTART = threading.Lock()
-PIDF = "E:/Data/Drift/loop_pilot/run_exposure/score_server.pid"
+PIDF = (DATA + "/loop_pilot/run_exposure/score_server.pid")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -69,7 +70,7 @@ def restart_model():
         except Exception:
             pass
         time.sleep(3)
-        subprocess.run(["E:/Data/Drift/venv/Scripts/python.exe", "-X", "utf8", os.path.join(ROOT, "scratch", "exposure_start_server.py")],
+        subprocess.run([sys.executable, "-X", "utf8", os.path.join(ROOT, "scratch", "exposure_start_server.py")],
                        env={**os.environ, "DRIFT_PORT": "8777"}, capture_output=True, timeout=600)
 
 

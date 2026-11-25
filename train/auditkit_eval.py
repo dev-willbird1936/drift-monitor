@@ -1,6 +1,6 @@
 """Score the drift monitor with AuditKIT, the third Lexsi repo in the Track 1 pipeline.
 
-usage: auditkit_eval.py OUT_DIR [--results-dir E:/Data/Drift/results] [--threshold 40] [--limit N]
+usage: auditkit_eval.py OUT_DIR [--results-dir $DRIFT_DATA/results] [--threshold 40] [--limit N]
 
 CuratorKIT curated the training data, AlignTune trained the adapter, and AuditKIT grades the result here.
 It runs entirely offline on prediction files already written by eval_v4.py, using AuditKIT's PrecomputedModel

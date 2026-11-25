@@ -268,7 +268,7 @@ at **matched operating points**:
 | false alarms ≤ 0.10 → recall | **93.1%** | 57.8% | 52.0% |
 
 At equal recall the 3.35B model raises **5–6× fewer false alarms**; at equal false-alarm rate it catches
-**1.6–1.8× more drift**. It is also ~20× faster per call and ~400× cheaper.
+**1.6–1.8× more drift**. It is also 12 to 21× faster per call and ~400× cheaper.
 
 **We also tested the obvious objection**: our model absorbed the scoring rubric during training, while the
 frontier models saw only a one-line instruction. Giving them the full rubric did not close the gap — it made

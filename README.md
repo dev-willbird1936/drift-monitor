@@ -12,6 +12,8 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 | Demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor): recorded runs replayed as they happened, and a *Try it live* tab that runs a real agent with no key needed |
 | Scoring backend | [Space: drift-monitor-scorer](https://huggingface.co/spaces/dev-willbird1936/drift-monitor-scorer): the monitor on ZeroGPU, with a spend-capped shared OpenRouter key for the live demo |
 | Code | [github.com/dev-willbird1936/drift-monitor](https://github.com/dev-willbird1936/drift-monitor) |
+| Paper (Stage 2) | [paper/main.pdf](paper/main.pdf), EMNLP template, source in `paper/` |
+| Video (2:48) | [video/drift_monitor_stage2.mp4](video/drift_monitor_stage2.mp4), with [slides](video/drift_monitor_stage2_slides.pdf) and [captions](video/drift_monitor_stage2.srt) |
 
 **At a glance**
 
@@ -268,7 +270,7 @@ at **matched operating points**:
 | false alarms ≤ 0.10 → recall | **93.1%** | 57.8% | 52.0% |
 
 At equal recall the 3.35B model raises **5–6× fewer false alarms**; at equal false-alarm rate it catches
-**1.6–1.8× more drift**. It is also ~20× faster per call and ~400× cheaper.
+**1.6–1.8× more drift**. It is also 12 to 21× faster per call and ~400× cheaper.
 
 **We also tested the obvious objection**: our model absorbed the scoring rubric during training, while the
 frontier models saw only a one-line instruction. Giving them the full rubric did not close the gap — it made
@@ -748,7 +750,7 @@ the demo and this write-up) was done during the hackathon, between 1 and 15 Nove
 
 ## Team
 
-Solo entry: dev-willbird1936 ([Hugging Face](https://huggingface.co/dev-willbird1936),
+Solo entry from Rokode Labs: William Bird (dev-willbird1936) ([Hugging Face](https://huggingface.co/dev-willbird1936),
 [GitHub](https://github.com/dev-willbird1936)).
 
 ## Repository note

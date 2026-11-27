@@ -9,6 +9,8 @@ Core model: **`CohereLabs/tiny-aya-global`** (3.35B, dense, open weights).
 |---|---|
 | Adapter (model) | [dev-willbird1936/drift-monitor-tiny-aya](https://huggingface.co/dev-willbird1936/drift-monitor-tiny-aya) |
 | Dataset, logs, traces | [dev-willbird1936/drift-monitor-data](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data) |
+| Model collection | [Collection: drift-monitor-model](https://huggingface.co/collections/dev-willbird1936/drift-monitor-model): the adapter, the base model, both Spaces |
+| Dataset collection | [Collection: drift-monitor-data](https://huggingface.co/collections/dev-willbird1936/drift-monitor-data): the splits, the raw generated sessions, every eval and closed-loop artifact |
 | Demo | [Space: drift-monitor](https://huggingface.co/spaces/dev-willbird1936/drift-monitor): recorded runs replayed as they happened, and a *Try it live* tab that runs a real agent with no key needed |
 | Scoring backend | [Space: drift-monitor-scorer](https://huggingface.co/spaces/dev-willbird1936/drift-monitor-scorer): the monitor on ZeroGPU, with a spend-capped shared OpenRouter key for the live demo |
 | Code | [github.com/dev-willbird1936/drift-monitor](https://github.com/dev-willbird1936/drift-monitor) |
@@ -665,6 +667,14 @@ which goes to the agent before its next step. Four ways to try it:
 ## Reproducibility
 
 Hardware: one A100 40GB (rented) for training, one RTX 3080 12GB for latency and local evaluation.
+
+Everything the scripts read is public, and no step below needs a path from this machine. `DS` is the
+[published dataset repo](https://huggingface.co/datasets/dev-willbird1936/drift-monitor-data): `git clone` it
+(or download the files) and the splits sit where `eval_v4.py` looks for them, `DS/data/<split>.jsonl`. `OUT` is
+a directory you choose. To score the published adapter instead of training one, pass
+`--adapter dev-willbird1936/drift-monitor-tiny-aya --tokenizer dev-willbird1936/drift-monitor-tiny-aya`; the
+repo ships the training chat template, and scoring with a different one shifts the digit token ids and produces
+nonsense without erroring.
 
 ```bash
 # environment
